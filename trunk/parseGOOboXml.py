@@ -4,20 +4,21 @@ from networkx import DiGraph
 from GONode import *
 
 class parseGOOboXml(ContentHandler):
-    def __init__(self):
-        self.aspects = {}
+    def __init__(self, graph, namespace):
+        self.namespace = namespace
+        self.namespaces = {}
         self.relationships = {}
         self.inTypedef = False
         self.names = {}
         self.obsolete = False
-        self.graph = DiGraph()
+        self.graph = graph
         self.goNode = GONode()
         
     def startElement(self, name, attributes):
         self.cdata = ""
         if name == "term":
             self.goid = None
-            self.aspect = None
+            self.elementNamespace = None
             self.parents = []
             self.obsolete = False
             self.goNode = GONode()
@@ -30,8 +31,8 @@ class parseGOOboXml(ContentHandler):
             self.goNode.setGOID(self.goid)
 
         elif name == "namespace":
-            self.aspect = self.cdata.strip()
-            self.goNode.setNamespace(self.aspect)
+            self.elementNamespace = self.cdata.strip()
+            self.goNode.setNamespace(self.elementNamespace)
 
         elif name == "is_a" and not self.inTypedef:
             self.parents.append(self.cdata.strip())
@@ -44,13 +45,13 @@ class parseGOOboXml(ContentHandler):
         elif name == "typedef":
             self.inTypedef = False
 
-        elif name == "term" and not self.obsolete:
+        elif name == "term" and not self.obsolete and self.namespace == self.elementNamespace:
             self.relationships[self.goid] = self.parents
 
-            if not self.aspect in self.aspects.keys():
-                self.aspects[self.aspect] = []
+            if not self.elementNamespace in self.namespaces.keys():
+                self.namespaces[self.elementNamespace] = []
 
-            self.aspects[self.aspect].append(self.goid)
+            self.namespaces[self.elementNamespace].append(self.goid)
 
             self.graph.add_node(self.goid, data=self.goNode)
             for parent in self.relationships[self.goid]:
