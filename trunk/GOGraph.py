@@ -1,22 +1,28 @@
 from xml.sax.handler import ContentHandler
 from xml.sax import make_parser
 from networkx import DiGraph
-from parseGOOboXml import *
+from GOOboXmlHandler import *
 
 class GOGraph(DiGraph):
-    def __init__(self, namespace, XML):
+    def __init__(self, namespace, GOOboXmlFileName):
+        """ Constructor.
+        Args:
+            namespace      The branch of the GO ontology stored by this graph
+            XMLFileName    The file contains the GO definition in the format
+                           of the OBO in XML
+        """
         DiGraph.__init__(self)
         
         self.namespace = namespace
-        self.parseOboXml(XML)
+        self.parseOboXml(GOOboXmlFileName)
         
 
-    def parseOboXml(self, XML):
+    def parseOboXml(self, GOOboXmlFileName):
         parser = make_parser()
-        handler = parseGOOboXml(self, self.namespace)
+        handler = GOOboXmlHandler(self)
         parser.setContentHandler(handler)
         try:
-            f = open(XML, 'r')
+            f = open(GOOboXmlFileName, 'r')
             parser.parse(f)
             f.close()
         except:
@@ -40,3 +46,8 @@ class GOGraph(DiGraph):
                     nextDepth = list(set(nextDepth) | set(pred))
             parents = nextDepth
             level = level + 1
+
+
+    def getNameSpace(self):
+        return self.namespace;
+    
