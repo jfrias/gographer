@@ -18,6 +18,8 @@ class GOOboXmlHandler (ContentHandler):
         self.namespace = goGraph.getNameSpace()
         self.graph = goGraph
         self.inTypedef = False
+        self.goNode = GONode()
+        self.obsolete = False
 
         
     def startElement(self, name, attributes):
@@ -56,17 +58,15 @@ class GOOboXmlHandler (ContentHandler):
             self.inTypedef = False
 
         elif name == "term" and not self.obsolete and self.namespace == self.elementNamespace:
-'''         # not sure what the follow trying to do
-            self.relationships[self.goid] = self.parents
-
-            
+            '''# not sure what the follow trying to do
             if not self.elementNamespace in self.namespaces.keys():
                 self.namespaces[self.elementNamespace] = []
 
             self.namespaces[self.elementNamespace].append(self.goid)
-'''
+            '''
+            
             self.graph.add_node(self.goid, data=self.goNode)
-            for parent in self.relationships[self.goid]:
+            for parent in self.parents:
                 self.graph.add_edge(parent, self.goid)
 
         elif name == "name" and not self.obsolete and not self.goid == None: # and not self.names.has_key(self.goid):

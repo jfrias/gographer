@@ -26,7 +26,7 @@ class GOGraph(DiGraph):
             parser.parse(f)
             f.close()
         except:
-            print "Could not parse Obo XML file %s" % (XML)
+            print "Could not parse Obo XML file %s" % (GOOboXmlFileName)
 
     def getLevel(self, node):
         parents = self.predecessors(node)
