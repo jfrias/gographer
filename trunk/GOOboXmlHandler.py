@@ -67,12 +67,15 @@ class GOOboXmlHandler (ContentHandler):
             
             self.graph.add_node(self.goid, data=self.goNode)
             for parent in self.parents:
-                self.graph.add_edge(parent, self.goid)
+                '''
+                currently the only edges being added are to the children of the current node
+                '''
+                self.graph.add_edge(parent, self.goid, relationship="parent_of")
 
-        elif name == "name" and not self.obsolete and not self.goid == None: # and not self.names.has_key(self.goid):
+        elif name == "name" and not self.obsolete and not self.goid == None and self.goNode.name == None: # and not self.names.has_key(self.goid):
             self.goNode.setName(self.cdata.strip())
 
-        elif name == "description" and  not self.obsolete and not self.goid == None: # and not self.names.has_key(self.goid):
+        elif name == "defstr" and  not self.obsolete and not self.goid == None: # and not self.names.has_key(self.goid):
             self.goNode.setDescription(self.cdata.strip())
 
             

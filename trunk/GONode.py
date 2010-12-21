@@ -1,10 +1,11 @@
 class GONode():
-    def __init__ (self, goid=None, namespace=None, parents=None, obsolete=False, name=None):
+    def __init__ (self, goid=None, namespace=None, parents=None, obsolete=False, name=None, description=None):
         self.goid = goid
         self.namespace = namespace
         self.parents = parents
         self.obsolete = obsolete
         self.name = name
+        self.description = description
 
     def setGOID (self, goid):
         self.goid = goid
@@ -20,3 +21,6 @@ class GONode():
 
     def setName (self, name):
         self.name = name
+
+    def setDescription (self, description):
+        self.description = description
