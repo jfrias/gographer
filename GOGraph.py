@@ -21,12 +21,12 @@ class GOGraph(DiGraph):
         parser = make_parser()
         handler = GOOboXmlHandler(self)
         parser.setContentHandler(handler)
-        try:
-            f = open(GOOboXmlFileName, 'r')
-            parser.parse(f)
-            f.close()
-        except:
-            print "Could not parse Obo XML file %s" % (GOOboXmlFileName)
+        #try:
+        f = open(GOOboXmlFileName, 'r')
+        parser.parse(f)
+        f.close()
+        #except:
+        #    print "Could not parse Obo XML file %s" % (GOOboXmlFileName)
 
     def getLevel(self, node):
         parents = self.predecessors(node)
