@@ -2,6 +2,7 @@ from xml.sax.handler import ContentHandler
 from xml.sax import make_parser
 from networkx import DiGraph
 from GOOboXmlHandler import *
+import cPickle
 
 class GOGraph(DiGraph):
     def __init__(self, namespace, GOOboXmlFileName):
@@ -21,12 +22,12 @@ class GOGraph(DiGraph):
         parser = make_parser()
         handler = GOOboXmlHandler(self)
         parser.setContentHandler(handler)
-        #try:
-        f = open(GOOboXmlFileName, 'r')
-        parser.parse(f)
-        f.close()
-        #except:
-        #    print "Could not parse Obo XML file %s" % (GOOboXmlFileName)
+        try:
+            f = open(GOOboXmlFileName, 'r')
+            parser.parse(f)
+            f.close()
+        except:
+            print "Could not parse Obo XML file %s" % (GOOboXmlFileName)
 
     def getLevel(self, node):
         parents = self.predecessors(node)
@@ -50,4 +51,25 @@ class GOGraph(DiGraph):
 
     def getNameSpace(self):
         return self.namespace;
-    
+
+    ## Save self using pickle protocol.
+    # @param filename The filename of the pickle to use
+    def savePickle(self, filename="gograph.pickle"):
+        try:
+            f = open(filename, 'wb')
+            cPickle.dump(self, f, protocol = cPickle.HIGHEST_PROTOCOL)
+            f.close()
+        except:
+            print "Could not pickle graph"
+
+    # Load a pickle from the filesystem
+    # @param filename The location of the pickle file to load
+    @classmethod
+    def loadPickle (klass, filename="gograph.pickle"):
+        try:
+            f = open(filename, 'rb')
+            g = cPickle.load(f)
+            return g
+        except:
+            print "Could not load pickle"
+            return
