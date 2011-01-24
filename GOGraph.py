@@ -5,17 +5,17 @@ from GOOboXmlHandler import *
 import cPickle
 
 class GOGraph(DiGraph):
-    def __init__(self, namespace, GOOboXmlFileName):
-        """ Constructor.
-        Args:
-            namespace      The branch of the GO ontology stored by this graph
-            XMLFileName    The file contains the GO definition in the format
-                           of the OBO in XML
-        """
+    ## Constructor.
+    # @param    namespace     The branch of the GO ontology stored by this graph
+    # @param    XMLFileName   The file contains the GO definition in
+    #                         the format of the OBO in XML
+    def __init__(self, namespace=None, GOOboXmlFileName=None):        
         DiGraph.__init__(self)
-        
+
         self.namespace = namespace
-        self.parseOboXml(GOOboXmlFileName)
+
+        if GOOboXmlFileName != None:
+            self.parseOboXml(GOOboXmlFileName)
         
 
     def parseOboXml(self, GOOboXmlFileName):
