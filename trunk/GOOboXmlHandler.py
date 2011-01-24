@@ -9,12 +9,10 @@ class GOOboXmlHandler (ContentHandler):
         the namespace (a branch of the GO) specificed in the GOGraph object.  Currently, only the edges
         that reflect IS_A relationship between a pair of GO terms are parsed and added into the GOGraph
     """
+    ## Constructor.
+    # @param    goGraph A reference to a GOGraph object to which the parsed GO nodes and edges
+    #                   will be added.
     def __init__(self, goGraph):
-        """ Constructor.  
-        Args:  
-              goGraph      A reference to a GOGraph object to which the parsed GO nodes and edges 
-                           will be added.
-        """
         self.namespace = goGraph.getNameSpace()
         self.graph = goGraph
         self.inTypedef = False
