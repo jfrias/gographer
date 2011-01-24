@@ -89,16 +89,17 @@ Inheritance diagram for GOGraph.GOGraph:</div>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_graph_1_1_g_o_graph.html#afc10d41165dd1ae6c4cce09102542122">__init__</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#afc10d41165dd1ae6c4cce09102542122"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac368b1e74799f1947d195e3e2bf7074c"></a><!-- doxytag: member="GOGraph::GOGraph::parseOboXml" ref="ac368b1e74799f1947d195e3e2bf7074c" args="" -->
-def&#160;</td><td class="memItemRight" valign="bottom"><b>parseOboXml</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff70b5975f6e755e3304cfc3d4ef91a0"></a><!-- doxytag: member="GOGraph::GOGraph::getLevel" ref="aff70b5975f6e755e3304cfc3d4ef91a0" args="" -->
-def&#160;</td><td class="memItemRight" valign="bottom"><b>getLevel</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_graph_1_1_g_o_graph.html#ac368b1e74799f1947d195e3e2bf7074c">parseOboXml</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the given OBO XML file and creates a <a class="el" href="class_g_o_graph_1_1_g_o_graph.html">GOGraph</a>.  <a href="#ac368b1e74799f1947d195e3e2bf7074c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_graph_1_1_g_o_graph.html#aff70b5975f6e755e3304cfc3d4ef91a0">getLevel</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the minimum depth of the node.  <a href="#aff70b5975f6e755e3304cfc3d4ef91a0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeef340ff2a82454a8d92d9711fd7a92b"></a><!-- doxytag: member="GOGraph::GOGraph::getNameSpace" ref="aeef340ff2a82454a8d92d9711fd7a92b" args="" -->
-def&#160;</td><td class="memItemRight" valign="bottom"><b>getNameSpace</b></td></tr>
+def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_graph_1_1_g_o_graph.html#aeef340ff2a82454a8d92d9711fd7a92b">getNameSpace</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the namespace of the graph. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_graph_1_1_g_o_graph.html#ad97c179c4ec3d79a3092810ba1fbc241">savePickle</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Save self using pickle protocol.  <a href="#ad97c179c4ec3d79a3092810ba1fbc241"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada6b7d590cfca9d4baec8d082577ac21"></a><!-- doxytag: member="GOGraph::GOGraph::loadPickle" ref="ada6b7d590cfca9d4baec8d082577ac21" args="" -->
-def&#160;</td><td class="memItemRight" valign="bottom"><b>loadPickle</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_graph_1_1_g_o_graph.html#ada6b7d590cfca9d4baec8d082577ac21">loadPickle</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a pickle from the filesystem.  <a href="#ada6b7d590cfca9d4baec8d082577ac21"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af17f1eca2d2734e36976754e8ad4582a"></a><!-- doxytag: member="GOGraph::GOGraph::namespace" ref="af17f1eca2d2734e36976754e8ad4582a" args="" -->
@@ -150,6 +151,111 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="aff70b5975f6e755e3304cfc3d4ef91a0"></a><!-- doxytag: member="GOGraph::GOGraph::getLevel" ref="aff70b5975f6e755e3304cfc3d4ef91a0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def GOGraph.GOGraph.getLevel </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>node</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns the minimum depth of the node. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>The node whose depth will be found and returned </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ada6b7d590cfca9d4baec8d082577ac21"></a><!-- doxytag: member="GOGraph::GOGraph::loadPickle" ref="ada6b7d590cfca9d4baec8d082577ac21" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def GOGraph.GOGraph.loadPickle </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>klass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>filename</em> = <code>&quot;gograph.pickle&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Load a pickle from the filesystem. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>The location of the pickle file to load </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac368b1e74799f1947d195e3e2bf7074c"></a><!-- doxytag: member="GOGraph::GOGraph::parseOboXml" ref="ac368b1e74799f1947d195e3e2bf7074c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def GOGraph.GOGraph.parseOboXml </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>GOOboXmlFileName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Parses the given OBO XML file and creates a <a class="el" href="class_g_o_graph_1_1_g_o_graph.html">GOGraph</a>. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">GOOboXMLFileName</td><td>The name of the OBO XML file to be parsed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ad97c179c4ec3d79a3092810ba1fbc241"></a><!-- doxytag: member="GOGraph::GOGraph::savePickle" ref="ad97c179c4ec3d79a3092810ba1fbc241" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -186,7 +292,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>Users/vickychen/Documents/Projects/myGOGrapher/gographer/GOGraph.py</li>
+<li>/Users/vickychen/Documents/Projects/myGOGrapher/gographer/GOGraph.py</li>
 </ul>
 </div>
 <!--- window showing the filter options -->
@@ -203,7 +309,7 @@ Public Attributes</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Jan 24 2011 11:43:02 for GOGrapher by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Jan 24 2011 16:45:04 for GOGrapher by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

@@ -13,28 +13,19 @@ Inheritance diagram for GOGraph.GOGraph:\begin{figure}[H]
 \item 
 def \hyperlink{class_g_o_graph_1_1_g_o_graph_afc10d41165dd1ae6c4cce09102542122}{\_\-\_\-init\_\-\_\-}
 \begin{DoxyCompactList}\small\item\em Constructor. \item\end{DoxyCompactList}\item 
-\hypertarget{class_g_o_graph_1_1_g_o_graph_ac368b1e74799f1947d195e3e2bf7074c}{
-def {\bfseries parseOboXml}}
-\label{class_g_o_graph_1_1_g_o_graph_ac368b1e74799f1947d195e3e2bf7074c}
-
-\item 
-\hypertarget{class_g_o_graph_1_1_g_o_graph_aff70b5975f6e755e3304cfc3d4ef91a0}{
-def {\bfseries getLevel}}
-\label{class_g_o_graph_1_1_g_o_graph_aff70b5975f6e755e3304cfc3d4ef91a0}
-
-\item 
+def \hyperlink{class_g_o_graph_1_1_g_o_graph_ac368b1e74799f1947d195e3e2bf7074c}{parseOboXml}
+\begin{DoxyCompactList}\small\item\em Parses the given OBO XML file and creates a \hyperlink{class_g_o_graph_1_1_g_o_graph}{GOGraph}. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_graph_1_1_g_o_graph_aff70b5975f6e755e3304cfc3d4ef91a0}{getLevel}
+\begin{DoxyCompactList}\small\item\em Returns the minimum depth of the node. \item\end{DoxyCompactList}\item 
 \hypertarget{class_g_o_graph_1_1_g_o_graph_aeef340ff2a82454a8d92d9711fd7a92b}{
-def {\bfseries getNameSpace}}
+def \hyperlink{class_g_o_graph_1_1_g_o_graph_aeef340ff2a82454a8d92d9711fd7a92b}{getNameSpace}}
 \label{class_g_o_graph_1_1_g_o_graph_aeef340ff2a82454a8d92d9711fd7a92b}
 
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the namespace of the graph. \item\end{DoxyCompactList}\item 
 def \hyperlink{class_g_o_graph_1_1_g_o_graph_ad97c179c4ec3d79a3092810ba1fbc241}{savePickle}
 \begin{DoxyCompactList}\small\item\em Save self using pickle protocol. \item\end{DoxyCompactList}\item 
-\hypertarget{class_g_o_graph_1_1_g_o_graph_ada6b7d590cfca9d4baec8d082577ac21}{
-def {\bfseries loadPickle}}
-\label{class_g_o_graph_1_1_g_o_graph_ada6b7d590cfca9d4baec8d082577ac21}
-
-\end{DoxyCompactItemize}
+def \hyperlink{class_g_o_graph_1_1_g_o_graph_ada6b7d590cfca9d4baec8d082577ac21}{loadPickle}
+\begin{DoxyCompactList}\small\item\em Load a pickle from the filesystem. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -75,6 +66,63 @@ Reimplemented in \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a37f579f2fd7
 
 
 \subsection{Member Function Documentation}
+\hypertarget{class_g_o_graph_1_1_g_o_graph_aff70b5975f6e755e3304cfc3d4ef91a0}{
+\index{GOGraph::GOGraph@{GOGraph::GOGraph}!getLevel@{getLevel}}
+\index{getLevel@{getLevel}!GOGraph::GOGraph@{GOGraph::GOGraph}}
+\subsubsection[{getLevel}]{\setlength{\rightskip}{0pt plus 5cm}def GOGraph.GOGraph.getLevel (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{node}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_graph_1_1_g_o_graph_aff70b5975f6e755e3304cfc3d4ef91a0}
+
+
+Returns the minimum depth of the node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & The node whose depth will be found and returned \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_g_o_graph_1_1_g_o_graph_ada6b7d590cfca9d4baec8d082577ac21}{
+\index{GOGraph::GOGraph@{GOGraph::GOGraph}!loadPickle@{loadPickle}}
+\index{loadPickle@{loadPickle}!GOGraph::GOGraph@{GOGraph::GOGraph}}
+\subsubsection[{loadPickle}]{\setlength{\rightskip}{0pt plus 5cm}def GOGraph.GOGraph.loadPickle (
+\begin{DoxyParamCaption}
+\item[{}]{klass, }
+\item[{}]{filename = {\ttfamily \char`\"{}gograph.pickle\char`\"{}}}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_graph_1_1_g_o_graph_ada6b7d590cfca9d4baec8d082577ac21}
+
+
+Load a pickle from the filesystem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The location of the pickle file to load \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_g_o_graph_1_1_g_o_graph_ac368b1e74799f1947d195e3e2bf7074c}{
+\index{GOGraph::GOGraph@{GOGraph::GOGraph}!parseOboXml@{parseOboXml}}
+\index{parseOboXml@{parseOboXml}!GOGraph::GOGraph@{GOGraph::GOGraph}}
+\subsubsection[{parseOboXml}]{\setlength{\rightskip}{0pt plus 5cm}def GOGraph.GOGraph.parseOboXml (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{GOOboXmlFileName}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_graph_1_1_g_o_graph_ac368b1e74799f1947d195e3e2bf7074c}
+
+
+Parses the given OBO XML file and creates a \hyperlink{class_g_o_graph_1_1_g_o_graph}{GOGraph}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em GOOboXMLFileName} & The name of the OBO XML file to be parsed \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_g_o_graph_1_1_g_o_graph_ad97c179c4ec3d79a3092810ba1fbc241}{
 \index{GOGraph::GOGraph@{GOGraph::GOGraph}!savePickle@{savePickle}}
 \index{savePickle@{savePickle}!GOGraph::GOGraph@{GOGraph::GOGraph}}
@@ -98,4 +146,4 @@ Save self using pickle protocol.
 
 The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-Users/vickychen/Documents/Projects/myGOGrapher/gographer/GOGraph.py\end{DoxyCompactItemize}
+/Users/vickychen/Documents/Projects/myGOGrapher/gographer/GOGraph.py\end{DoxyCompactItemize}

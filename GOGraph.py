@@ -17,7 +17,8 @@ class GOGraph(DiGraph):
         if GOOboXmlFileName != None:
             self.parseOboXml(GOOboXmlFileName)
         
-
+    ## Parses the given OBO XML file and creates a GOGraph
+    # @param    GOOboXMLFileName    The name of the OBO XML file to be parsed
     def parseOboXml(self, GOOboXmlFileName):
         parser = make_parser()
         handler = GOOboXmlHandler(self)
@@ -29,6 +30,8 @@ class GOGraph(DiGraph):
         except:
             print "Could not parse Obo XML file %s" % (GOOboXmlFileName)
 
+    ## Returns the minimum depth of the node
+    # @param    node    The node whose depth will be found and returned
     def getLevel(self, node):
         parents = self.predecessors(node)
         if len(parents) == 0:
@@ -49,6 +52,7 @@ class GOGraph(DiGraph):
             level = level + 1
 
 
+    ## Returns the namespace of the graph
     def getNameSpace(self):
         return self.namespace;
 
@@ -62,7 +66,7 @@ class GOGraph(DiGraph):
         except:
             print "Could not pickle graph"
 
-    # Load a pickle from the filesystem
+    ## Load a pickle from the filesystem
     # @param filename The location of the pickle file to load
     @classmethod
     def loadPickle (klass, filename="gograph.pickle"):
