@@ -12,14 +12,15 @@ Inheritance diagram for GOPubmedGraph.GOPubmedGraph:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a67014838ca4e64ab6302e109cfb38baa}{\_\-\_\-init\_\-\_\-}
-\begin{DoxyCompactList}\small\item\em Create a pubmed graph from a GOGraph. \item\end{DoxyCompactList}\item 
-\hypertarget{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a1cd7af1343cfc3228db50e62ad1d79be}{
-def \hyperlink{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a1cd7af1343cfc3228db50e62ad1d79be}{weight}}
-\label{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a1cd7af1343cfc3228db50e62ad1d79be}
-
+\begin{DoxyCompactList}\small\item\em Create a pubmed graph from a \hyperlink{namespace_g_o_graph}{GOGraph}. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a1cd7af1343cfc3228db50e62ad1d79be}{weight}
 \begin{DoxyCompactList}\small\item\em Applies a weight to the graph. \item\end{DoxyCompactList}\item 
 def \hyperlink{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a9c455a5443e6be4986d7bfbc1ef874c2}{toGOGenePubmedGraph}
-\begin{DoxyCompactList}\small\item\em Returns a GOGenePubmedGraph version of itself. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns a \hyperlink{namespace_g_o_gene_pubmed_graph}{GOGenePubmedGraph} version of itself. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a24635a63eda34340ec00919adc165c7c}{getPubMedByNode}
+\begin{DoxyCompactList}\small\item\em Returns the associated PubMed IDs for a given node. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_adc36d3c96e860a9db0dee1e60f0f9345}{getNodesByPubMed}
+\begin{DoxyCompactList}\small\item\em Returns the associated nodes for a given PubMed ID. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -36,11 +37,11 @@ def \hyperlink{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a9c455a5443e6be4986d7
 \label{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a67014838ca4e64ab6302e109cfb38baa}
 
 
-Create a pubmed graph from a GOGraph. 
+Create a pubmed graph from a \hyperlink{namespace_g_o_graph}{GOGraph}. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em gograph} & A GOGraph to base this graph off of \\
+{\em gograph} & A \hyperlink{namespace_g_o_graph}{GOGraph} to base this graph off of \\
 \hline
 {\em XMLFileName} & The file containing GO definitions and Pubmed ID information in the format of the OBO in XML \\
 \hline
@@ -56,6 +57,44 @@ Reimplemented in \hyperlink{class_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_grap
 
 
 \subsection{Member Function Documentation}
+\hypertarget{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_adc36d3c96e860a9db0dee1e60f0f9345}{
+\index{GOPubmedGraph::GOPubmedGraph@{GOPubmedGraph::GOPubmedGraph}!getNodesByPubMed@{getNodesByPubMed}}
+\index{getNodesByPubMed@{getNodesByPubMed}!GOPubmedGraph::GOPubmedGraph@{GOPubmedGraph::GOPubmedGraph}}
+\subsubsection[{getNodesByPubMed}]{\setlength{\rightskip}{0pt plus 5cm}def GOPubmedGraph.GOPubmedGraph.getNodesByPubMed (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{pubmed}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_adc36d3c96e860a9db0dee1e60f0f9345}
+
+
+Returns the associated nodes for a given PubMed ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pubmed} & The PubMed ID for which to retrieve the associated nodes: \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a24635a63eda34340ec00919adc165c7c}{
+\index{GOPubmedGraph::GOPubmedGraph@{GOPubmedGraph::GOPubmedGraph}!getPubMedByNode@{getPubMedByNode}}
+\index{getPubMedByNode@{getPubMedByNode}!GOPubmedGraph::GOPubmedGraph@{GOPubmedGraph::GOPubmedGraph}}
+\subsubsection[{getPubMedByNode}]{\setlength{\rightskip}{0pt plus 5cm}def GOPubmedGraph.GOPubmedGraph.getPubMedByNode (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{goid}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a24635a63eda34340ec00919adc165c7c}
+
+
+Returns the associated PubMed IDs for a given node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em goid} & The GOID of the node to retrieve the associated PubMed IDs from \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a9c455a5443e6be4986d7bfbc1ef874c2}{
 \index{GOPubmedGraph::GOPubmedGraph@{GOPubmedGraph::GOPubmedGraph}!toGOGenePubmedGraph@{toGOGenePubmedGraph}}
 \index{toGOGenePubmedGraph@{toGOGenePubmedGraph}!GOPubmedGraph::GOPubmedGraph@{GOPubmedGraph::GOPubmedGraph}}
@@ -67,15 +106,28 @@ Reimplemented in \hyperlink{class_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_grap
 \label{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a9c455a5443e6be4986d7bfbc1ef874c2}
 
 
-Returns a GOGenePubmedGraph version of itself. 
+Returns a \hyperlink{namespace_g_o_gene_pubmed_graph}{GOGenePubmedGraph} version of itself. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em gogenegraph} & The GOGeneGraph that this graph is to be merged with \\
+{\em gogenegraph} & The \hyperlink{namespace_g_o_gene_graph}{GOGeneGraph} that this graph is to be merged with \\
 \hline
 \end{DoxyParams}
+\hypertarget{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a1cd7af1343cfc3228db50e62ad1d79be}{
+\index{GOPubmedGraph::GOPubmedGraph@{GOPubmedGraph::GOPubmedGraph}!weight@{weight}}
+\index{weight@{weight}!GOPubmedGraph::GOPubmedGraph@{GOPubmedGraph::GOPubmedGraph}}
+\subsubsection[{weight}]{\setlength{\rightskip}{0pt plus 5cm}def GOPubmedGraph.GOPubmedGraph.weight (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a1cd7af1343cfc3228db50e62ad1d79be}
+
+
+Applies a weight to the graph. 
+
 
 
 The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-/Users/vickychen/Documents/Projects/myGOGrapher/gographer/GOPubmedGraph.py\end{DoxyCompactItemize}
+/Users/vickychen/Documents/Projects/myGOGrapher/gographer/\hyperlink{_g_o_pubmed_graph_8py}{GOPubmedGraph.py}\end{DoxyCompactItemize}

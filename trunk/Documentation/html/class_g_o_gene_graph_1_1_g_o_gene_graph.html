@@ -28,7 +28,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Packages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -57,7 +59,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="nav-path" class="navpath">
     <ul>
-      <li class="navelem"><b>GOGeneGraph</b>      </li>
+      <li class="navelem"><a class="el" href="namespace_g_o_gene_graph.html">GOGeneGraph</a>      </li>
       <li class="navelem"><a class="el" href="class_g_o_gene_graph_1_1_g_o_gene_graph.html">GOGeneGraph</a>      </li>
     </ul>
   </div>
@@ -85,12 +87,15 @@ Inheritance diagram for GOGeneGraph.GOGeneGraph:</div>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_gene_graph_1_1_g_o_gene_graph.html#a37f579f2fd7c2e8f0e52345e5c94233f">__init__</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a gene graph from a GOGraph.  <a href="#a37f579f2fd7c2e8f0e52345e5c94233f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a276c7e223374b8c22417e195afacffed"></a><!-- doxytag: member="GOGeneGraph::GOGeneGraph::weight" ref="a276c7e223374b8c22417e195afacffed" args="" -->
-def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_gene_graph_1_1_g_o_gene_graph.html#a276c7e223374b8c22417e195afacffed">weight</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a weight to the graph. <br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a gene graph from a <a class="el" href="namespace_g_o_graph.html">GOGraph</a>.  <a href="#a37f579f2fd7c2e8f0e52345e5c94233f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_gene_graph_1_1_g_o_gene_graph.html#a276c7e223374b8c22417e195afacffed">weight</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a weight to the graph.  <a href="#a276c7e223374b8c22417e195afacffed"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_gene_graph_1_1_g_o_gene_graph.html#a5f437c2ab06eacde21831786192c4a4e">toGOGenePubmedGraph</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a GOGenePubmedGraph version of itself.  <a href="#a5f437c2ab06eacde21831786192c4a4e"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a <a class="el" href="namespace_g_o_gene_pubmed_graph.html">GOGenePubmedGraph</a> version of itself.  <a href="#a5f437c2ab06eacde21831786192c4a4e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_gene_graph_1_1_g_o_gene_graph.html#a778128e77640d18bcaf775c2348013d4">getGenesByNode</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the associated genes for a given node.  <a href="#a778128e77640d18bcaf775c2348013d4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_gene_graph_1_1_g_o_gene_graph.html#a353497bb1605cfbefba350861e81ea6e">getNodesByGene</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the associated nodes for a given gene.  <a href="#a353497bb1605cfbefba350861e81ea6e"></a><br/></td></tr>
 </table>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a37f579f2fd7c2e8f0e52345e5c94233f"></a><!-- doxytag: member="GOGeneGraph::GOGeneGraph::__init__" ref="a37f579f2fd7c2e8f0e52345e5c94233f" args="" -->
@@ -124,10 +129,10 @@ def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 </div>
 <div class="memdoc">
 
-<p>Create a gene graph from a GOGraph. </p>
+<p>Create a gene graph from a <a class="el" href="namespace_g_o_graph.html">GOGraph</a>. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">gograph</td><td>A GOGraph to base this graph off of </td></tr>
+    <tr><td class="paramname">gograph</td><td>A <a class="el" href="namespace_g_o_graph.html">GOGraph</a> to base this graph off of </td></tr>
     <tr><td class="paramname">assoc</td><td>The file containing gene association information </td></tr>
   </table>
   </dd>
@@ -140,6 +145,76 @@ def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a778128e77640d18bcaf775c2348013d4"></a><!-- doxytag: member="GOGeneGraph::GOGeneGraph::getGenesByNode" ref="a778128e77640d18bcaf775c2348013d4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def GOGeneGraph.GOGeneGraph.getGenesByNode </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>goid</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns the associated genes for a given node. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">goid</td><td>The GOID of the node to retrieve the associated genes from </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a353497bb1605cfbefba350861e81ea6e"></a><!-- doxytag: member="GOGeneGraph::GOGeneGraph::getNodesByGene" ref="a353497bb1605cfbefba350861e81ea6e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def GOGeneGraph.GOGeneGraph.getNodesByGene </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>geneid</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns the associated nodes for a given gene. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">geneid</td><td>The ID of the gene for which to retrieve the associated nodes </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a5f437c2ab06eacde21831786192c4a4e"></a><!-- doxytag: member="GOGeneGraph::GOGeneGraph::toGOGenePubmedGraph" ref="a5f437c2ab06eacde21831786192c4a4e" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -155,18 +230,37 @@ def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 </div>
 <div class="memdoc">
 
-<p>Returns a GOGenePubmedGraph version of itself. </p>
+<p>Returns a <a class="el" href="namespace_g_o_gene_pubmed_graph.html">GOGenePubmedGraph</a> version of itself. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">gopubmedgraph</td><td>The GOPubmedGraph that this graph is to be merged with </td></tr>
+    <tr><td class="paramname">gopubmedgraph</td><td>The <a class="el" href="namespace_g_o_pubmed_graph.html">GOPubmedGraph</a> that this graph is to be merged with </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
+<a class="anchor" id="a276c7e223374b8c22417e195afacffed"></a><!-- doxytag: member="GOGeneGraph::GOGeneGraph::weight" ref="a276c7e223374b8c22417e195afacffed" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def GOGeneGraph.GOGeneGraph.weight </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Applies a weight to the graph. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/Users/vickychen/Documents/Projects/myGOGrapher/gographer/GOGeneGraph.py</li>
+<li>/Users/vickychen/Documents/Projects/myGOGrapher/gographer/<a class="el" href="_g_o_gene_graph_8py.html">GOGeneGraph.py</a></li>
 </ul>
 </div>
 <!--- window showing the filter options -->
@@ -174,7 +268,7 @@ def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -183,7 +277,7 @@ def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Jan 24 2011 16:45:04 for GOGrapher by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 7 2011 17:33:13 for GOGrapher by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

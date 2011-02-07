@@ -23,12 +23,12 @@ class GOGraph(DiGraph):
         parser = make_parser()
         handler = GOOboXmlHandler(self)
         parser.setContentHandler(handler)
-        try:
-            f = open(GOOboXmlFileName, 'r')
-            parser.parse(f)
-            f.close()
-        except:
-            print "Could not parse Obo XML file %s" % (GOOboXmlFileName)
+        #try:
+        f = open(GOOboXmlFileName, 'r')
+        parser.parse(f)
+        f.close()
+        #except:
+         #   print "Could not parse Obo XML file %s" % (GOOboXmlFileName)
 
     ## Returns the minimum depth of the node
     # @param    node    The node whose depth will be found and returned
