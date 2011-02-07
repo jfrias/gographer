@@ -1,7 +1,6 @@
 from xml.sax.handler import ContentHandler
 from xml.sax import make_parser
 from networkx import DiGraph
-from GONode import *
 
 class GOOboXmlHandler (ContentHandler):
     """ This class handles parsing the OBO XML file from the Gene Ontology Consortium and populate
@@ -16,8 +15,8 @@ class GOOboXmlHandler (ContentHandler):
         self.namespace = goGraph.getNameSpace()
         self.graph = goGraph
         self.inTypedef = False
-        self.goNode = GONode()
         self.obsolete = False
+        self.name = None
 
         
     def startElement(self, name, attributes):
@@ -25,12 +24,11 @@ class GOOboXmlHandler (ContentHandler):
         
         if name == "term":
             self.goid = None
-            self.names = None
+            self.name = None
             self.description = None
             self.obsolete = False            
             self.elementNamespace = None
             self.parents = []
-            self.goNode = GONode()
             
         elif name == "typedef":
             self.inTypedef = True
@@ -38,19 +36,15 @@ class GOOboXmlHandler (ContentHandler):
     def endElement(self, name):
         if name == "id":
             self.goid = self.cdata.strip()
-            self.goNode.setGOID(self.goid)
 
         elif name == "namespace":
             self.elementNamespace = self.cdata.strip()
-            self.goNode.setNamespace(self.elementNamespace)
 
         elif name == "is_a" and not self.inTypedef:
             self.parents.append(self.cdata.strip())
-            self.goNode.setParents(self.parents)
 
         elif name == "is_obsolete" and self.cdata.strip() == "1":
             self.obsolete = True
-            self.goNode.setObsolete(self.obsolete)
 
         elif name == "typedef":
             self.inTypedef = False
@@ -62,19 +56,21 @@ class GOOboXmlHandler (ContentHandler):
 
             self.namespaces[self.elementNamespace].append(self.goid)
             '''
-            
-            self.graph.add_node(self.goid, data=self.goNode)
+
+            self.graph.add_node(self.goid, name=self.name, description=self.description,
+                                obsolete=self.obsolete, namespace=self.namespace, parents=self.parents)
+
             for parent in self.parents:
                 '''
                 currently the only edges being added are to the children of the current node
                 '''
                 self.graph.add_edge(parent, self.goid, relationship="parent_of")
 
-        elif name == "name" and not self.obsolete and not self.goid == None and self.goNode.name == None: # and not self.names.has_key(self.goid):
-            self.goNode.setName(self.cdata.strip())
+        elif name == "name" and not self.obsolete and not self.goid == None and self.name == None: # and not self.names.has_key(self.goid):
+            self.name = self.cdata.strip()
 
         elif name == "defstr" and  not self.obsolete and not self.goid == None: # and not self.names.has_key(self.goid):
-            self.goNode.setDescription(self.cdata.strip())
+            self.description = self.cdata.strip()
 
             
     def characters(self, data):

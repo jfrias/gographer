@@ -28,7 +28,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Packages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -57,7 +59,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="nav-path" class="navpath">
     <ul>
-      <li class="navelem"><b>GOPubmedGraph</b>      </li>
+      <li class="navelem"><a class="el" href="namespace_g_o_pubmed_graph.html">GOPubmedGraph</a>      </li>
       <li class="navelem"><a class="el" href="class_g_o_pubmed_graph_1_1_g_o_pubmed_graph.html">GOPubmedGraph</a>      </li>
     </ul>
   </div>
@@ -85,12 +87,15 @@ Inheritance diagram for GOPubmedGraph.GOPubmedGraph:</div>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_pubmed_graph_1_1_g_o_pubmed_graph.html#a67014838ca4e64ab6302e109cfb38baa">__init__</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a pubmed graph from a GOGraph.  <a href="#a67014838ca4e64ab6302e109cfb38baa"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1cd7af1343cfc3228db50e62ad1d79be"></a><!-- doxytag: member="GOPubmedGraph::GOPubmedGraph::weight" ref="a1cd7af1343cfc3228db50e62ad1d79be" args="" -->
-def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_pubmed_graph_1_1_g_o_pubmed_graph.html#a1cd7af1343cfc3228db50e62ad1d79be">weight</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a weight to the graph. <br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a pubmed graph from a <a class="el" href="namespace_g_o_graph.html">GOGraph</a>.  <a href="#a67014838ca4e64ab6302e109cfb38baa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_pubmed_graph_1_1_g_o_pubmed_graph.html#a1cd7af1343cfc3228db50e62ad1d79be">weight</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a weight to the graph.  <a href="#a1cd7af1343cfc3228db50e62ad1d79be"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_pubmed_graph_1_1_g_o_pubmed_graph.html#a9c455a5443e6be4986d7bfbc1ef874c2">toGOGenePubmedGraph</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a GOGenePubmedGraph version of itself.  <a href="#a9c455a5443e6be4986d7bfbc1ef874c2"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a <a class="el" href="namespace_g_o_gene_pubmed_graph.html">GOGenePubmedGraph</a> version of itself.  <a href="#a9c455a5443e6be4986d7bfbc1ef874c2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_pubmed_graph_1_1_g_o_pubmed_graph.html#a24635a63eda34340ec00919adc165c7c">getPubMedByNode</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the associated PubMed IDs for a given node.  <a href="#a24635a63eda34340ec00919adc165c7c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_pubmed_graph_1_1_g_o_pubmed_graph.html#adc36d3c96e860a9db0dee1e60f0f9345">getNodesByPubMed</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the associated nodes for a given PubMed ID.  <a href="#adc36d3c96e860a9db0dee1e60f0f9345"></a><br/></td></tr>
 </table>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a67014838ca4e64ab6302e109cfb38baa"></a><!-- doxytag: member="GOPubmedGraph::GOPubmedGraph::__init__" ref="a67014838ca4e64ab6302e109cfb38baa" args="" -->
@@ -124,10 +129,10 @@ def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 </div>
 <div class="memdoc">
 
-<p>Create a pubmed graph from a GOGraph. </p>
+<p>Create a pubmed graph from a <a class="el" href="namespace_g_o_graph.html">GOGraph</a>. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">gograph</td><td>A GOGraph to base this graph off of </td></tr>
+    <tr><td class="paramname">gograph</td><td>A <a class="el" href="namespace_g_o_graph.html">GOGraph</a> to base this graph off of </td></tr>
     <tr><td class="paramname">XMLFileName</td><td>The file containing GO definitions and Pubmed ID information in the format of the OBO in XML </td></tr>
   </table>
   </dd>
@@ -140,6 +145,76 @@ def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="adc36d3c96e860a9db0dee1e60f0f9345"></a><!-- doxytag: member="GOPubmedGraph::GOPubmedGraph::getNodesByPubMed" ref="adc36d3c96e860a9db0dee1e60f0f9345" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def GOPubmedGraph.GOPubmedGraph.getNodesByPubMed </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>pubmed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns the associated nodes for a given PubMed ID. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pubmed</td><td>The PubMed ID for which to retrieve the associated nodes: </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a24635a63eda34340ec00919adc165c7c"></a><!-- doxytag: member="GOPubmedGraph::GOPubmedGraph::getPubMedByNode" ref="a24635a63eda34340ec00919adc165c7c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def GOPubmedGraph.GOPubmedGraph.getPubMedByNode </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>goid</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns the associated PubMed IDs for a given node. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">goid</td><td>The GOID of the node to retrieve the associated PubMed IDs from </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a9c455a5443e6be4986d7bfbc1ef874c2"></a><!-- doxytag: member="GOPubmedGraph::GOPubmedGraph::toGOGenePubmedGraph" ref="a9c455a5443e6be4986d7bfbc1ef874c2" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -155,18 +230,37 @@ def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 </div>
 <div class="memdoc">
 
-<p>Returns a GOGenePubmedGraph version of itself. </p>
+<p>Returns a <a class="el" href="namespace_g_o_gene_pubmed_graph.html">GOGenePubmedGraph</a> version of itself. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">gogenegraph</td><td>The GOGeneGraph that this graph is to be merged with </td></tr>
+    <tr><td class="paramname">gogenegraph</td><td>The <a class="el" href="namespace_g_o_gene_graph.html">GOGeneGraph</a> that this graph is to be merged with </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
+<a class="anchor" id="a1cd7af1343cfc3228db50e62ad1d79be"></a><!-- doxytag: member="GOPubmedGraph::GOPubmedGraph::weight" ref="a1cd7af1343cfc3228db50e62ad1d79be" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def GOPubmedGraph.GOPubmedGraph.weight </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Applies a weight to the graph. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/Users/vickychen/Documents/Projects/myGOGrapher/gographer/GOPubmedGraph.py</li>
+<li>/Users/vickychen/Documents/Projects/myGOGrapher/gographer/<a class="el" href="_g_o_pubmed_graph_8py.html">GOPubmedGraph.py</a></li>
 </ul>
 </div>
 <!--- window showing the filter options -->
@@ -174,7 +268,7 @@ def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -183,7 +277,7 @@ def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Jan 24 2011 16:45:04 for GOGrapher by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 7 2011 17:33:13 for GOGrapher by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

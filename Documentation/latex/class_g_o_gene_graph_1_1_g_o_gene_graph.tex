@@ -12,14 +12,15 @@ Inheritance diagram for GOGeneGraph.GOGeneGraph:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a37f579f2fd7c2e8f0e52345e5c94233f}{\_\-\_\-init\_\-\_\-}
-\begin{DoxyCompactList}\small\item\em Create a gene graph from a GOGraph. \item\end{DoxyCompactList}\item 
-\hypertarget{class_g_o_gene_graph_1_1_g_o_gene_graph_a276c7e223374b8c22417e195afacffed}{
-def \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a276c7e223374b8c22417e195afacffed}{weight}}
-\label{class_g_o_gene_graph_1_1_g_o_gene_graph_a276c7e223374b8c22417e195afacffed}
-
+\begin{DoxyCompactList}\small\item\em Create a gene graph from a \hyperlink{namespace_g_o_graph}{GOGraph}. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a276c7e223374b8c22417e195afacffed}{weight}
 \begin{DoxyCompactList}\small\item\em Applies a weight to the graph. \item\end{DoxyCompactList}\item 
 def \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a5f437c2ab06eacde21831786192c4a4e}{toGOGenePubmedGraph}
-\begin{DoxyCompactList}\small\item\em Returns a GOGenePubmedGraph version of itself. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns a \hyperlink{namespace_g_o_gene_pubmed_graph}{GOGenePubmedGraph} version of itself. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a778128e77640d18bcaf775c2348013d4}{getGenesByNode}
+\begin{DoxyCompactList}\small\item\em Returns the associated genes for a given node. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a353497bb1605cfbefba350861e81ea6e}{getNodesByGene}
+\begin{DoxyCompactList}\small\item\em Returns the associated nodes for a given gene. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -36,11 +37,11 @@ def \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a5f437c2ab06eacde21831786
 \label{class_g_o_gene_graph_1_1_g_o_gene_graph_a37f579f2fd7c2e8f0e52345e5c94233f}
 
 
-Create a gene graph from a GOGraph. 
+Create a gene graph from a \hyperlink{namespace_g_o_graph}{GOGraph}. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em gograph} & A GOGraph to base this graph off of \\
+{\em gograph} & A \hyperlink{namespace_g_o_graph}{GOGraph} to base this graph off of \\
 \hline
 {\em assoc} & The file containing gene association information \\
 \hline
@@ -56,6 +57,44 @@ Reimplemented in \hyperlink{class_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_grap
 
 
 \subsection{Member Function Documentation}
+\hypertarget{class_g_o_gene_graph_1_1_g_o_gene_graph_a778128e77640d18bcaf775c2348013d4}{
+\index{GOGeneGraph::GOGeneGraph@{GOGeneGraph::GOGeneGraph}!getGenesByNode@{getGenesByNode}}
+\index{getGenesByNode@{getGenesByNode}!GOGeneGraph::GOGeneGraph@{GOGeneGraph::GOGeneGraph}}
+\subsubsection[{getGenesByNode}]{\setlength{\rightskip}{0pt plus 5cm}def GOGeneGraph.GOGeneGraph.getGenesByNode (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{goid}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_gene_graph_1_1_g_o_gene_graph_a778128e77640d18bcaf775c2348013d4}
+
+
+Returns the associated genes for a given node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em goid} & The GOID of the node to retrieve the associated genes from \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_g_o_gene_graph_1_1_g_o_gene_graph_a353497bb1605cfbefba350861e81ea6e}{
+\index{GOGeneGraph::GOGeneGraph@{GOGeneGraph::GOGeneGraph}!getNodesByGene@{getNodesByGene}}
+\index{getNodesByGene@{getNodesByGene}!GOGeneGraph::GOGeneGraph@{GOGeneGraph::GOGeneGraph}}
+\subsubsection[{getNodesByGene}]{\setlength{\rightskip}{0pt plus 5cm}def GOGeneGraph.GOGeneGraph.getNodesByGene (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{geneid}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_gene_graph_1_1_g_o_gene_graph_a353497bb1605cfbefba350861e81ea6e}
+
+
+Returns the associated nodes for a given gene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em geneid} & The ID of the gene for which to retrieve the associated nodes \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_g_o_gene_graph_1_1_g_o_gene_graph_a5f437c2ab06eacde21831786192c4a4e}{
 \index{GOGeneGraph::GOGeneGraph@{GOGeneGraph::GOGeneGraph}!toGOGenePubmedGraph@{toGOGenePubmedGraph}}
 \index{toGOGenePubmedGraph@{toGOGenePubmedGraph}!GOGeneGraph::GOGeneGraph@{GOGeneGraph::GOGeneGraph}}
@@ -67,15 +106,28 @@ Reimplemented in \hyperlink{class_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_grap
 \label{class_g_o_gene_graph_1_1_g_o_gene_graph_a5f437c2ab06eacde21831786192c4a4e}
 
 
-Returns a GOGenePubmedGraph version of itself. 
+Returns a \hyperlink{namespace_g_o_gene_pubmed_graph}{GOGenePubmedGraph} version of itself. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em gopubmedgraph} & The GOPubmedGraph that this graph is to be merged with \\
+{\em gopubmedgraph} & The \hyperlink{namespace_g_o_pubmed_graph}{GOPubmedGraph} that this graph is to be merged with \\
 \hline
 \end{DoxyParams}
+\hypertarget{class_g_o_gene_graph_1_1_g_o_gene_graph_a276c7e223374b8c22417e195afacffed}{
+\index{GOGeneGraph::GOGeneGraph@{GOGeneGraph::GOGeneGraph}!weight@{weight}}
+\index{weight@{weight}!GOGeneGraph::GOGeneGraph@{GOGeneGraph::GOGeneGraph}}
+\subsubsection[{weight}]{\setlength{\rightskip}{0pt plus 5cm}def GOGeneGraph.GOGeneGraph.weight (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_gene_graph_1_1_g_o_gene_graph_a276c7e223374b8c22417e195afacffed}
+
+
+Applies a weight to the graph. 
+
 
 
 The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-/Users/vickychen/Documents/Projects/myGOGrapher/gographer/GOGeneGraph.py\end{DoxyCompactItemize}
+/Users/vickychen/Documents/Projects/myGOGrapher/gographer/\hyperlink{_g_o_gene_graph_8py}{GOGeneGraph.py}\end{DoxyCompactItemize}
