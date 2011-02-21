@@ -66,7 +66,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a>  </div>
   <div class="headertitle">
 <h1>GOGeneGraph.GOGeneGraph Class Reference</h1>  </div>
 </div>
@@ -88,6 +89,8 @@ Inheritance diagram for GOGeneGraph.GOGeneGraph:</div>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_gene_graph_1_1_g_o_gene_graph.html#a37f579f2fd7c2e8f0e52345e5c94233f">__init__</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a gene graph from a <a class="el" href="namespace_g_o_graph.html">GOGraph</a>.  <a href="#a37f579f2fd7c2e8f0e52345e5c94233f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_gene_graph_1_1_g_o_gene_graph.html#a0881964964972853c93e7606b73bb825">parseAssocFile</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the given association file and adds the gene information to the appropriate nodes.  <a href="#a0881964964972853c93e7606b73bb825"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_gene_graph_1_1_g_o_gene_graph.html#a276c7e223374b8c22417e195afacffed">weight</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a weight to the graph.  <a href="#a276c7e223374b8c22417e195afacffed"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_gene_graph_1_1_g_o_gene_graph.html#a5f437c2ab06eacde21831786192c4a4e">toGOGenePubmedGraph</a></td></tr>
@@ -96,6 +99,9 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the associated genes for a given node.  <a href="#a778128e77640d18bcaf775c2348013d4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_gene_graph_1_1_g_o_gene_graph.html#a353497bb1605cfbefba350861e81ea6e">getNodesByGene</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the associated nodes for a given gene.  <a href="#a353497bb1605cfbefba350861e81ea6e"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_gene_graph_1_1_g_o_gene_graph.html#a6577e8fed9b4ff2629043ea62b73defe">geneToNode</a></td></tr>
 </table>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a37f579f2fd7c2e8f0e52345e5c94233f"></a><!-- doxytag: member="GOGeneGraph::GOGeneGraph::__init__" ref="a37f579f2fd7c2e8f0e52345e5c94233f" args="" -->
@@ -118,7 +124,7 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>assoc</em>&#160;</td>
+          <td class="paramname"><em>assoc</em> = <code>None</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -215,6 +221,41 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a0881964964972853c93e7606b73bb825"></a><!-- doxytag: member="GOGeneGraph::GOGeneGraph::parseAssocFile" ref="a0881964964972853c93e7606b73bb825" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def GOGeneGraph.GOGeneGraph.parseAssocFile </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>assoc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Parses the given association file and adds the gene information to the appropriate nodes. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">assoc</td><td>The name of the association file to be parsed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a5f437c2ab06eacde21831786192c4a4e"></a><!-- doxytag: member="GOGeneGraph::GOGeneGraph::toGOGenePubmedGraph" ref="a5f437c2ab06eacde21831786192c4a4e" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -259,6 +300,20 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="a6577e8fed9b4ff2629043ea62b73defe"></a><!-- doxytag: member="GOGeneGraph::GOGeneGraph::geneToNode" ref="a6577e8fed9b4ff2629043ea62b73defe" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_g_o_gene_graph_1_1_g_o_gene_graph.html#a6577e8fed9b4ff2629043ea62b73defe">GOGeneGraph.GOGeneGraph.geneToNode</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/vickychen/Documents/Projects/myGOGrapher/gographer/<a class="el" href="_g_o_gene_graph_8py.html">GOGeneGraph.py</a></li>
 </ul>
@@ -277,7 +332,7 @@ Public Member Functions</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 7 2011 17:33:13 for GOGrapher by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 21 2011 17:55:47 for GOGrapher by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
