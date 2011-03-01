@@ -43,15 +43,14 @@ class GOGeneGraph(GOGraph):
                         continue
 
                     #Stores both the id and the qualifier in the node's gene list
-                    else:
-                        self.node[fields[4]]['gene'].append((fields[1],fields[3]))
+                    self.node[fields[4]]['gene'].append((fields[1],fields[3]))
 
-                        #Adds the gene to node association to the dictionary only if it isn't already in dictionary
-                        if fields[1] not in self.geneToNode.keys():
-                            self.geneToNode[fields[1]] = [fields[4]]
-                        else:
-                            if fields[4] not in self.geneToNode[fields[1]]:
-                                self.geneToNode[fields[1]].append(fields[4])
+                    #Adds the gene to node association to the dictionary only if it isn't already in dictionary
+                    if fields[1] not in self.geneToNode:
+                        self.geneToNode[fields[1]] = [fields[4]]
+                    else:
+                        if fields[4] not in self.geneToNode[fields[1]]:
+                            self.geneToNode[fields[1]].append(fields[4])
             f.close
         except:
             print "Could not parse association file %s" % (assoc)
@@ -68,7 +67,7 @@ class GOGeneGraph(GOGraph):
     ## Returns the associated genes for a given node
     # @param    goid    The GOID of the node to retrieve the associated genes from
     def getGenesByNode(self, goid):
-        if goid in self.nodes():
+        if goid in self:
             return self.node[goid]['gene']
         else:
             print "Given GOID is not in the graph"
@@ -77,7 +76,7 @@ class GOGeneGraph(GOGraph):
     ## Returns the associated nodes for a given gene
     # @param    geneid  The ID of the gene for which to retrieve the associated nodes
     def getNodesByGene(self, geneid):
-        if geneid in self.geneToNode.keys():
+        if geneid in self.geneToNode:
             return self.geneToNode[geneid]
         else:
             print "Given gene id is not in the graph"

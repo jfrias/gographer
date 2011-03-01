@@ -101,6 +101,10 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Save self using pickle protocol.  <a href="#ad97c179c4ec3d79a3092810ba1fbc241"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_graph_1_1_g_o_graph.html#ada6b7d590cfca9d4baec8d082577ac21">loadPickle</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a pickle from the filesystem.  <a href="#ada6b7d590cfca9d4baec8d082577ac21"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_graph_1_1_g_o_graph.html#a09e8d05c3bbf4e7f6ae1bbbac535e2f2">getNodeDescription</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the description of a node.  <a href="#a09e8d05c3bbf4e7f6ae1bbbac535e2f2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_graph_1_1_g_o_graph.html#afea5ecb3c758e65a54f0167d11c1ad5a">getNodeNamespace</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the description of a node.  <a href="#afea5ecb3c758e65a54f0167d11c1ad5a"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_graph_1_1_g_o_graph.html#af17f1eca2d2734e36976754e8ad4582a">namespace</a></td></tr>
@@ -146,7 +150,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="class_g_o_gene_graph_1_1_g_o_gene_graph.html#a37f579f2fd7c2e8f0e52345e5c94233f">GOGeneGraph.GOGeneGraph</a>, <a class="el" href="class_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph.html#a903ad3047a2d1b88fffbdeee60b2045e">GOGenePubmedGraph.GOGenePubmedGraph</a>, and <a class="el" href="class_g_o_pubmed_graph_1_1_g_o_pubmed_graph.html#a67014838ca4e64ab6302e109cfb38baa">GOPubmedGraph.GOPubmedGraph</a>.</p>
+<p>Reimplemented in <a class="el" href="class_g_o_gene_graph_1_1_g_o_gene_graph.html#a37f579f2fd7c2e8f0e52345e5c94233f">GOGeneGraph.GOGeneGraph</a>, and <a class="el" href="class_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph.html#a903ad3047a2d1b88fffbdeee60b2045e">GOGenePubmedGraph.GOGenePubmedGraph</a>.</p>
 
 </div>
 </div>
@@ -179,7 +183,7 @@ Public Attributes</h2></td></tr>
 <p>Returns the minimum depth of the node. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">node</td><td>The node whose depth will be found and returned </td></tr>
+    <tr><td class="paramname">goid</td><td>The GO ID of the node whose depth will be found and returned </td></tr>
   </table>
   </dd>
 </dl>
@@ -202,6 +206,76 @@ Public Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Returns the namespace of the graph. </p>
+
+</div>
+</div>
+<a class="anchor" id="a09e8d05c3bbf4e7f6ae1bbbac535e2f2"></a><!-- doxytag: member="GOGraph::GOGraph::getNodeDescription" ref="a09e8d05c3bbf4e7f6ae1bbbac535e2f2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def GOGraph.GOGraph.getNodeDescription </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>goid</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get the description of a node. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">goid</td><td>The GO ID of the node to get the description of </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="afea5ecb3c758e65a54f0167d11c1ad5a"></a><!-- doxytag: member="GOGraph::GOGraph::getNodeNamespace" ref="afea5ecb3c758e65a54f0167d11c1ad5a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def GOGraph.GOGraph.getNodeNamespace </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>goid</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get the description of a node. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">goid</td><td>The GO ID of the node to get the description of </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -342,7 +416,7 @@ Public Attributes</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 21 2011 17:55:47 for GOGrapher by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 28 2011 21:31:59 for GOGrapher by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
