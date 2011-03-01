@@ -31,7 +31,7 @@ class GOGraph(DiGraph):
             print "Could not parse Obo XML file %s" % (GOOboXmlFileName)
 
     ## Returns the minimum depth of the node
-    # @param    node    The node whose depth will be found and returned
+    # @param    goid    The GO ID of the node whose depth will be found and returned
     def getLevel(self, node):
         parents = self.predecessors(node)
         if len(parents) == 0:
@@ -67,7 +67,7 @@ class GOGraph(DiGraph):
             print "Could not pickle graph"
 
     ## Load a pickle from the filesystem
-    # @param filename The location of the pickle file to load
+    # @param    filename    The location of the pickle file to load
     @classmethod
     def loadPickle (klass, filename="gograph.pickle"):
         try:
@@ -77,3 +77,41 @@ class GOGraph(DiGraph):
         except:
             print "Could not load pickle"
             return
+
+    ## Get the description of a node
+    # @param    goid   The GO ID of the node to get the description of
+    def getNodeDescription(self, goid):
+        if goid in self.nodes():
+            return self.node[goid]['description']
+        else:
+            print 'Invalid goid'
+            raise
+
+    ## Set the description of a node
+    # @param    goid   The GO ID of the node to get the description of
+    # @param    descrip The description that will be assigned to the node
+    def __setNodeDescription(self, goid, descrip):
+        if goid in self.nodes():
+            self.node[goid]['description'] = descrip
+        else:
+            print 'Invalid goid'
+            raise
+
+    ## Get the description of a node
+    # @param    goid   The GO ID of the node to get the description of
+    def getNodeNamespace(self, goid):
+        if goid in self.nodes():
+            return self.node[goid]['namespace']
+        else:
+            print 'Invalid goid'
+            raise
+
+    ## Set the description of a node
+    # @param    goid   The GO ID of the node to get the description of
+    # @param    namespace The namespace that will be assigned to the node
+    def __setNodeNamespace(self, goid, namespace):
+        if goid in self.nodes():
+            self.node[goid]['namespace'] = namespace
+        else:
+            print 'Invalid goid'
+            raise

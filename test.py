@@ -1,5 +1,6 @@
 from GOGraph import *
 from GOGeneGraph import *
+from GOPubmedGraph import *
 
 location = "./go_daily-termdb.obo-xml"
 location = "./testgraph.obo-xml"
@@ -9,3 +10,5 @@ GOGraphtest = GOGraph("biological_process", location)
 
 assoc = "./gene_association.goa_human"
 GOGenetest = GOGeneGraph(GOGraphtest,assoc)
+
+GOPubmedtest = GOPubmedGraph(GOGraphtest,assoc)

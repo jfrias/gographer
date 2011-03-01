@@ -66,7 +66,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a>  </div>
   <div class="headertitle">
 <h1>GOPubmedGraph.GOPubmedGraph Class Reference</h1>  </div>
 </div>
@@ -88,6 +89,8 @@ Inheritance diagram for GOPubmedGraph.GOPubmedGraph:</div>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_pubmed_graph_1_1_g_o_pubmed_graph.html#a67014838ca4e64ab6302e109cfb38baa">__init__</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a pubmed graph from a <a class="el" href="namespace_g_o_graph.html">GOGraph</a>.  <a href="#a67014838ca4e64ab6302e109cfb38baa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_pubmed_graph_1_1_g_o_pubmed_graph.html#ae6b091d89d8aea816c9b87ca9bff96fb">parseAssocFile</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the given association file and adds the pubmed information to the appropriate nodes.  <a href="#ae6b091d89d8aea816c9b87ca9bff96fb"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_pubmed_graph_1_1_g_o_pubmed_graph.html#a1cd7af1343cfc3228db50e62ad1d79be">weight</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a weight to the graph.  <a href="#a1cd7af1343cfc3228db50e62ad1d79be"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_pubmed_graph_1_1_g_o_pubmed_graph.html#a9c455a5443e6be4986d7bfbc1ef874c2">toGOGenePubmedGraph</a></td></tr>
@@ -96,6 +99,10 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the associated PubMed IDs for a given node.  <a href="#a24635a63eda34340ec00919adc165c7c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_pubmed_graph_1_1_g_o_pubmed_graph.html#adc36d3c96e860a9db0dee1e60f0f9345">getNodesByPubMed</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the associated nodes for a given PubMed ID.  <a href="#adc36d3c96e860a9db0dee1e60f0f9345"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_pubmed_graph_1_1_g_o_pubmed_graph.html#a590b3ef9931441c36f1f335593f9e5ab">pubmedToNode</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_o_pubmed_graph_1_1_g_o_pubmed_graph.html#a4b066933be6fecadf9084b19efae3ebc">excludeEvidence</a></td></tr>
 </table>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a67014838ca4e64ab6302e109cfb38baa"></a><!-- doxytag: member="GOPubmedGraph::GOPubmedGraph::__init__" ref="a67014838ca4e64ab6302e109cfb38baa" args="" -->
@@ -118,7 +125,13 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>XMLFileName</em>&#160;</td>
+          <td class="paramname"><em>assoc</em> = <code>None</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>excludeEvidence</em> = <code>[]</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -133,14 +146,11 @@ Public Member Functions</h2></td></tr>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">gograph</td><td>A <a class="el" href="namespace_g_o_graph.html">GOGraph</a> to base this graph off of </td></tr>
-    <tr><td class="paramname">XMLFileName</td><td>The file containing GO definitions and Pubmed ID information in the format of the OBO in XML </td></tr>
+    <tr><td class="paramname">assoc</td><td>The file containing gene and pubmed association information </td></tr>
+    <tr><td class="paramname">excludeEvidence</td><td>A list of the evidence codes that should be ignored </td></tr>
   </table>
   </dd>
 </dl>
-
-<p>Reimplemented from <a class="el" href="class_g_o_graph_1_1_g_o_graph.html#afc10d41165dd1ae6c4cce09102542122">GOGraph.GOGraph</a>.</p>
-
-<p>Reimplemented in <a class="el" href="class_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph.html#a903ad3047a2d1b88fffbdeee60b2045e">GOGenePubmedGraph.GOGenePubmedGraph</a>.</p>
 
 </div>
 </div>
@@ -215,6 +225,41 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae6b091d89d8aea816c9b87ca9bff96fb"></a><!-- doxytag: member="GOPubmedGraph::GOPubmedGraph::parseAssocFile" ref="ae6b091d89d8aea816c9b87ca9bff96fb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def GOPubmedGraph.GOPubmedGraph.parseAssocFile </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>assoc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Parses the given association file and adds the pubmed information to the appropriate nodes. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">assoc</td><td>The name of the association file to be parsed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a9c455a5443e6be4986d7bfbc1ef874c2"></a><!-- doxytag: member="GOPubmedGraph::GOPubmedGraph::toGOGenePubmedGraph" ref="a9c455a5443e6be4986d7bfbc1ef874c2" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -259,6 +304,33 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="a4b066933be6fecadf9084b19efae3ebc"></a><!-- doxytag: member="GOPubmedGraph::GOPubmedGraph::excludeEvidence" ref="a4b066933be6fecadf9084b19efae3ebc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_g_o_pubmed_graph_1_1_g_o_pubmed_graph.html#a4b066933be6fecadf9084b19efae3ebc">GOPubmedGraph.GOPubmedGraph.excludeEvidence</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a590b3ef9931441c36f1f335593f9e5ab"></a><!-- doxytag: member="GOPubmedGraph::GOPubmedGraph::pubmedToNode" ref="a590b3ef9931441c36f1f335593f9e5ab" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_g_o_pubmed_graph_1_1_g_o_pubmed_graph.html#a590b3ef9931441c36f1f335593f9e5ab">GOPubmedGraph.GOPubmedGraph.pubmedToNode</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/vickychen/Documents/Projects/myGOGrapher/gographer/<a class="el" href="_g_o_pubmed_graph_8py.html">GOPubmedGraph.py</a></li>
 </ul>
@@ -277,7 +349,7 @@ Public Member Functions</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 21 2011 17:55:47 for GOGrapher by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 28 2011 21:31:59 for GOGrapher by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

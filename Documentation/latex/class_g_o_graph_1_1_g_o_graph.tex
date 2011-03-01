@@ -22,7 +22,11 @@ def \hyperlink{class_g_o_graph_1_1_g_o_graph_aeef340ff2a82454a8d92d9711fd7a92b}{
 def \hyperlink{class_g_o_graph_1_1_g_o_graph_ad97c179c4ec3d79a3092810ba1fbc241}{savePickle}
 \begin{DoxyCompactList}\small\item\em Save self using pickle protocol. \item\end{DoxyCompactList}\item 
 def \hyperlink{class_g_o_graph_1_1_g_o_graph_ada6b7d590cfca9d4baec8d082577ac21}{loadPickle}
-\begin{DoxyCompactList}\small\item\em Load a pickle from the filesystem. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Load a pickle from the filesystem. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_graph_1_1_g_o_graph_a09e8d05c3bbf4e7f6ae1bbbac535e2f2}{getNodeDescription}
+\begin{DoxyCompactList}\small\item\em Get the description of a node. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_graph_1_1_g_o_graph_afea5ecb3c758e65a54f0167d11c1ad5a}{getNodeNamespace}
+\begin{DoxyCompactList}\small\item\em Get the description of a node. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -55,7 +59,7 @@ Constructor.
 \end{DoxyParams}
 
 
-Reimplemented in \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a37f579f2fd7c2e8f0e52345e5c94233f}{GOGeneGraph.GOGeneGraph}, \hyperlink{class_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a903ad3047a2d1b88fffbdeee60b2045e}{GOGenePubmedGraph.GOGenePubmedGraph}, and \hyperlink{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a67014838ca4e64ab6302e109cfb38baa}{GOPubmedGraph.GOPubmedGraph}.
+Reimplemented in \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a37f579f2fd7c2e8f0e52345e5c94233f}{GOGeneGraph.GOGeneGraph}, and \hyperlink{class_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a903ad3047a2d1b88fffbdeee60b2045e}{GOGenePubmedGraph.GOGenePubmedGraph}.
 
 
 
@@ -76,7 +80,7 @@ Returns the minimum depth of the node.
 
 
 \begin{DoxyParams}{Parameters}
-{\em node} & The node whose depth will be found and returned \\
+{\em goid} & The GO ID of the node whose depth will be found and returned \\
 \hline
 \end{DoxyParams}
 \hypertarget{class_g_o_graph_1_1_g_o_graph_aeef340ff2a82454a8d92d9711fd7a92b}{
@@ -92,6 +96,44 @@ Returns the minimum depth of the node.
 
 Returns the namespace of the graph. 
 
+\hypertarget{class_g_o_graph_1_1_g_o_graph_a09e8d05c3bbf4e7f6ae1bbbac535e2f2}{
+\index{GOGraph::GOGraph@{GOGraph::GOGraph}!getNodeDescription@{getNodeDescription}}
+\index{getNodeDescription@{getNodeDescription}!GOGraph::GOGraph@{GOGraph::GOGraph}}
+\subsubsection[{getNodeDescription}]{\setlength{\rightskip}{0pt plus 5cm}def GOGraph.GOGraph.getNodeDescription (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{goid}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_graph_1_1_g_o_graph_a09e8d05c3bbf4e7f6ae1bbbac535e2f2}
+
+
+Get the description of a node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em goid} & The GO ID of the node to get the description of \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_g_o_graph_1_1_g_o_graph_afea5ecb3c758e65a54f0167d11c1ad5a}{
+\index{GOGraph::GOGraph@{GOGraph::GOGraph}!getNodeNamespace@{getNodeNamespace}}
+\index{getNodeNamespace@{getNodeNamespace}!GOGraph::GOGraph@{GOGraph::GOGraph}}
+\subsubsection[{getNodeNamespace}]{\setlength{\rightskip}{0pt plus 5cm}def GOGraph.GOGraph.getNodeNamespace (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{goid}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_graph_1_1_g_o_graph_afea5ecb3c758e65a54f0167d11c1ad5a}
+
+
+Get the description of a node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em goid} & The GO ID of the node to get the description of \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_g_o_graph_1_1_g_o_graph_ada6b7d590cfca9d4baec8d082577ac21}{
 \index{GOGraph::GOGraph@{GOGraph::GOGraph}!loadPickle@{loadPickle}}
 \index{loadPickle@{loadPickle}!GOGraph::GOGraph@{GOGraph::GOGraph}}
