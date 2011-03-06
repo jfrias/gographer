@@ -1,6 +1,7 @@
 ## \package GOGeneGraph
 
 from GOGraph import GOGraph
+from networkx import topological_sort
 
 class GOGeneGraph(GOGraph):
     ## Create a gene graph from a GOGraph
@@ -18,10 +19,12 @@ class GOGeneGraph(GOGraph):
 
         #Adds a 'gene' field for all nodes in the graph
         for node in self.nodes():
-            self.node[node]['gene'] = list()
+            self.node[node]['gene'] = set()
+            self.node[node]['propGene'] = set()
 
         if assoc != None:
             self.parseAssocFile(assoc)
+            self.propagateGenes()
             
     ## Parses the given association file and adds the gene information to the appropriate nodes
     # @param    assoc   The name of the association file to be parsed
@@ -43,14 +46,13 @@ class GOGeneGraph(GOGraph):
                         continue
 
                     #Stores both the id and the qualifier in the node's gene list
-                    self.node[fields[4]]['gene'].append((fields[1],fields[3]))
+                    self.node[fields[4]]['gene'] = self.node[fields[4]]['gene'].union((fields[1],fields[3]))
 
                     #Adds the gene to node association to the dictionary only if it isn't already in dictionary
                     if fields[1] not in self.geneToNode:
-                        self.geneToNode[fields[1]] = [fields[4]]
+                        self.geneToNode[fields[1]] = set(fields[4])
                     else:
-                        if fields[4] not in self.geneToNode[fields[1]]:
-                            self.geneToNode[fields[1]].append(fields[4])
+                        self.geneToNode[fields[1]] = self.geneToNode[fields[1]].union(fields[4])
             f.close
         except:
             print "Could not parse association file %s" % (assoc)
@@ -81,3 +83,18 @@ class GOGeneGraph(GOGraph):
         else:
             print "Given gene id is not in the graph"
             raise
+
+    ## Propagate the genes associated with each node to its parents
+    def propagateGenes(self):
+        for node in self.nodes_iter():
+            self.node[node]['propGene'] = self.node[node]['gene']
+        
+        sortedNodes = topological_sort(self)
+        sortedNodes.reverse()
+
+        # go through every nodes from bottom (end of sorted list)
+        # propagate node.propPmids to parent nodes
+        for node in sortedNodes:
+            for ancestors in self.predecessors(node):
+                self.node[ancestors]['propGene'] = self.node[ancestors]['propGene'].union(self.node[node]['propGene'])
+
