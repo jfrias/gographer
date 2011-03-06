@@ -1,6 +1,7 @@
 ## @package GOPubmedGraph
 
 from GOGraph import GOGraph
+from networkx import topological_sort
 
 class GOPubmedGraph(GOGraph):
     ## Create a pubmed graph from a GOGraph
@@ -18,12 +19,14 @@ class GOPubmedGraph(GOGraph):
         self.pubmedToNode = dict()
         self.excludeEvidence = excludeEvidence
 
-        #Adds a 'pubmd' field for all nodes in the graph
+        #Adds a 'pubmed' field for all nodes in the graph
         for node in self.nodes():
-            self.node[node]['pubmed'] = list()
+            self.node[node]['pubmed'] = set()
+            self.node[node]['propPubmed'] = set()
 
         if assoc != None:
             self.parseAssocFile(assoc)
+            self.propagatePMIDs()
 
     ## Parses the given association file and adds the pubmed information to the appropriate nodes
     # @param    assoc   The name of the association file to be parsed
@@ -54,14 +57,13 @@ class GOPubmedGraph(GOGraph):
                     if(len(references) > 0):
                         for ref in references:
                             #Stores both the id and the qualifier in the node's pubmed list
-                            self.node[fields[4]]['pubmed'].append((ref[5:],fields[3]))
+                            self.node[fields[4]]['pubmed'] = self.node[fields[4]]['pubmed'].union([(ref[5:],fields[3])])
 
                             #Adds the pubmed to node association to the dictionary only if it isn't already in dictionary
                             if ref[5:] not in self.pubmedToNode:
-                                self.pubmedToNode[ref[5:]] = [fields[4]]
+                                self.pubmedToNode[ref[5:]] = set(fields[4])
                             else:
-                                if fields[4] not in self.pubmedToNode[ref[5:]]:
-                                    self.pubmedToNode[ref[5:]].append(fields[4])
+                                self.pubmedToNode[ref[5:]] = self.pubmedToNode[ref[5:]].union(fields[4])
             f.close
         except:
             print "Could not parse association file %s" % (assoc)
@@ -93,3 +95,16 @@ class GOPubmedGraph(GOGraph):
             print "Given pubmed id is not in the graph"
             raise
 
+    ## Propagate the PMIDs associated with each node to its parents
+    def propagatePMIDs(self):
+        for node in self.nodes_iter():
+            self.node[node]['propPubmed'] = self.node[node]['pubmed']
+        
+        sortedNodes = topological_sort(self)
+        sortedNodes.reverse()
+
+        # go through every nodes from bottom (end of sorted list)
+        # propagate node.propPmids to parent nodes
+        for node in sortedNodes:
+            for ancestors in self.predecessors(node):
+                self.node[ancestors]['propPubmed'] = self.node[ancestors]['propPubmed'].union(self.node[node]['propPubmed'])
