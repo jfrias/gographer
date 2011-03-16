@@ -61,9 +61,9 @@ class GOPubmedGraph(GOGraph):
 
                             #Adds the pubmed to node association to the dictionary only if it isn't already in dictionary
                             if ref[5:] not in self.pubmedToNode:
-                                self.pubmedToNode[ref[5:]] = set(fields[4])
+                                self.pubmedToNode[ref[5:]] = set([fields[4]])
                             else:
-                                self.pubmedToNode[ref[5:]] = self.pubmedToNode[ref[5:]].union(fields[4])
+                                self.pubmedToNode[ref[5:]] = self.pubmedToNode[ref[5:]].union([fields[4]])
             f.close
         except:
             print "Could not parse association file %s" % (assoc)

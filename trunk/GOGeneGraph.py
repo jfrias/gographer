@@ -50,9 +50,9 @@ class GOGeneGraph(GOGraph):
 
                     #Adds the gene to node association to the dictionary only if it isn't already in dictionary
                     if fields[1] not in self.geneToNode:
-                        self.geneToNode[fields[1]] = set(fields[4])
+                        self.geneToNode[fields[1]] = set([fields[4]])
                     else:
-                        self.geneToNode[fields[1]] = self.geneToNode[fields[1]].union(fields[4])
+                        self.geneToNode[fields[1]] = self.geneToNode[fields[1]].union([fields[4]])
             f.close
         except:
             print "Could not parse association file %s" % (assoc)
