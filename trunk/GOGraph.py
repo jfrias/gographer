@@ -32,7 +32,7 @@ class GOGraph(DiGraph):
 
     ## Returns the minimum depth of the node
     # @param    goid    The GO ID of the node whose depth will be found and returned
-    def getLevel(self, node):
+    def getLevel(self, goid):
         parents = self.predecessors(node)
         if len(parents) == 0:
             return 0
@@ -82,7 +82,7 @@ class GOGraph(DiGraph):
     # @param    goid   The GO ID of the node to get the description of
     def getNodeDescription(self, goid):
         if goid in self.nodes():
-            return self.node[goid]['description']
+            return self.node[goid]['data'].getDescription()
         else:
             print 'Invalid goid'
             raise
@@ -92,7 +92,7 @@ class GOGraph(DiGraph):
     # @param    descrip The description that will be assigned to the node
     def __setNodeDescription(self, goid, descrip):
         if goid in self.nodes():
-            self.node[goid]['description'] = descrip
+            self.node[goid]['data'].setDescription(descrip)
         else:
             print 'Invalid goid'
             raise
@@ -101,7 +101,7 @@ class GOGraph(DiGraph):
     # @param    goid   The GO ID of the node to get the description of
     def getNodeNamespace(self, goid):
         if goid in self.nodes():
-            return self.node[goid]['namespace']
+            return self.node[goid]['data'].getNamespace()
         else:
             print 'Invalid goid'
             raise
