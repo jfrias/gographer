@@ -45,8 +45,8 @@ class GOGeneGraph(GOGraph):
                     if not fields[11] in types:
                         continue
 
-                    #Stores both the id and the qualifier in the node's gene list
-                    self.node[fields[4]]['gene'] = self.node[fields[4]]['gene'].union((fields[1],fields[3]))
+                    #Stores both the id and the qualifier as a tuple in the node's gene list
+                    self.node[fields[4]]['gene'] = self.node[fields[4]]['gene'].union([(fields[1],fields[3])])
 
                     #Adds the gene to node association to the dictionary only if it isn't already in dictionary
                     if fields[1] not in self.geneToNode:

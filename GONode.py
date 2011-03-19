@@ -1,11 +1,15 @@
 class GONode():
-    def __init__ (self, goid=None, namespace=None, parents=None, obsolete=False, name=None, description=None):
+    def __init__ (self, goid=None, namespace=None, parents=None, obsolete=False,
+                  name=None, description=None, genes=None, pmids=None, wordVector=None):
         self.goid = goid
         self.namespace = namespace
         self.parents = parents
         self.obsolete = obsolete
         self.name = name
         self.description = description
+        self.genes = genes
+        self.pmids = pmids
+        self.wordVector = wordVector
 
     ##Set the GO ID of the node
     # @param    goid    The GO ID that will be assigned to the node
