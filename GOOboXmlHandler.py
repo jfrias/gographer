@@ -68,6 +68,8 @@ class GOOboXmlHandler (ContentHandler):
                 '''
                 currently the only edges being added are to the children of the current node
                 '''
+                if not parent in self.graph:
+                    self.graph.add_node(parent, data=GONode(parent))
                 self.graph.add_edge(parent, self.goid, relationship="parent_of")
 
         elif name == "name" and not self.obsolete and not self.goid == None and self.goNode.name == None: # and not self.name.has_key(self.goid):

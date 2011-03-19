@@ -19,11 +19,6 @@ class GOPubmedGraph(GOGraph):
         self.pubmedToNode = dict()
         self.excludeEvidence = excludeEvidence
 
-        #Adds a 'pubmed' field for all nodes in the graph
-        for node in self.nodes():
-            self.node[node]['pubmed'] = set()
-            self.node[node]['propPubmed'] = set()
-
         if assoc != None:
             self.parseAssocFile(assoc)
             self.propagatePMIDs()
@@ -57,7 +52,7 @@ class GOPubmedGraph(GOGraph):
                     if(len(references) > 0):
                         for ref in references:
                             #Stores both the id and the qualifier in the node's pubmed list
-                            self.node[fields[4]]['pubmed'] = self.node[fields[4]]['pubmed'].union([(ref[5:],fields[3])])
+                            self.node[fields[4]]['data'].addPMIDs([(ref[5:],fields[3])])
 
                             #Adds the pubmed to node association to the dictionary only if it isn't already in dictionary
                             if ref[5:] not in self.pubmedToNode:
@@ -81,7 +76,16 @@ class GOPubmedGraph(GOGraph):
     # @param    goid    The GOID of the node to retrieve the associated PubMed IDs from
     def getPubMedByNode(self, goid):
         if goid in self:
-            return self.node[goid]['pubmed']
+            return self.node[goid]['data'].getPMIDs()
+        else:
+            print "Given GOID is not in the graph"
+            raise
+
+    ## Returns the associated propagated PubMed IDs for a given node
+    # @param    goid    The GOID of the node to retrieve the associated propagated PubMed IDs from
+    def getPropagatedPubMedByNode(self, goid):
+        if goid in self:
+            return self.node[goid]['data'].getPropagatedPMIDs()
         else:
             print "Given GOID is not in the graph"
             raise
@@ -98,7 +102,7 @@ class GOPubmedGraph(GOGraph):
     ## Propagate the PMIDs associated with each node to its parents
     def propagatePMIDs(self):
         for node in self.nodes_iter():
-            self.node[node]['propPubmed'] = self.node[node]['pubmed']
+            self.node[node]['data'].addPropagatedPMIDs(self.node[node]['data'].getPMIDs())
         
         sortedNodes = topological_sort(self)
         sortedNodes.reverse()
@@ -107,4 +111,4 @@ class GOPubmedGraph(GOGraph):
         # propagate node.propPmids to parent nodes
         for node in sortedNodes:
             for ancestors in self.predecessors(node):
-                self.node[ancestors]['propPubmed'] = self.node[ancestors]['propPubmed'].union(self.node[node]['propPubmed'])
+                self.node[ancestors]['data'].addPropagatedPMIDs(self.node[node]['data'].getPropagatedPMIDs())
