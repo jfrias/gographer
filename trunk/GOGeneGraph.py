@@ -17,11 +17,6 @@ class GOGeneGraph(GOGraph):
         self.add_nodes_from(gograph.nodes_iter(data=True))
         self.geneToNode = dict()
 
-        #Adds a 'gene' field for all nodes in the graph
-        for node in self.nodes():
-            self.node[node]['gene'] = set()
-            self.node[node]['propGene'] = set()
-
         if assoc != None:
             self.parseAssocFile(assoc)
             self.propagateGenes()
@@ -46,7 +41,7 @@ class GOGeneGraph(GOGraph):
                         continue
 
                     #Stores both the id and the qualifier as a tuple in the node's gene list
-                    self.node[fields[4]]['gene'] = self.node[fields[4]]['gene'].union([(fields[1],fields[3])])
+                    self.node[fields[4]]['data'].addGenes([(fields[1],fields[3])])
 
                     #Adds the gene to node association to the dictionary only if it isn't already in dictionary
                     if fields[1] not in self.geneToNode:
@@ -70,10 +65,20 @@ class GOGeneGraph(GOGraph):
     # @param    goid    The GOID of the node to retrieve the associated genes from
     def getGenesByNode(self, goid):
         if goid in self:
-            return self.node[goid]['gene']
+            return self.node[goid]['data'].getGenes()
         else:
             print "Given GOID is not in the graph"
             raise
+
+    ## Returns the associated propagated genes for a given node
+    # @param    goid    The GOID of the node to retrieve the associated propagated genes from
+    def getPropagatedGenesByNode(self, goid):
+        if goid in self:
+            return self.node[goid]['data'].getPropagatedGenes()
+        else:
+            print "Given GOID is not in the graph"
+            raise
+
 
     ## Returns the associated nodes for a given gene
     # @param    geneid  The ID of the gene for which to retrieve the associated nodes
@@ -87,8 +92,8 @@ class GOGeneGraph(GOGraph):
     ## Propagate the genes associated with each node to its parents
     def propagateGenes(self):
         for node in self.nodes_iter():
-            self.node[node]['propGene'] = self.node[node]['gene']
-        
+            self.node[node]['data'].addPropagatedGenes(self.node[node]['data'].getGenes())
+
         sortedNodes = topological_sort(self)
         sortedNodes.reverse()
 
@@ -96,5 +101,6 @@ class GOGeneGraph(GOGraph):
         # propagate node.propPmids to parent nodes
         for node in sortedNodes:
             for ancestors in self.predecessors(node):
-                self.node[ancestors]['propGene'] = self.node[ancestors]['propGene'].union(self.node[node]['propGene'])
+                self.node[ancestors]['data'].addPropagatedGenes(self.node[node]['data'].getPropagatedGenes())
 
+ 

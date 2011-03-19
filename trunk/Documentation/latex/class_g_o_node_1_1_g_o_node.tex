@@ -30,7 +30,31 @@ def \hyperlink{class_g_o_node_1_1_g_o_node_a00e15671c0ef26e70eda632da8518ee9}{ge
 def \hyperlink{class_g_o_node_1_1_g_o_node_a6da2fec8371255c0728c3bed095ab4f9}{setDescription}
 \begin{DoxyCompactList}\small\item\em Set the description of the node. \item\end{DoxyCompactList}\item 
 def \hyperlink{class_g_o_node_1_1_g_o_node_acaadece0d9dc2efabf97c71dd438de6f}{getDescription}
-\begin{DoxyCompactList}\small\item\em Returns the description of the node. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the description of the node. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_node_1_1_g_o_node_a10057f8adee9667f95efdc80ed579b8f}{setPMIDs}
+\begin{DoxyCompactList}\small\item\em Set the PubMed IDs associated with the node. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_node_1_1_g_o_node_a8842d1581fd69a9e9fd40a497a8437f0}{getPMIDs}
+\begin{DoxyCompactList}\small\item\em Returns the PubMed IDs associated with the node. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_node_1_1_g_o_node_a7f0ddc017e84fe50a430a3896cfb0296}{addPMIDs}
+\begin{DoxyCompactList}\small\item\em Adds list containing one or more PubMed ID tuples to the existing set of PubMed IDs. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_node_1_1_g_o_node_ad6bf7ed6335e6ae280072b9566d39d7f}{setPropagatedPMIDs}
+\begin{DoxyCompactList}\small\item\em Set the propagated PubMed IDs associated with the node or its descendants. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_node_1_1_g_o_node_a8e10409df23065fe586b7fd9c90dd84f}{getPropagatedPMIDs}
+\begin{DoxyCompactList}\small\item\em Returns the propagated PubMed IDs associated with the node or its descendants. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_node_1_1_g_o_node_ab929234558a485675999c90dc4993e4d}{addPropagatedPMIDs}
+\begin{DoxyCompactList}\small\item\em Adds list containing PubMed ID tuples to the existing set of propagated PubMed IDs. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_node_1_1_g_o_node_a45023d6ce53990bd76a0afb17851a2a3}{setGenes}
+\begin{DoxyCompactList}\small\item\em Set the genes associated with the node. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_node_1_1_g_o_node_ac8e9c44abab1fecb6be48c79ed00b6da}{getGenes}
+\begin{DoxyCompactList}\small\item\em Returns the PubMed IDs associated with the node. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_node_1_1_g_o_node_a435766664a659c441ff9c7a7fcae9605}{addGenes}
+\begin{DoxyCompactList}\small\item\em Adds list containing one or more gene tuples to the existing set of genes. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_node_1_1_g_o_node_aec0d695435ba43ef55868c8ec0c786a1}{setPropagatedGenes}
+\begin{DoxyCompactList}\small\item\em Set the propagated genes associated with the node or its descendants. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_node_1_1_g_o_node_add59505abccd2901703f705278d3d1df}{getPropagatedGenes}
+\begin{DoxyCompactList}\small\item\em Returns the propagated PubMed IDs associated with the node or its descendants. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_node_1_1_g_o_node_af56efbcbab0996344aa9abd0db21e647}{addPropagatedGenes}
+\begin{DoxyCompactList}\small\item\em Adds list containing PubMed ID tuples to the existing set of propagated PubMed IDs. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -45,6 +69,16 @@ def \hyperlink{class_g_o_node_1_1_g_o_node_acaadece0d9dc2efabf97c71dd438de6f}{ge
 \hyperlink{class_g_o_node_1_1_g_o_node_a18b00948dd27ef1af426a1b8a522467d}{name}
 \item 
 \hyperlink{class_g_o_node_1_1_g_o_node_ad22366488d580d7aa91527f0b592d64d}{description}
+\item 
+\hyperlink{class_g_o_node_1_1_g_o_node_a6d2a26f14532a49bd13f133eb510f9d9}{genes}
+\item 
+\hyperlink{class_g_o_node_1_1_g_o_node_a2da5aad6a2dd0fde698f3b9f38d71a9d}{propGenes}
+\item 
+\hyperlink{class_g_o_node_1_1_g_o_node_af84d73aa3de8f64e8bb037db8e19c285}{pmids}
+\item 
+\hyperlink{class_g_o_node_1_1_g_o_node_a495556a257907681a0b0d29c72a07095}{propPmids}
+\item 
+\hyperlink{class_g_o_node_1_1_g_o_node_a74ee778a5586a4ed340a003f9172e78e}{wordVector}
 \end{DoxyCompactItemize}
 
 
@@ -60,13 +94,94 @@ def \hyperlink{class_g_o_node_1_1_g_o_node_acaadece0d9dc2efabf97c71dd438de6f}{ge
 \item[{}]{parents = {\ttfamily None}, }
 \item[{}]{obsolete = {\ttfamily False}, }
 \item[{}]{name = {\ttfamily None}, }
-\item[{}]{description = {\ttfamily None}}
+\item[{}]{description = {\ttfamily None}, }
+\item[{}]{genes = {\ttfamily set()}, }
+\item[{}]{propGenes = {\ttfamily set()}, }
+\item[{}]{pmids = {\ttfamily set()}, }
+\item[{}]{propPmids = {\ttfamily set()}, }
+\item[{}]{wordVector = {\ttfamily dict()}}
 \end{DoxyParamCaption}
 )}}
 \label{class_g_o_node_1_1_g_o_node_aed2500c2cbac29cc9793c37396b75928}
 
 
 \subsection{Member Function Documentation}
+\hypertarget{class_g_o_node_1_1_g_o_node_a435766664a659c441ff9c7a7fcae9605}{
+\index{GONode::GONode@{GONode::GONode}!addGenes@{addGenes}}
+\index{addGenes@{addGenes}!GONode::GONode@{GONode::GONode}}
+\subsubsection[{addGenes}]{\setlength{\rightskip}{0pt plus 5cm}def GONode.GONode.addGenes (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{genes}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_node_1_1_g_o_node_a435766664a659c441ff9c7a7fcae9605}
+
+
+Adds list containing one or more gene tuples to the existing set of genes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em genes} & A list where each entry is a gene tuple, where it's the gene ID followed by the qualifier \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_g_o_node_1_1_g_o_node_a7f0ddc017e84fe50a430a3896cfb0296}{
+\index{GONode::GONode@{GONode::GONode}!addPMIDs@{addPMIDs}}
+\index{addPMIDs@{addPMIDs}!GONode::GONode@{GONode::GONode}}
+\subsubsection[{addPMIDs}]{\setlength{\rightskip}{0pt plus 5cm}def GONode.GONode.addPMIDs (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{pmid}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_node_1_1_g_o_node_a7f0ddc017e84fe50a430a3896cfb0296}
+
+
+Adds list containing one or more PubMed ID tuples to the existing set of PubMed IDs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pmid} & A list where each entry is a PubMed ID tuple, where it's the PubMed ID number followed by the qualifier \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_g_o_node_1_1_g_o_node_af56efbcbab0996344aa9abd0db21e647}{
+\index{GONode::GONode@{GONode::GONode}!addPropagatedGenes@{addPropagatedGenes}}
+\index{addPropagatedGenes@{addPropagatedGenes}!GONode::GONode@{GONode::GONode}}
+\subsubsection[{addPropagatedGenes}]{\setlength{\rightskip}{0pt plus 5cm}def GONode.GONode.addPropagatedGenes (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{genes}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_node_1_1_g_o_node_af56efbcbab0996344aa9abd0db21e647}
+
+
+Adds list containing PubMed ID tuples to the existing set of propagated PubMed IDs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pmids} & A list where each entry is a PubMed ID tuple, where it's the PubMed ID number followed by the qualifier \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_g_o_node_1_1_g_o_node_ab929234558a485675999c90dc4993e4d}{
+\index{GONode::GONode@{GONode::GONode}!addPropagatedPMIDs@{addPropagatedPMIDs}}
+\index{addPropagatedPMIDs@{addPropagatedPMIDs}!GONode::GONode@{GONode::GONode}}
+\subsubsection[{addPropagatedPMIDs}]{\setlength{\rightskip}{0pt plus 5cm}def GONode.GONode.addPropagatedPMIDs (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{pmids}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_node_1_1_g_o_node_ab929234558a485675999c90dc4993e4d}
+
+
+Adds list containing PubMed ID tuples to the existing set of propagated PubMed IDs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pmids} & A list where each entry is a PubMed ID tuple, where it's the PubMed ID number followed by the qualifier \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_g_o_node_1_1_g_o_node_acaadece0d9dc2efabf97c71dd438de6f}{
 \index{GONode::GONode@{GONode::GONode}!getDescription@{getDescription}}
 \index{getDescription@{getDescription}!GONode::GONode@{GONode::GONode}}
@@ -79,6 +194,19 @@ def \hyperlink{class_g_o_node_1_1_g_o_node_acaadece0d9dc2efabf97c71dd438de6f}{ge
 
 
 Returns the description of the node. 
+
+\hypertarget{class_g_o_node_1_1_g_o_node_ac8e9c44abab1fecb6be48c79ed00b6da}{
+\index{GONode::GONode@{GONode::GONode}!getGenes@{getGenes}}
+\index{getGenes@{getGenes}!GONode::GONode@{GONode::GONode}}
+\subsubsection[{getGenes}]{\setlength{\rightskip}{0pt plus 5cm}def GONode.GONode.getGenes (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_node_1_1_g_o_node_ac8e9c44abab1fecb6be48c79ed00b6da}
+
+
+Returns the PubMed IDs associated with the node. 
 
 \hypertarget{class_g_o_node_1_1_g_o_node_a91edd86173c3363534143762378df221}{
 \index{GONode::GONode@{GONode::GONode}!getGOID@{getGOID}}
@@ -145,6 +273,45 @@ Returns the obsolete status of the node (whether or not the term is obsolete)
 
 Returns the parents of the node. 
 
+\hypertarget{class_g_o_node_1_1_g_o_node_a8842d1581fd69a9e9fd40a497a8437f0}{
+\index{GONode::GONode@{GONode::GONode}!getPMIDs@{getPMIDs}}
+\index{getPMIDs@{getPMIDs}!GONode::GONode@{GONode::GONode}}
+\subsubsection[{getPMIDs}]{\setlength{\rightskip}{0pt plus 5cm}def GONode.GONode.getPMIDs (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_node_1_1_g_o_node_a8842d1581fd69a9e9fd40a497a8437f0}
+
+
+Returns the PubMed IDs associated with the node. 
+
+\hypertarget{class_g_o_node_1_1_g_o_node_add59505abccd2901703f705278d3d1df}{
+\index{GONode::GONode@{GONode::GONode}!getPropagatedGenes@{getPropagatedGenes}}
+\index{getPropagatedGenes@{getPropagatedGenes}!GONode::GONode@{GONode::GONode}}
+\subsubsection[{getPropagatedGenes}]{\setlength{\rightskip}{0pt plus 5cm}def GONode.GONode.getPropagatedGenes (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_node_1_1_g_o_node_add59505abccd2901703f705278d3d1df}
+
+
+Returns the propagated PubMed IDs associated with the node or its descendants. 
+
+\hypertarget{class_g_o_node_1_1_g_o_node_a8e10409df23065fe586b7fd9c90dd84f}{
+\index{GONode::GONode@{GONode::GONode}!getPropagatedPMIDs@{getPropagatedPMIDs}}
+\index{getPropagatedPMIDs@{getPropagatedPMIDs}!GONode::GONode@{GONode::GONode}}
+\subsubsection[{getPropagatedPMIDs}]{\setlength{\rightskip}{0pt plus 5cm}def GONode.GONode.getPropagatedPMIDs (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_node_1_1_g_o_node_a8e10409df23065fe586b7fd9c90dd84f}
+
+
+Returns the propagated PubMed IDs associated with the node or its descendants. 
+
 \hypertarget{class_g_o_node_1_1_g_o_node_a6da2fec8371255c0728c3bed095ab4f9}{
 \index{GONode::GONode@{GONode::GONode}!setDescription@{setDescription}}
 \index{setDescription@{setDescription}!GONode::GONode@{GONode::GONode}}
@@ -162,6 +329,25 @@ Set the description of the node.
 
 \begin{DoxyParams}{Parameters}
 {\em description} & The description that will be assigned to the node \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_g_o_node_1_1_g_o_node_a45023d6ce53990bd76a0afb17851a2a3}{
+\index{GONode::GONode@{GONode::GONode}!setGenes@{setGenes}}
+\index{setGenes@{setGenes}!GONode::GONode@{GONode::GONode}}
+\subsubsection[{setGenes}]{\setlength{\rightskip}{0pt plus 5cm}def GONode.GONode.setGenes (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{genes}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_node_1_1_g_o_node_a45023d6ce53990bd76a0afb17851a2a3}
+
+
+Set the genes associated with the node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em genes} & The set containing the genes that are associated with the node. The genes are in tuples where it's the gene ID followed by the qualifier. \\
 \hline
 \end{DoxyParams}
 \hypertarget{class_g_o_node_1_1_g_o_node_a7bc51e25200c46ad8a7557992f90f7ca}{
@@ -259,6 +445,63 @@ Set the parents of the node.
 {\em parents} & The parents that will be assigned to the node \\
 \hline
 \end{DoxyParams}
+\hypertarget{class_g_o_node_1_1_g_o_node_a10057f8adee9667f95efdc80ed579b8f}{
+\index{GONode::GONode@{GONode::GONode}!setPMIDs@{setPMIDs}}
+\index{setPMIDs@{setPMIDs}!GONode::GONode@{GONode::GONode}}
+\subsubsection[{setPMIDs}]{\setlength{\rightskip}{0pt plus 5cm}def GONode.GONode.setPMIDs (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{pmids}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_node_1_1_g_o_node_a10057f8adee9667f95efdc80ed579b8f}
+
+
+Set the PubMed IDs associated with the node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pmids} & The set containing the PubMed IDs that are associated with the node. The PubMed IDs are in tuples where it's the PubMed ID number followed by the qualifier. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_g_o_node_1_1_g_o_node_aec0d695435ba43ef55868c8ec0c786a1}{
+\index{GONode::GONode@{GONode::GONode}!setPropagatedGenes@{setPropagatedGenes}}
+\index{setPropagatedGenes@{setPropagatedGenes}!GONode::GONode@{GONode::GONode}}
+\subsubsection[{setPropagatedGenes}]{\setlength{\rightskip}{0pt plus 5cm}def GONode.GONode.setPropagatedGenes (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{propGenes}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_node_1_1_g_o_node_aec0d695435ba43ef55868c8ec0c786a1}
+
+
+Set the propagated genes associated with the node or its descendants. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em propGenes} & The set containing the propagated PubMed IDs that are associated with the node or its descendants. The PubMed IDs are in tuples where it's the PubMed ID number followed by the qualifier. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_g_o_node_1_1_g_o_node_ad6bf7ed6335e6ae280072b9566d39d7f}{
+\index{GONode::GONode@{GONode::GONode}!setPropagatedPMIDs@{setPropagatedPMIDs}}
+\index{setPropagatedPMIDs@{setPropagatedPMIDs}!GONode::GONode@{GONode::GONode}}
+\subsubsection[{setPropagatedPMIDs}]{\setlength{\rightskip}{0pt plus 5cm}def GONode.GONode.setPropagatedPMIDs (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{propPmids}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_node_1_1_g_o_node_ad6bf7ed6335e6ae280072b9566d39d7f}
+
+
+Set the propagated PubMed IDs associated with the node or its descendants. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em propPmids} & The set containing the propagated PubMed IDs that are associated with the node or its descendants. The PubMed IDs are in tuples where it's the PubMed ID number followed by the qualifier. \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Data Documentation}
@@ -267,6 +510,11 @@ Set the parents of the node.
 \index{description@{description}!GONode::GONode@{GONode::GONode}}
 \subsubsection[{description}]{\setlength{\rightskip}{0pt plus 5cm}{\bf GONode.GONode.description}}}
 \label{class_g_o_node_1_1_g_o_node_ad22366488d580d7aa91527f0b592d64d}
+\hypertarget{class_g_o_node_1_1_g_o_node_a6d2a26f14532a49bd13f133eb510f9d9}{
+\index{GONode::GONode@{GONode::GONode}!genes@{genes}}
+\index{genes@{genes}!GONode::GONode@{GONode::GONode}}
+\subsubsection[{genes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf GONode.GONode.genes}}}
+\label{class_g_o_node_1_1_g_o_node_a6d2a26f14532a49bd13f133eb510f9d9}
 \hypertarget{class_g_o_node_1_1_g_o_node_a419738231e6061c8f35c7038600045b5}{
 \index{GONode::GONode@{GONode::GONode}!goid@{goid}}
 \index{goid@{goid}!GONode::GONode@{GONode::GONode}}
@@ -292,6 +540,26 @@ Set the parents of the node.
 \index{parents@{parents}!GONode::GONode@{GONode::GONode}}
 \subsubsection[{parents}]{\setlength{\rightskip}{0pt plus 5cm}{\bf GONode.GONode.parents}}}
 \label{class_g_o_node_1_1_g_o_node_a0e5b6b8b5e9b4a88ff0752017d90f544}
+\hypertarget{class_g_o_node_1_1_g_o_node_af84d73aa3de8f64e8bb037db8e19c285}{
+\index{GONode::GONode@{GONode::GONode}!pmids@{pmids}}
+\index{pmids@{pmids}!GONode::GONode@{GONode::GONode}}
+\subsubsection[{pmids}]{\setlength{\rightskip}{0pt plus 5cm}{\bf GONode.GONode.pmids}}}
+\label{class_g_o_node_1_1_g_o_node_af84d73aa3de8f64e8bb037db8e19c285}
+\hypertarget{class_g_o_node_1_1_g_o_node_a2da5aad6a2dd0fde698f3b9f38d71a9d}{
+\index{GONode::GONode@{GONode::GONode}!propGenes@{propGenes}}
+\index{propGenes@{propGenes}!GONode::GONode@{GONode::GONode}}
+\subsubsection[{propGenes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf GONode.GONode.propGenes}}}
+\label{class_g_o_node_1_1_g_o_node_a2da5aad6a2dd0fde698f3b9f38d71a9d}
+\hypertarget{class_g_o_node_1_1_g_o_node_a495556a257907681a0b0d29c72a07095}{
+\index{GONode::GONode@{GONode::GONode}!propPmids@{propPmids}}
+\index{propPmids@{propPmids}!GONode::GONode@{GONode::GONode}}
+\subsubsection[{propPmids}]{\setlength{\rightskip}{0pt plus 5cm}{\bf GONode.GONode.propPmids}}}
+\label{class_g_o_node_1_1_g_o_node_a495556a257907681a0b0d29c72a07095}
+\hypertarget{class_g_o_node_1_1_g_o_node_a74ee778a5586a4ed340a003f9172e78e}{
+\index{GONode::GONode@{GONode::GONode}!wordVector@{wordVector}}
+\index{wordVector@{wordVector}!GONode::GONode@{GONode::GONode}}
+\subsubsection[{wordVector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf GONode.GONode.wordVector}}}
+\label{class_g_o_node_1_1_g_o_node_a74ee778a5586a4ed340a003f9172e78e}
 
 
 The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}

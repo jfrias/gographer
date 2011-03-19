@@ -19,11 +19,14 @@ assoc = "./gene_association.goa_human"
 GOGenetest = GOGeneGraph(GOGraphtest,assoc)
 
 genes = set([('P05091', ''), ('Q8NE62', ''), ('P47895', ''), ('P48448', ''), ('P00326', ''), ('P43353', ''), ('P08319', ''), ('P07327', '')])
+propGenes = set([('Q8NE62', ''), ('P47895', ''), ('O43704', ''), ('P48448', ''), ('P43353', ''), ('P05091', ''), ('P00326', ''), ('P08319', ''), ('P07327', '')])
 nodesByGene = set(['GO:0006066', 'GO:0008152'])
 if GOGenetest.getGenesByNode('GO:0006066') != genes:
     print "Error in getGenesByNode"
 if GOGenetest.getNodesByGene('P48448') != nodesByGene:
     print "Error in getNodesByGene"
+if GOGenetest.getPropagatedGenesByNode('GO:0006066') != propGenes:
+    print "Error in getPropagatedGenesByNode"
 
 
 GOPubmedtest = GOPubmedGraph(GOGraphtest,assoc)
@@ -37,4 +40,4 @@ for i in pubmed:
         print "Error in getNodesByPubmed"
         break
 if GOPubmedtest.getPropagatedPubMedByNode('GO:0008150') != propPubmed:
-    print "Error in propagatePMIDs"
+    print "Error in getPropagatedPubMedByNode"
