@@ -22,7 +22,9 @@ def \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a5f437c2ab06eacde21831786
 def \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a778128e77640d18bcaf775c2348013d4}{getGenesByNode}
 \begin{DoxyCompactList}\small\item\em Returns the associated genes for a given node. \item\end{DoxyCompactList}\item 
 def \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a353497bb1605cfbefba350861e81ea6e}{getNodesByGene}
-\begin{DoxyCompactList}\small\item\em Returns the associated nodes for a given gene. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the associated nodes for a given gene. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a3d0bfc52d583f576655cd0478ea2af86}{propagateGenes}
+\begin{DoxyCompactList}\small\item\em Propagate the genes associated with each node to its parents. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -121,6 +123,19 @@ Parses the given association file and adds the gene information to the appropria
 {\em assoc} & The name of the association file to be parsed \\
 \hline
 \end{DoxyParams}
+\hypertarget{class_g_o_gene_graph_1_1_g_o_gene_graph_a3d0bfc52d583f576655cd0478ea2af86}{
+\index{GOGeneGraph::GOGeneGraph@{GOGeneGraph::GOGeneGraph}!propagateGenes@{propagateGenes}}
+\index{propagateGenes@{propagateGenes}!GOGeneGraph::GOGeneGraph@{GOGeneGraph::GOGeneGraph}}
+\subsubsection[{propagateGenes}]{\setlength{\rightskip}{0pt plus 5cm}def GOGeneGraph.GOGeneGraph.propagateGenes (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_gene_graph_1_1_g_o_gene_graph_a3d0bfc52d583f576655cd0478ea2af86}
+
+
+Propagate the genes associated with each node to its parents. 
+
 \hypertarget{class_g_o_gene_graph_1_1_g_o_gene_graph_a5f437c2ab06eacde21831786192c4a4e}{
 \index{GOGeneGraph::GOGeneGraph@{GOGeneGraph::GOGeneGraph}!toGOGenePubmedGraph@{toGOGenePubmedGraph}}
 \index{toGOGenePubmedGraph@{toGOGenePubmedGraph}!GOGeneGraph::GOGeneGraph@{GOGeneGraph::GOGeneGraph}}

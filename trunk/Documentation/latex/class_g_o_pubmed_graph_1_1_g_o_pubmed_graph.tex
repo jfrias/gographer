@@ -22,7 +22,9 @@ def \hyperlink{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a9c455a5443e6be4986d7
 def \hyperlink{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a24635a63eda34340ec00919adc165c7c}{getPubMedByNode}
 \begin{DoxyCompactList}\small\item\em Returns the associated PubMed IDs for a given node. \item\end{DoxyCompactList}\item 
 def \hyperlink{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_adc36d3c96e860a9db0dee1e60f0f9345}{getNodesByPubMed}
-\begin{DoxyCompactList}\small\item\em Returns the associated nodes for a given PubMed ID. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the associated nodes for a given PubMed ID. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a598282492f22cfabdb37b5ae3603e084}{propagatePMIDs}
+\begin{DoxyCompactList}\small\item\em Propagate the PMIDs associated with each node to its parents. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -118,6 +120,19 @@ Parses the given association file and adds the pubmed information to the appropr
 {\em assoc} & The name of the association file to be parsed \\
 \hline
 \end{DoxyParams}
+\hypertarget{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a598282492f22cfabdb37b5ae3603e084}{
+\index{GOPubmedGraph::GOPubmedGraph@{GOPubmedGraph::GOPubmedGraph}!propagatePMIDs@{propagatePMIDs}}
+\index{propagatePMIDs@{propagatePMIDs}!GOPubmedGraph::GOPubmedGraph@{GOPubmedGraph::GOPubmedGraph}}
+\subsubsection[{propagatePMIDs}]{\setlength{\rightskip}{0pt plus 5cm}def GOPubmedGraph.GOPubmedGraph.propagatePMIDs (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a598282492f22cfabdb37b5ae3603e084}
+
+
+Propagate the PMIDs associated with each node to its parents. 
+
 \hypertarget{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a9c455a5443e6be4986d7bfbc1ef874c2}{
 \index{GOPubmedGraph::GOPubmedGraph@{GOPubmedGraph::GOPubmedGraph}!toGOGenePubmedGraph@{toGOGenePubmedGraph}}
 \index{toGOGenePubmedGraph@{toGOGenePubmedGraph}!GOPubmedGraph::GOPubmedGraph@{GOPubmedGraph::GOPubmedGraph}}
