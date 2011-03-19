@@ -21,6 +21,8 @@ def \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a5f437c2ab06eacde21831786
 \begin{DoxyCompactList}\small\item\em Returns a \hyperlink{namespace_g_o_gene_pubmed_graph}{GOGenePubmedGraph} version of itself. \item\end{DoxyCompactList}\item 
 def \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a778128e77640d18bcaf775c2348013d4}{getGenesByNode}
 \begin{DoxyCompactList}\small\item\em Returns the associated genes for a given node. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a6179a967c11a89a19dedb768cbb92bc9}{getPropagatedGenesByNode}
+\begin{DoxyCompactList}\small\item\em Returns the associated propagated genes for a given node. \item\end{DoxyCompactList}\item 
 def \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a353497bb1605cfbefba350861e81ea6e}{getNodesByGene}
 \begin{DoxyCompactList}\small\item\em Returns the associated nodes for a given gene. \item\end{DoxyCompactList}\item 
 def \hyperlink{class_g_o_gene_graph_1_1_g_o_gene_graph_a3d0bfc52d583f576655cd0478ea2af86}{propagateGenes}
@@ -102,6 +104,25 @@ Returns the associated nodes for a given gene.
 
 \begin{DoxyParams}{Parameters}
 {\em geneid} & The ID of the gene for which to retrieve the associated nodes \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_g_o_gene_graph_1_1_g_o_gene_graph_a6179a967c11a89a19dedb768cbb92bc9}{
+\index{GOGeneGraph::GOGeneGraph@{GOGeneGraph::GOGeneGraph}!getPropagatedGenesByNode@{getPropagatedGenesByNode}}
+\index{getPropagatedGenesByNode@{getPropagatedGenesByNode}!GOGeneGraph::GOGeneGraph@{GOGeneGraph::GOGeneGraph}}
+\subsubsection[{getPropagatedGenesByNode}]{\setlength{\rightskip}{0pt plus 5cm}def GOGeneGraph.GOGeneGraph.getPropagatedGenesByNode (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{goid}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_gene_graph_1_1_g_o_gene_graph_a6179a967c11a89a19dedb768cbb92bc9}
+
+
+Returns the associated propagated genes for a given node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em goid} & The GOID of the node to retrieve the associated propagated genes from \\
 \hline
 \end{DoxyParams}
 \hypertarget{class_g_o_gene_graph_1_1_g_o_gene_graph_a0881964964972853c93e7606b73bb825}{

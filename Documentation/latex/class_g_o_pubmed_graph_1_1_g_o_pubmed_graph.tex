@@ -21,6 +21,8 @@ def \hyperlink{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a9c455a5443e6be4986d7
 \begin{DoxyCompactList}\small\item\em Returns a \hyperlink{namespace_g_o_gene_pubmed_graph}{GOGenePubmedGraph} version of itself. \item\end{DoxyCompactList}\item 
 def \hyperlink{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a24635a63eda34340ec00919adc165c7c}{getPubMedByNode}
 \begin{DoxyCompactList}\small\item\em Returns the associated PubMed IDs for a given node. \item\end{DoxyCompactList}\item 
+def \hyperlink{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_ae37bfd3ab6aa67af25e4975e5e14b47c}{getPropagatedPubMedByNode}
+\begin{DoxyCompactList}\small\item\em Returns the associated propagated PubMed IDs for a given node. \item\end{DoxyCompactList}\item 
 def \hyperlink{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_adc36d3c96e860a9db0dee1e60f0f9345}{getNodesByPubMed}
 \begin{DoxyCompactList}\small\item\em Returns the associated nodes for a given PubMed ID. \item\end{DoxyCompactList}\item 
 def \hyperlink{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a598282492f22cfabdb37b5ae3603e084}{propagatePMIDs}
@@ -80,6 +82,25 @@ Returns the associated nodes for a given PubMed ID.
 
 \begin{DoxyParams}{Parameters}
 {\em pubmed} & The PubMed ID for which to retrieve the associated nodes: \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_ae37bfd3ab6aa67af25e4975e5e14b47c}{
+\index{GOPubmedGraph::GOPubmedGraph@{GOPubmedGraph::GOPubmedGraph}!getPropagatedPubMedByNode@{getPropagatedPubMedByNode}}
+\index{getPropagatedPubMedByNode@{getPropagatedPubMedByNode}!GOPubmedGraph::GOPubmedGraph@{GOPubmedGraph::GOPubmedGraph}}
+\subsubsection[{getPropagatedPubMedByNode}]{\setlength{\rightskip}{0pt plus 5cm}def GOPubmedGraph.GOPubmedGraph.getPropagatedPubMedByNode (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{goid}
+\end{DoxyParamCaption}
+)}}
+\label{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_ae37bfd3ab6aa67af25e4975e5e14b47c}
+
+
+Returns the associated propagated PubMed IDs for a given node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em goid} & The GOID of the node to retrieve the associated propagated PubMed IDs from \\
 \hline
 \end{DoxyParams}
 \hypertarget{class_g_o_pubmed_graph_1_1_g_o_pubmed_graph_a24635a63eda34340ec00919adc165c7c}{
