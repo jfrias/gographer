@@ -1,6 +1,7 @@
 class GONode():
     def __init__ (self, goid=None, namespace=None, parents=None, obsolete=False,
-                  name=None, description=None, genes=None, pmids=None, wordVector=None):
+                  name=None, description=None, genes=set(), propGenes=set(),
+                  pmids=set(), propPmids=set(), wordVector=dict()):
         self.goid = goid
         self.namespace = namespace
         self.parents = parents
@@ -8,7 +9,9 @@ class GONode():
         self.name = name
         self.description = description
         self.genes = genes
+        self.propGenes = propGenes
         self.pmids = pmids
+        self.propPmids = propPmids
         self.wordVector = wordVector
 
     ##Set the GO ID of the node
@@ -64,3 +67,34 @@ class GONode():
     ##Returns the description of the node
     def getDescription (self):
         return self.description
+
+    ##Set the PubMed IDs associated with the node
+    # @param    pmids   The set containing the PubMed IDs that are associated with the node.
+    #                   The PubMed IDs are in tuples where it's the PubMed ID number followed by the qualifier.
+    def setPMIDs (self, pmids):
+        self.pmids = pmids
+
+    ##Returns the PubMed IDs associated with the node
+    def getPMIDs (self):
+        return self.pmids
+
+    ##Adds list containing one or more PubMed ID tuples to the existing set of PubMed IDs
+    # @param    pmid    A list where each entry is a PubMed IDs tuple, where it's the PubMed ID number followed by the qualifier
+    def addPMIDs(self, pmid):
+        self.pmids = self.pmids.union(pmid)
+
+    ##Set the propagated PubMed IDs associated with the node or its descendants
+    # @param    propPmids   The set containing the propagated PubMed IDs that are associated with the node or its descendants.
+    #                   The PubMed IDs are in tuples where it's the PubMed ID number followed by the qualifier.
+    def setPropagatedPMIDs (self, propPmids):
+        self.propPmids = propPmids
+
+    ##Returns the propagated PubMed IDs associated with the node or its descendants
+    def getPropagatedPMIDs (self):
+        return self.propPmids
+
+    ##Adds list containing PubMed ID tuples to the existing set of propagated PubMed IDs
+    # @param    pmids    A list where each entry is a PubMed ID tuple, where it's the PubMed ID number followed by the qualifier
+    def addPropagatedPMIDs(self, pmids):
+        self.propPmids = self.propPmids.union(pmids)
+        
