@@ -128,4 +128,12 @@ class GONode():
     def addPropagatedGenes(self, genes):
         self.propGenes = self.propGenes.union(genes)
 
+    ##Calculates the word vector for the node and stores this information
+    def calculateWordVector(self):
+        raise NotImplementedError
+
+    ##Returns the word vector for the node
+    def getWordVector(self):
+        raise self.wordVector
+
         

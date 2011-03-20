@@ -1,6 +1,7 @@
 from GOGraph import *
 from GOGeneGraph import *
 from GOPubmedGraph import *
+from utils import *
 
 location = "./go_daily-termdb.obo-xml"
 location = "./testgraph.obo-xml"
