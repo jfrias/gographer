@@ -2,6 +2,7 @@ from GOGraph import *
 from GOGeneGraph import *
 from GOPubmedGraph import *
 from utils import *
+from Corpus import *
 
 location = "./go_daily-termdb.obo-xml"
 location = "./testgraph.obo-xml"
@@ -42,3 +43,5 @@ for i in pubmed:
         break
 if GOPubmedtest.getPropagatedPubMedByNode('GO:0008150') != propPubmed:
     print "Error in getPropagatedPubMedByNode"
+
+corpus = Corpus.fromPubmedArticleSetFile("block_0.xml")

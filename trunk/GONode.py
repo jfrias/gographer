@@ -128,12 +128,34 @@ class GONode():
     def addPropagatedGenes(self, genes):
         self.propGenes = self.propGenes.union(genes)
 
-    ##Calculates the word vector for the node and stores this information
-    def calculateWordVector(self):
-        raise NotImplementedError
+    ##Calculates the word vector and returns this information
+    # @param    pmids   A list of PubMed ID tuples to be added to the word vector, where it's the PubMed ID number followed by the qualifier
+    # @param    corpus  The corpus that contains the information on the PubMed article
+    def calculateWordVector(self, pmids, corpus=None):
+        #Checks to make sure a corpus is provided
+        if not corpus:
+            print "No corpus is provided, word vector can not be calculated"
+            raise RuntimeError
 
+        wordVector = {}
+        for pmid, qualifier in pmids:
+            #Checks to make sure the PubMed article is in the corpus
+            #and the qualifier does not contain the word 'NOT'
+            if pmid in corpus.docs and "NOT" not in qualifier:
+                #Adds each word to the word vector
+                for word in corpus.docs[pmid].wordVec:
+                    if word in wordVector:
+                        wordVector[word] += corpus.docs[pmid].wordVec[word]
+                    else:
+                        wordVector[word] = corpus.docs[pmid].wordVec[word]
+        return wordVector
+    
     ##Returns the word vector for the node
-    def getWordVector(self):
-        raise self.wordVector
+    # @param    corpus  The corpus that contains the information on the PubMed article
+    def getWordVector(self, corpus=None):
+        #Calculates the word vector if the current word vector is empty
+        if len(self.wordVector) == 0:
+            self.wordVector = self.calculateWordVector(self.getPMIDs(), corpus)
+        return self.wordVector
 
         
