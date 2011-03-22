@@ -8,8 +8,10 @@ class Corpus:
 
     ## Constructor
     # @param docs An initial dictionary of the form [<pmid>] = <Document>
-    def __init__(self, docs=None):
+    def __init__(self, docs=None, tokenizer=None, stemmer=None):
         self.docs = docs or {}
+        self.tokenizer = tokenizer or Tokenizer().tokenize_word
+        self.stemmer = stemmer or PorterStemmer().stem
 
 
     ## Initialize corpus from a PubmedArticleSet xml file
@@ -64,21 +66,21 @@ class Corpus:
     # @param tokenizer The tokenizer function that will be used on the text
     # @param stemmer The stemmer function that will be used on the text
     def calculateWordVectors(self, tokenizer=None, stemmer=None):
-        if not tokenizer:
-            tokenizer = Tokenizer().tokenize_word
-        if not stemmer:
-            stemmer = PorterStemmer().stem
+        if tokenizer:
+            self.tokenizer = tokenizer
+        if stemmer:
+            self.stemmer = stemmer
 
         for doc in iter(self):
             title = doc.title
-            title = tokenizer(title)
+            title = self.tokenizer(title)
             words = title.split(' ')
             for word in words:
-                doc.addWord(stemmer(word, 0, len(word)-1))
+                doc.addWord(self.stemmer(word, 0, len(word)-1))
 
             abstract = doc.abstract
-            abstract = tokenizer(abstract)
+            abstract = self.tokenizer(abstract)
             words = abstract.split(' ')
             for word in words:
-                doc.addWord(stemmer(word, 0, len(word)-1))
+                doc.addWord(self.stemmer(word, 0, len(word)-1))
         
