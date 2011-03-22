@@ -1,5 +1,7 @@
 from xml.sax import make_parser
 from parsers import *
+from Tokenizer import Tokenizer
+from PorterStemmer import PorterStemmer
 
 ## A collection of Document objects.  Provide functionalities for storing and retrieval of Documents.
 class Corpus:
@@ -61,5 +63,22 @@ class Corpus:
     ## Calculates the word vector for all Documents in this Corpus using provided tokenizer and stemmer
     # @param tokenizer The tokenizer function that will be used on the text
     # @param stemmer The stemmer function that will be used on the text
-    def calculateWordVectors(self, tokenizer, stemmer):
-        NotImplementedError
+    def calculateWordVectors(self, tokenizer=None, stemmer=None):
+        if not tokenizer:
+            tokenizer = Tokenizer().tokenize_word
+        if not stemmer:
+            stemmer = PorterStemmer().stem
+
+        for doc in iter(self):
+            title = doc.title
+            title = tokenizer(title)
+            words = title.split(' ')
+            for word in words:
+                doc.addWord(stemmer(word, 0, len(word)-1))
+
+            abstract = doc.abstract
+            abstract = tokenizer(abstract)
+            words = abstract.split(' ')
+            for word in words:
+                doc.addWord(stemmer(word, 0, len(word)-1))
+        
