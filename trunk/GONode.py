@@ -150,12 +150,12 @@ class GONode():
                         wordVector[word] = corpus.docs[pmid].wordVec[word]
         return wordVector
     
-    ##Returns the word vector for the node
+    ##Returns the word vector for the node calculated using propagated PubMed IDs
     # @param    corpus  The corpus that contains the information on the PubMed article
     def getWordVector(self, corpus=None):
         #Calculates the word vector if the current word vector is empty
         if len(self.wordVector) == 0:
-            self.wordVector = self.calculateWordVector(self.getPMIDs(), corpus)
+            self.wordVector = self.calculateWordVector(self.getPropagatedPMIDs(), corpus)
         return self.wordVector
 
         
