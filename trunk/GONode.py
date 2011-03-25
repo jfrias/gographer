@@ -1,5 +1,5 @@
-from Tokenizer import Tokenizer
-from PorterStemmer import PorterStemmer
+from utils import *
+
 class GONode():
     def __init__ (self, goid=None, namespace=None, parents=None, obsolete=False,
                   name=None, description=None, genes=set(), propGenes=set(),
