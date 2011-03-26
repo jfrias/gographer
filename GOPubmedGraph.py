@@ -124,4 +124,5 @@ class GOPubmedGraph(GOGraph):
     #                       An empty list is used if no stop word list is given.
     def calculateWordVectors(self, corpus, tokenizer=Tokenizer().tokenize_word,
                             stemmer=PorterStemmer().stem, stopwords=[]):
-        raise NotImplementedError
+        for node in self.nodes_iter():
+            self.node[node]['data'].calculateWordVector(corpus, tokenizer, stemmer, stopwords)

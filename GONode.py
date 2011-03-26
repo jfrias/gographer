@@ -130,23 +130,27 @@ class GONode():
     def addPropagatedGenes(self, genes):
         self.propGenes = self.propGenes.union(genes)
 
-    ##Calculates the word vector and returns this information
-    # @param    pmids   A list of PubMed ID tuples to be added to the word vector, where it's the PubMed ID number followed by the qualifier
+    ##Calculates the word vector and stores this information
     # @param    corpus  The corpus that contains the information on the PubMed article
+    # @param    pmids   A list of PubMed ID tuples to be added to the word vector, where it's the PubMed ID number followed by the qualifier
+    #                   The propagated PubMed IDs will be used if none is given
     # @param    tokenizer   The tokenizer function that will be used on the text, a simple tokenizer is used if none is given.
     #                       Should take a string as an input, and outputs a string with words that are lower case and separated by a space
     # @param    stemmer The stemmer function that will be used to stem the words, the porter stemmer is used if none is given
     #                   Takes a word as an input and reports a stemmed word as an output.
     # @param    stopwords   A list of stop words that will not be included in the word vector, either as a list or a StopwordList.
     #                       An empty list is used if no stop word list is given.
-    def calculateWordVector(self, pmids, corpus, tokenizer=Tokenizer().tokenize_word,
-                            stemmer=PorterStemmer().stem, stopwords=[]):
+    def calculateWordVector(self, corpus, tokenizer=Tokenizer().tokenize_word,
+                            stemmer=PorterStemmer().stem, stopwords=[], pmids=None):
         wordVector = {}
 
         if not corpus:
             print "Not corpus is given, so a word vector can not be calculated."
 
         else:
+            if not pmids:
+                pmids = self.getPropagatedPMIDs()
+
             for pmid, qualifier in pmids:
                 #Checks to make sure the PubMed article is in the corpus
                 #and the qualifier does not contain the word 'NOT'
@@ -159,14 +163,14 @@ class GONode():
                                 wordVector[word] += pmidWordVector[word]
                             else:
                                 wordVector[word] = pmidWordVector[word]
-        return wordVector
+        self.wordVector = wordVector
     
     ##Returns the word vector for the node calculated using propagated PubMed IDs
     # @param    corpus  The corpus that contains the information on the PubMed article
     def getWordVector(self, corpus=None, stopwords=[]):
         #Calculates the word vector if the current word vector is empty
         if len(self.wordVector) == 0:
-            self.wordVector = self.calculateWordVector(self.getPropagatedPMIDs(), corpus, stopwords=stopwords)
+            self.calculateWordVector(corpus, stopwords=stopwords)
         return self.wordVector
 
         
