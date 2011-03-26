@@ -126,3 +126,11 @@ class GOPubmedGraph(GOGraph):
                             stemmer=PorterStemmer().stem, stopwords=[]):
         for node in self.nodes_iter():
             self.node[node]['data'].calculateWordVector(corpus, tokenizer, stemmer, stopwords)
+
+    ##Remove nodes that don't have at least one associated PMID
+    def removePMIDless(self):
+        pmidless = []
+        for node in self:
+            if len(self.getPropagatedPubMedByNode(node)) == 0:
+                pmidless.append(node)
+        self.remove_nodes_from(pmidless)
