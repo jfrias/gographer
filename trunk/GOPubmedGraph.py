@@ -2,6 +2,7 @@
 
 from GOGraph import GOGraph
 from networkx import topological_sort
+from utils import *
 
 class GOPubmedGraph(GOGraph):
     ## Create a pubmed graph from a GOGraph
@@ -112,3 +113,15 @@ class GOPubmedGraph(GOGraph):
         for node in sortedNodes:
             for ancestors in self.predecessors(node):
                 self.node[ancestors]['data'].addPropagatedPMIDs(self.node[node]['data'].getPropagatedPMIDs())
+
+    ##Calculates the word vectors for all of the nodes in the graph
+    # @param    corpus  The corpus that contains the information on the PubMed article
+    # @param    tokenizer   The tokenizer function that will be used on the text, a simple tokenizer is used if none is given.
+    #                       Should take a string as an input, and outputs a string with words that are lower case and separated by a space
+    # @param    stemmer The stemmer function that will be used to stem the words, the porter stemmer is used if none is given
+    #                   Takes a word as an input and reports a stemmed word as an output.
+    # @param    stopwords   A list of stop words that will not be included in the word vector, either as a list or a StopwordList.
+    #                       An empty list is used if no stop word list is given.
+    def calculateWordVectors(self, corpus, tokenizer=Tokenizer().tokenize_word,
+                            stemmer=PorterStemmer().stem, stopwords=[]):
+        raise NotImplementedError
