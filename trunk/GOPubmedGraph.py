@@ -3,6 +3,7 @@
 from GOGraph import GOGraph
 from networkx import topological_sort
 from utils import *
+import math
 
 class GOPubmedGraph(GOGraph):
     ## Create a pubmed graph from a GOGraph
@@ -134,3 +135,70 @@ class GOPubmedGraph(GOGraph):
             if len(self.getPropagatedPubMedByNode(node)) == 0:
                 pmidless.append(node)
         self.remove_nodes_from(pmidless)
+
+    ##Calculates the Kullback-Leibler weight for the two given nodes
+    # @param    n1  The first node to be used in the calculation
+    # @param    n2  The second node to be used in the calculation
+    # @param    smoother    The smoothing value to be used if any words are missing in either word vector
+    def calcWeightKL(self, n1, n2, smoother=0.001):
+        v1 = n1.getWordVector().copy()
+        v2 = n2.getWordVector().copy()
+
+        total1 = 0.0
+        total2 = 0.0
+
+        for w in v1:
+            total1 += v1[w]
+        for w in v2:
+            total2 += v2[w]
+
+        for w in v1:
+            if w not in v2:
+                v2[w] = smoother
+        for w in v2:
+            if w not in v1:
+                v1[w] = smoother
+
+        distance = 0
+        for w in v1:
+            distance += v1[w]/total1 * math.log((v1[w]/total1)/(v2[w]/total2))
+        return distance
+    
+    ##Calculates the semantic distance between a child and a parent node using the information bottleneck method
+    # @param    child   The GO ID of the child node
+    # @param    parent  The GO ID of the parent node
+    def lossIB(self, child, parent):
+        childNode = self.node[child]['data']
+        parentNode = self.node[parent]['data']
+
+        
+        tChild = float(self.getDescendantCount(child)+1)
+        tParent = float(self.getDescendantCount(parent)+1)
+        tRoot = float(len(self))
+
+        pti = tChild/tRoot
+        pii = tChild/tParent
+        distanceKL = self.calcWeightKL(childNode, parentNode)
+
+        return pti*pii*distanceKL
+
+    def findCommonAncestors(self, terms):
+        temp = DiGraph()
+        temp.add_edges_from(self.edges(data=True))
+        reverse = temp.reverse()
+        
+        ancestors = dict()
+        for term in terms:
+            for ancestor in shortest_path_length(reverse, term, weighted=True):
+                if ancestor in ancestors:
+                    ancestors[ancestor] = ancestors[ancestor].union([term])
+                else:
+                    ancestors[ancestor] = set([term])
+
+        key = ancestors.keys()
+        for ancestor in key:
+            if len(ancestors[ancestor]) == 1:
+		ancestors.pop(ancestor)
+
+        return ancestors
+        
