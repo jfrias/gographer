@@ -3,7 +3,7 @@ from utils import *
 class GONode():
     def __init__ (self, goid=None, namespace=None, parents=None, obsolete=False,
                   name=None, description=None, genes=set(), propGenes=set(),
-                  pmids=set(), propPmids=set(), wordVector=dict()):
+                  pmids=set(), propPmids=set(), wordVector=dict(), descendantCount=None):
         self.goid = goid
         self.namespace = namespace
         self.parents = parents
@@ -15,6 +15,7 @@ class GONode():
         self.pmids = pmids
         self.propPmids = propPmids
         self.wordVector = wordVector
+        self.descendantCount = descendantCount
 
     ##Set the GO ID of the node
     # @param    goid    The GO ID that will be assigned to the node
@@ -170,7 +171,12 @@ class GONode():
     def getWordVector(self, corpus=None, stopwords=[]):
         #Calculates the word vector if the current word vector is empty
         if len(self.wordVector) == 0:
-            self.calculateWordVector(corpus, stopwords=stopwords)
+            if len(self.getPropagatedPMIDs()) > 0:
+                self.calculateWordVector(corpus, stopwords=stopwords)
         return self.wordVector
+
+    ##Returns the number of descendants of the current node
+    def getDescendantCount(self):
+        return self.descendantCount
 
         

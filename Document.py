@@ -54,21 +54,23 @@ class Document:
     ## Returns the word vector of the Documented calculated on the fly
     def getWordVector(self, tokenizer, stemmer):
         wordVector = {}
-        
-        words = tokenizer(self.title).split(' ')
-        for word in words:
-            word = stemmer(word, 0, len(word)-1)
-            if word in wordVector:
-                wordVector[word] += 1
-            else:
-                wordVector[word] = 1
 
-        words = tokenizer(self.abstract).split(' ')
-        for word in words:
-            word = stemmer(word, 0, len(word)-1)
-            if word in wordVector:
-                wordVector[word] += 1
-            else:
-                wordVector[word] = 1
+        if self.title:
+            words = tokenizer(self.title).split(' ')
+            for word in words:
+                word = stemmer(word, 0, len(word)-1)
+                if word in wordVector:
+                    wordVector[word] += 1
+                else:
+                    wordVector[word] = 1
+
+        if self.abstract:
+            words = tokenizer(self.abstract).split(' ')
+            for word in words:
+                word = stemmer(word, 0, len(word)-1)
+                if word in wordVector:
+                    wordVector[word] += 1
+                else:
+                    wordVector[word] = 1
         return wordVector
         

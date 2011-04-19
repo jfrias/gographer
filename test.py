@@ -4,7 +4,7 @@ from GOPubmedGraph import *
 from utils import *
 from Corpus import *
 
-location = "./go_daily-termdb.obo-xml"
+#location = "./go_daily-termdb.obo-xml"
 location = "./testgraph.obo-xml"
 
 #possible namespaces are: "biological_process", "molecular_function", "cellular_component"
@@ -44,4 +44,6 @@ for i in pubmed:
 if GOPubmedtest.getPropagatedPubMedByNode('GO:0008150') != propPubmed:
     print "Error in getPropagatedPubMedByNode"
 
-corpus = Corpus.fromPubmedArticleSetFile("block_0.xml")
+corpus = Corpus.fromPubmedArticleSetFile("test_block_0.xml")
+stopwords = StopwordList("stopwords.txt")
+GOPubmedtest.calculateWordVectors(corpus, stopwords = stopwords)

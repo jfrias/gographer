@@ -1,6 +1,7 @@
 from xml.sax.handler import ContentHandler
 from xml.sax import make_parser
 from networkx import DiGraph
+from networkx import topological_sort
 from GOOboXmlHandler import *
 import cPickle
 
@@ -115,3 +116,35 @@ class GOGraph(DiGraph):
         else:
             print 'Invalid goid'
             raise
+
+    ## Calculates and stores the number of descendants each node in the graph has
+    def calcDescendantCount(self):
+        nodes = dict()
+        sortedNodes = topological_sort(self)
+        sortedNodes.reverse()
+        for node in sortedNodes:
+            if node not in nodes:
+                ids = set()
+            else:
+                ids = nodes[node]
+
+            self.node[node]['data'].descendantCount = len(ids)
+            ids = ids.union([node])
+
+            for parent in self.predecessors(node):
+                if parent not in nodes:
+                    nodes[parent] = ids
+                else:
+                    nodes[parent] = nodes[parent].union(ids)
+
+    ## Return the number of descendants of the given node. Calculates the count if it had not already been done so
+    # @param    goid    The GO ID of the node to return the descendant count of
+    def getDescendantCount(self, goid):
+        if goid in self:
+            count = self.node[goid]['data'].getDescendantCount()
+            if not None:
+                self.calcDescendantCount()
+                return self.node[goid]['data'].getDescendantCount()
+            else:
+                return count
+
