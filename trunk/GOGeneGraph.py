@@ -7,7 +7,7 @@ class GOGeneGraph(GOGraph):
     ## Create a gene graph from a GOGraph
     # @param    gograph A GOGraph to base this graph off of
     # @param    assoc   The file containing gene association information
-    def __init__(self, gograph, assoc=None):
+    def __init__(self, gograph, assoc=None, types = ["protein"]):
         if not gograph.__class__.__name__ is 'GOGraph':
             msg =  "You did not give an instance of GOGraph to GOProteinGraph (it's a %s):" % gograph.__class__.__name__ \
                   + " any weights or directions will be ignored."
@@ -18,13 +18,11 @@ class GOGeneGraph(GOGraph):
         self.geneToNode = dict()
 
         if assoc != None:
-            self.parseAssocFile(assoc)
-            self.propagateGenes()
+            self.parseAssocFile(assoc, types)
             
     ## Parses the given association file and adds the gene information to the appropriate nodes
     # @param    assoc   The name of the association file to be parsed
-    def parseAssocFile(self, assoc):
-        types = ["protein"]
+    def parseAssocFile(self, assoc, types = ["protein"]):
         nodes = self.nodes()
         try:
             f = open(assoc, 'r')
@@ -49,6 +47,7 @@ class GOGeneGraph(GOGraph):
                     else:
                         self.geneToNode[fields[1]] = self.geneToNode[fields[1]].union([fields[4]])
             f.close
+            self.propagateGenes()
         except:
             print "Could not parse association file %s" % (assoc)
     

@@ -10,7 +10,7 @@ class GOPubmedGraph(GOGraph):
     # @param    gograph A GOGraph to base this graph off of
     # @param    assoc   The file containing gene and pubmed association information
     # @param    excludeEvidence A list of the evidence codes that should be ignored
-    def __init__(self, gograph, assoc=None, excludeEvidence =[]):
+    def __init__(self, gograph, assoc=None, excludeEvidence =[], types = ["protein"]):
         if not gograph.__class__.__name__ is 'GOGraph':
             msg =  "You did not give an instance of GOGraph to GOProteinGraph (it's a %s):" % gograph.__class__.__name__ \
                   + " any weights or directions will be ignored."
@@ -23,12 +23,10 @@ class GOPubmedGraph(GOGraph):
 
         if assoc != None:
             self.parseAssocFile(assoc)
-            self.propagatePMIDs()
 
     ## Parses the given association file and adds the pubmed information to the appropriate nodes
     # @param    assoc   The name of the association file to be parsed
-    def parseAssocFile(self, assoc):
-        types = ["protein"]
+    def parseAssocFile(self, assoc, types = ["protein"]):
         nodes = self.nodes()
         try:
             f = open(assoc, 'r')
@@ -62,6 +60,7 @@ class GOPubmedGraph(GOGraph):
                             else:
                                 self.pubmedToNode[ref[5:]] = self.pubmedToNode[ref[5:]].union([fields[4]])
             f.close
+            self.propagatePMIDs()
         except:
             print "Could not parse association file %s" % (assoc)
 

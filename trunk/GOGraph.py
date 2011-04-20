@@ -34,7 +34,7 @@ class GOGraph(DiGraph):
     ## Returns the minimum depth of the node
     # @param    goid    The GO ID of the node whose depth will be found and returned
     def getLevel(self, goid):
-        parents = self.predecessors(node)
+        parents = self.predecessors(goid)
         if len(parents) == 0:
             return 0
         
