@@ -174,7 +174,7 @@ class GOPubmedGraph(GOGraph):
         
         tChild = float(self.getDescendantCount(child)+1)
         tParent = float(self.getDescendantCount(parent)+1)
-        tRoot = float(len(self))
+        tRoot = float(self.number_of_nodes())
 
         pti = tChild/tRoot
         pii = tChild/tParent
@@ -182,6 +182,8 @@ class GOPubmedGraph(GOGraph):
 
         return pti*pii*distanceKL
 
+    ##Temporary function for finding common ancestors
+    '''
     def findCommonAncestors(self, terms):
         temp = DiGraph()
         temp.add_edges_from(self.edges(data=True))
@@ -201,4 +203,4 @@ class GOPubmedGraph(GOGraph):
 		ancestors.pop(ancestor)
 
         return ancestors
-        
+    '''
