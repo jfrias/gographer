@@ -1,6 +1,7 @@
 from GOGraph import *
 from GOGeneGraph import *
 from GOPubmedGraph import *
+from GOGenePubmedGraph import *
 from utils import *
 from Corpus import *
 
