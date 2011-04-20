@@ -142,7 +142,7 @@ class GOGraph(DiGraph):
     def getDescendantCount(self, goid):
         if goid in self:
             count = self.node[goid]['data'].getDescendantCount()
-            if not None:
+            if not count:
                 self.calcDescendantCount()
                 return self.node[goid]['data'].getDescendantCount()
             else:
