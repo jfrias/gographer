@@ -13,8 +13,12 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
         #GOPubmedGraph.__init__(self, gopubmedgraph)
         self.add_edges_from(gopubmedgraph.edges_iter(data=True))
         self.add_edges_from(gogenegraph.edges_iter(data=True))
-        self.add_nodes_from(gopubmedgraph.nodes_iter(data=True))
         self.add_nodes_from(gogenegraph.nodes_iter(data=True))
+        for node in gopubmedgraph:
+            wordVector = gopubmedgraph.node[node]['data'].getWordVector()
+            self.node[node]['data'].wordVector = wordVector.copy()
+            self.node[node]['data'].pmids = gopubmedgraph.node[node]['data'].pmids.copy()
+            self.node[node]['data'].propPmids = gopubmedgraph.node[node]['data'].propPmids.copy()
         self.pubmedToNode = gopubmedgraph.pubmedToNode.copy()
         self.geneToNode = gogenegraph.geneToNode.copy()
         self.excludeEvidence = gopubmedgraph.excludeEvidence

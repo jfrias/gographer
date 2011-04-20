@@ -527,19 +527,23 @@ class StopwordList:
         sl.words.update(*words)
         return sl
 
+from heapq import *
 def mergeGraph(graph, leafCount):
     queue = []
+    leafs = set()
     for node in graph.nodes():
         if len(graph.edges(node)) == 0:
+            leafs.add(node)
             for parent in graph.predecessors(node):
                 heappush(queue, (graph.edge[parent][node]['weight'], (parent, node)))
-    while graph.number_of_nodes() > leafCount:
+    while len(leafs) > leafCount:
         edge = heappop(queue)
-        print edge
         graph.remove_edge(edge[1][0], edge[1][1])
         if len(graph.predecessors(edge[1][1])) == 0:
             graph.remove_node(edge[1][1])
+            leafs.remove(edge[1][1])
         if len(graph.edges(edge[1][0])) == 0:
+            leafs.add(edge[1][0])
             for parent in graph.predecessors(edge[1][0]):
                 heappush(queue, (graph.edge[parent][edge[1][0]]['weight'], (parent, edge[1][0])))
     return graph
