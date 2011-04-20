@@ -103,4 +103,9 @@ class GOGeneGraph(GOGraph):
             for ancestors in self.predecessors(node):
                 self.node[ancestors]['data'].addPropagatedGenes(self.node[node]['data'].getPropagatedGenes())
 
- 
+    def removeGeneless(self):
+        geneless = []
+        for node in self:
+            if len(self.getPropagatedGenesByNode(node)) == 0:
+                geneless.append(node)
+        self.remove_nodes_from(geneless)
