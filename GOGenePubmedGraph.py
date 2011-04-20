@@ -2,6 +2,7 @@
 
 from GOPubmedGraph import GOPubmedGraph
 from GOGeneGraph import GOGeneGraph
+from networkx import topological_sort
 
 class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
     ## Create a gene pubmed graph from a GOPubmedGraph and GOGeneGraph
@@ -26,6 +27,6 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
 
         for node in sortedNodes:
             for parent in self.predecessors(node):
-                weight = weighter(node, parent)
+                weight = weighter.makeWeighted(node, parent, self)
                 self.edge[parent][node]['weight'] = weight
         
