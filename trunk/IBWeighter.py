@@ -12,7 +12,7 @@ class IBWeighter(WeightingInterface):
         
         tChild = float(graph.getDescendantCount(child)+1)
         tParent = float(graph.getDescendantCount(parent)+1)
-        tRoot = float(graph.number_of_nodes())
+        tRoot = float(graph.getDescendantCount(topological_sort(graph)[0])+1)
 
         pti = tChild/tRoot
         pii = tChild/tParent
@@ -28,16 +28,16 @@ class IBWeighter(WeightingInterface):
         total2 = 0.0
 
         for w in v1:
-            total1 += v1[w]
-        for w in v2:
-            total2 += v2[w]
-
-        for w in v1:
             if w not in v2:
                 v2[w] = smoother
         for w in v2:
             if w not in v1:
                 v1[w] = smoother
+
+        for w in v1:
+            total1 += v1[w]
+        for w in v2:
+            total2 += v2[w]
 
         distance = 0
         for w in v1:
