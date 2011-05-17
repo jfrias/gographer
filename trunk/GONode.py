@@ -157,13 +157,13 @@ class GONode():
                 #and the qualifier does not contain the word 'NOT'
                 if pmid in corpus.docs and "NOT" not in qualifier:
                     #Adds each word to the word vector
-                    pmidWordVector = corpus.docs[pmid].getWordVector(tokenizer, stemmer)
+                    pmidWordVector = corpus.docs[pmid].getWordVector(tokenizer, stemmer, stopwords)
                     for word in pmidWordVector:
-                        if word not in stopwords:
-                            if word in wordVector:
-                                wordVector[word] += pmidWordVector[word]
-                            else:
-                                wordVector[word] = pmidWordVector[word]
+                        #if word not in stopwords:
+                        if word in wordVector:
+                            wordVector[word] += pmidWordVector[word]
+                        else:
+                            wordVector[word] = pmidWordVector[word]
         self.wordVector = wordVector
     
     ##Returns the word vector for the node calculated using propagated PubMed IDs
