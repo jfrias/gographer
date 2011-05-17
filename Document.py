@@ -52,12 +52,14 @@ class Document:
         return str(self)
 
     ## Returns the word vector of the Documented calculated on the fly
-    def getWordVector(self, tokenizer, stemmer):
+    def getWordVector(self, tokenizer, stemmer, stopwords=[]):
         wordVector = {}
 
         if self.title:
             words = tokenizer(self.title).split(' ')
             for word in words:
+                if word in stopwords:
+                    continue
                 word = stemmer(word, 0, len(word)-1)
                 if word in wordVector:
                     wordVector[word] += 1
@@ -67,6 +69,8 @@ class Document:
         if self.abstract:
             words = tokenizer(self.abstract).split(' ')
             for word in words:
+                if word in stopwords:
+                    continue
                 word = stemmer(word, 0, len(word)-1)
                 if word in wordVector:
                     wordVector[word] += 1

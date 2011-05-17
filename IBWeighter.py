@@ -1,4 +1,5 @@
 from WeightingInterface import WeightingInterface
+from networkx import topological_sort
 
 class IBWeighter(WeightingInterface):
 
@@ -16,7 +17,7 @@ class IBWeighter(WeightingInterface):
 
         pti = tChild/tRoot
         pii = tChild/tParent
-        distanceKL = graph.calcWeightKL(childNode, parentNode)
+        distanceKL = self.calcWeightKL(childNode, parentNode)
 
         return pti*pii*distanceKL
 

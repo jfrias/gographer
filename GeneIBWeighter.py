@@ -18,7 +18,7 @@ class GeneIBWeighter(WeightingInterface):
 
         pti = tChild/tRoot
         pii = tChild/tParent
-        distanceKL = graph.calcWeightKL(childNode, parentNode)
+        distanceKL = self.calcWeightKL(childNode, parentNode)
 
         return pti*pii*distanceKL
 
