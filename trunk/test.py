@@ -4,6 +4,8 @@ from GOPubmedGraph import *
 from GOGenePubmedGraph import *
 from utils import *
 from Corpus import *
+from SteinerTree import *
+
 
 #location = "./go_daily-termdb.obo-xml"
 location = "./testgraph.obo-xml"

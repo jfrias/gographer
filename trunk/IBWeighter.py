@@ -1,11 +1,16 @@
 from WeightingInterface import WeightingInterface
 from networkx import topological_sort
+import math
 
 class IBWeighter(WeightingInterface):
 
     def makeWeighted(self, child, parent, graph):
         return self.lossIB(child, parent, graph)
 
+    ##Calculates the semantic distance between a child and a parent node using the information bottleneck method
+    # @param    child   The GO ID of the child node
+    # @param    parent  The GO ID of the parent node
+    # @param    graph   The graph that contains the nodes
     def lossIB(self, child, parent, graph):
         childNode = graph.node[child]['data']
         parentNode = graph.node[parent]['data']
@@ -21,6 +26,10 @@ class IBWeighter(WeightingInterface):
 
         return pti*pii*distanceKL
 
+    ##Calculates the Kullback-Leibler weight for the two given nodes
+    # @param    n1  The first node to be used in the calculation
+    # @param    n2  The second node to be used in the calculation
+    # @param    smoother    The smoothing value to be used if any words are missing in either word vector
     def calcWeightKL(self, n1, n2, smoother=0.001):
         v1 = n1.getWordVector().copy()
         v2 = n2.getWordVector().copy()

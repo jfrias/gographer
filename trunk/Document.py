@@ -52,6 +52,11 @@ class Document:
         return str(self)
 
     ## Returns the word vector of the Documented calculated on the fly
+    # @param tokenizer The function used to tokenize the words: takes a word as input
+    # @param stemmer The function used to stem the words: takes a word, and the
+    #       positions in the string of the word to be stemmed as input (p, i, j)
+    # @param stopwords A list of stop words to removed from the word vector.
+    #       An empty list is used if no list is provided.
     def getWordVector(self, tokenizer, stemmer, stopwords=[]):
         wordVector = {}
 

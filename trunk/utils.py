@@ -24,12 +24,12 @@ def verifyDocuments(ids, filename):
 
     result = True
     if len(extrafound) > 0:
-        raise RuntimeWarning, "There were %i extra pmids downloaded: %s" % (len(extrafound), ",".join(extrafound))
-        #print "There were %i extra pmids downloaded: %s" % (len(extrafound), ",".join(extrafound))
+        #raise RuntimeWarning, "There were %i extra pmids downloaded: %s" % (len(extrafound), ",".join(extrafound))
+        print "There were %i extra pmids downloaded: %s" % (len(extrafound), ",".join(extrafound))
         result = False
     if len(notfound) > 0:
-        raise RuntimeWarning, "There were %i pmids not downloaded: %s" % (len(notfound), ",".join(notfound))                
-        #print "There were %i pmids not downloaded: %s" % (len(notfound), ",".join(notfound))                
+        #raise RuntimeWarning, "There were %i pmids not downloaded: %s" % (len(notfound), ",".join(notfound))                
+        print "There were %i pmids not downloaded: %s" % (len(notfound), ",".join(notfound))                
         result = False
     return result
 
@@ -66,8 +66,8 @@ def efetchByBlock(ids, directory, blocksize=None, failIfProblem=False):
                 time.sleep(3)
 
             if not verifyDocuments(ids[index:end], filename) and failIfProblem:
-                print 
-                raise RuntimeError, "PMID check verification failed - some documents not downloaded"
+                print "PMID check verification failed - some documents not downloaded"
+                #raise RuntimeError, "PMID check verification failed - some documents not downloaded"
             index += blocksize
     except Exception, e:
         raise RuntimeError, "Problem fetching all PMIDs."
@@ -546,4 +546,14 @@ def mergeGraph(graph, leafCount):
             leafs.add(edge[1][0])
             for parent in graph.predecessors(edge[1][0]):
                 heappush(queue, (graph.edge[parent][edge[1][0]]['weight'], (parent, edge[1][0])))
+    return graph
+
+def keepGenes(graph, geneList):
+    for node in graph:
+        remove = list()
+        for gene in graph.node[node]['data'].getPropagatedGenes():
+            if gene[0] not in geneList:
+                remove.append(gene)
+        for gene in remove:
+            graph.node[node]['data'].propGenes.remove(gene)
     return graph
