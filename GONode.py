@@ -4,7 +4,7 @@ class GONode():
     def __init__ (self, goid=None, namespace=None, parents=None, obsolete=False,
                   name=None, description=None, genes=set(), propGenes=set(),
                   pmids=set(), propPmids=set(), wordVector=dict(), descendantCount=None,
-                  mergedGenes=set(), mergedPmids=set(), infoLoss=0):
+                  mergedGenes=set(), mergedPmids=set(), mergedCount=0, infoLoss=0):
         self.goid = goid
         self.namespace = namespace
         self.parents = parents
@@ -19,7 +19,9 @@ class GONode():
         self.descendantCount = descendantCount
         self.mergedGenes = mergedGenes
         self.mergedPmids = mergedPmids
+        self.mergedCount = mergedCount
         self.infoLoss = infoLoss
+
 
     ##Set the GO ID of the node
     # @param    goid    The GO ID that will be assigned to the node
@@ -215,6 +217,19 @@ class GONode():
     def addMergedPMIDs(self, mergedPmids):
         self.mergedPmids = self.mergedPmids.union(mergedPmids)
 
+    ##Set the count of the number of nodes that have been merged into the current node
+    # @param    mergedCount   The integer count of the number of nodes that have been merged into the current node
+    def setMergedCount (self, mergedCount):
+        self.mergedCount = mergedCount
+
+    ##Returns the PubMed IDs associated with the nodes that have been merged into the current node
+    def getMergedCount (self):
+        return self.mergedCount
+
+    ##Adds list containing one or more PMID tuples to the existing set of merged PMIDs
+    # @param    mergedPmids    A list where each entry is a PubMed ID tuple, where it's the PubMed ID followed by the qualifier
+    def addMergedCount(self, mergedCount=1):
+        self.mergedCount += mergedCount
 
     ##Set the PubMed IDs associated with the nodes that have been merged into the current node
     # @param    infoLoss   The set containing the PubMed IDs that are associated with the merged nodes.
