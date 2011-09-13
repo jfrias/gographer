@@ -7,7 +7,8 @@ class GOGeneGraph(GOGraph):
     ## Create a gene graph from a GOGraph
     # @param    gograph A GOGraph to base this graph off of
     # @param    assoc   The file containing gene association information
-    def __init__(self, gograph, assoc=None, types = ["protein"]):
+    # @param    excludeEvidence A list of the evidence codes that should be ignored
+    def __init__(self, gograph, assoc=None, excludeEvidence =[], types = ["protein"]):
         if not gograph.__class__.__name__ is 'GOGraph':
             msg =  "You did not give an instance of GOGraph to GOProteinGraph (it's a %s):" % gograph.__class__.__name__ \
                   + " any weights or directions will be ignored."
@@ -16,6 +17,7 @@ class GOGeneGraph(GOGraph):
         self.add_edges_from(gograph.edges_iter(data=True))
         self.add_nodes_from(gograph.nodes_iter(data=True))
         self.geneToNode = dict()
+        self.excludeEvidence = excludeEvidence
 
         if assoc != None:
             self.parseAssocFile(assoc, types)
@@ -36,6 +38,9 @@ class GOGeneGraph(GOGraph):
                         continue
                     #Checks to make sure the association is a type of interest
                     if not fields[11] in types:
+                        continue
+
+                    if fields[6] in self.excludeEvidence:
                         continue
 
                     #Stores both the id and the qualifier as a tuple in the node's gene list
