@@ -1,4 +1,4 @@
 class WeightingInterface:
     
-    def makeWeighted(self, graph):
+    def makeWeighted(self, child, parent, graph):
         raise NotImplementedError
