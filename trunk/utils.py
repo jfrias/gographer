@@ -557,6 +557,10 @@ def mergeEdge(graph, edge):
     graph.remove_edge(edge[0], edge[1])
     return graph
 
+## Removes from the graph the genes that are not included in a given list of genes
+# @param graph GOGeneGraph or GOGenePubmedGraph from which to remove the genes
+# @param geneList The genes that should be kept if they are listed in the graph
+# /return graph The graph with the unwanted genes removed
 def keepGenes(graph, geneList):
     for node in graph:
         remove = list()
@@ -565,6 +569,13 @@ def keepGenes(graph, geneList):
                 remove.append(gene)
         for gene in remove:
             graph.node[node]['data'].propGenes.remove(gene)
+            
+        remove = list()
+        for gene in graph.node[node]['data'].getGenes():
+            if gene[0] not in geneList:
+                remove.append(gene)
+        for gene in remove:
+            graph.node[node]['data'].genes.remove(gene)
     return graph
 
 def checkMerge(loss, nodeCount, model, maxProb=0.05):
@@ -592,7 +603,10 @@ def mergeGraphCheck(graph, model, maxProb=0.05):
         loss = graph.node[edge[1][0]]['data'].getInfoLoss() + edge[0] + graph.node[edge[1][1]]['data'].getInfoLoss()
         mergedNodes = graph.node[edge[1][0]]['data'].getMergedCount() + 1 + graph.node[edge[1][1]]['data'].getMergedCount() + 1
         mergedGenes = len(graph.node[edge[1][0]]['data'].getMergedGenes().union(graph.node[edge[1][1]]['data'].getMergedGenes()).union(graph.node[edge[1][1]]['data'].getPropagatedGenes()))
-        prob = calcProb(loss, mergedNodes, model)
+        if mergedGenes <= 200:
+	    prob = calcProb(loss, mergedGenes, model)
+	else:
+	    prob = 1 + maxProb
         if prob < maxProb:
             graph = mergeEdge(graph, (edge[1][0], edge[1][1]))
             if len(graph.predecessors(edge[1][1])) == 0:
