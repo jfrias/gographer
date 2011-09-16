@@ -1,6 +1,10 @@
 from calcModel import *
 from heapq import *
 
+## Merges the graph until the number of leaves left in the graph is less than or equal to the inputted leafCount
+# @param graph A weighted GOGenePubmedGraph that will be merged
+# @param leafCount The number of leaves that should be left in the graph when the function stops running
+# /return graph The updated version fo the inputted graph 
 def mergeGraph(graph, leafCount):
     queue = []
     leafs = set()
@@ -21,6 +25,10 @@ def mergeGraph(graph, leafCount):
                 heappush(queue, (graph.edge[parent][edge[1][0]]['weight'], (parent, edge[1][0])))
     return graph
 
+## Tracks the amount of information that would be lost when removing the given edge from the graph prior to removing the edge
+# @param graph A weighted GOGenePubmedGraph from which to remove the edge
+# @param edge The edge that is to be removed from the graph
+# /return graph The updated version of the inputted graph
 def mergeEdge(graph, edge):
     graph.node[edge[0]]['data'].addMergedCount(graph.node[edge[1]]['data'].getMergedCount()+1)
     graph.node[edge[0]]['data'].addMergedGenes(graph.node[edge[1]]['data'].getPropagatedGenes())
@@ -39,7 +47,13 @@ def checkMerge(loss, nodeCount, model, maxProb=0.05):
         merge = True
     return merge
 
-def mergeGraphCheck(graph, model, maxProb=0.05):
+## Merges the graph, and checks before each merge to ensure the probability of associated information loss is less than the set max probability
+# @param graph A weighted GOGenePubmedGraph that will be merged
+# @param model The model from which to calculate the probability
+# @param maxProb The max allowed probaiblity for a merging to occur, the default value is 0.05
+# @param maxMergedGeneCount The max allowed number of merged genes for any given node, merging stops at that node if the max is reached. The default value is 200
+# /return graph The updated version fo the inputted graph 
+def mergeGraphCheck(graph, model, maxProb=0.05, maxMergedGeneCount=200):
     queue = []
     leafs = set()
     for node in graph.nodes():
@@ -53,7 +67,7 @@ def mergeGraphCheck(graph, model, maxProb=0.05):
         loss = graph.node[edge[1][0]]['data'].getInfoLoss() + edge[0] + graph.node[edge[1][1]]['data'].getInfoLoss()
         mergedNodes = graph.node[edge[1][0]]['data'].getMergedCount() + 1 + graph.node[edge[1][1]]['data'].getMergedCount() + 1
         mergedGenes = len(graph.node[edge[1][0]]['data'].getMergedGenes().union(graph.node[edge[1][1]]['data'].getMergedGenes()).union(graph.node[edge[1][1]]['data'].getPropagatedGenes()))
-        if mergedGenes <= 200:
+        if mergedGenes <= maxMergedGeneCount:
 	    prob = calcProb(loss, mergedGenes, model)
 	else:
 	    prob = 1 + maxProb
