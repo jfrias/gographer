@@ -52,7 +52,7 @@ def checkMerge(loss, nodeCount, model, maxProb=0.05):
 # @param model The model from which to calculate the probability
 # @param maxProb The max allowed probaiblity for a merging to occur, the default value is 0.05
 # @param maxMergedGeneCount The max allowed number of merged genes for any given node, merging stops at that node if the max is reached. The default value is 200
-# /return graph The updated version fo the inputted graph 
+# /return graph The updated version fo the inputted graph
 def mergeGraphCheck(graph, model, maxProb=0.05, maxMergedGeneCount=200):
     queue = []
     leafs = set()
@@ -61,28 +61,95 @@ def mergeGraphCheck(graph, model, maxProb=0.05, maxMergedGeneCount=200):
             leafs.add(node)
             for parent in graph.predecessors(node):
                 heappush(queue, (graph.edge[parent][node]['weight'], (parent, node)))
-    discarded = list()
+
     while len(queue) > 0:
         edge = heappop(queue)
+        #Calculates information loss
         loss = graph.node[edge[1][0]]['data'].getInfoLoss() + edge[0] + graph.node[edge[1][1]]['data'].getInfoLoss()
         mergedNodes = graph.node[edge[1][0]]['data'].getMergedCount() + 1 + graph.node[edge[1][1]]['data'].getMergedCount() + 1
         mergedGenes = len(graph.node[edge[1][0]]['data'].getMergedGenes().union(graph.node[edge[1][1]]['data'].getMergedGenes()).union(graph.node[edge[1][1]]['data'].getPropagatedGenes()))
+
+        #Obtains probability
         if mergedGenes <= maxMergedGeneCount:
 	    prob = calcProb(loss, mergedGenes, model)
 	else:
 	    prob = 1 + maxProb
+
+	#Merges if probability is less than maxProb
         if prob < maxProb:
+            predecessors = graph.predecessors(edge[1][1])
             graph = mergeEdge(graph, (edge[1][0], edge[1][1]))
-            if len(graph.predecessors(edge[1][1])) == 0:
-                graph.remove_node(edge[1][1])
-                leafs.remove(edge[1][1])
-            if len(graph.edges(edge[1][0])) == 0:
-                leafs.add(edge[1][0])
-                for parent in graph.predecessors(edge[1][0]):
-                    heappush(queue, (graph.edge[parent][edge[1][0]]['weight'], (parent, edge[1][0])))
-	    for i in discarded:
-		heappush(queue, i)
-	    discarded = list()
-        else:
-	    discarded.append(edge)
+            graph.remove_node(edge[1][1])
+            leafs.remove(edge[1][1])
+
+	    queue = []
+	    for node in graph.nodes():
+	        if len(graph.edges(node)) == 0:
+		    leafs.add(node)
+		    for parent in graph.predecessors(node):
+		        heappush(queue, (graph.edge[parent][node]['weight'], (parent, node)))
+##            ##Add any new leaves and associated edges to the queue and leaf list
+##            for pred in predecessors:
+##                if len(graph.edges(pred)) == 0:
+##                    leafs.add(pred)
+##                    for parent in graph.predecessors(pred):
+##                        heappush(queue, (graph.edge[parent][pred]['weight'], (parent, pred)))
+##
+##            #Check queue to remove all edges associated with removed node
+##            newQueue = []
+##            for i in queue:
+##                if i[1][1] != edge[1][1]:
+##                    heappush(newQueue, i)
+##            queue = newQueue
+##            
+##            #Reconsiders all previously unmerged edges to leaves
+##	    for i in discarded:
+##		heappush(queue, i)
+##	    discarded = list()
+##        else:
+##	    discarded.append(edge)	    
+    return graph, leafs
+
+def mergeGraphMultCheck(graph, model, maxProb=0.05, maxMergedGeneCount=200):
+    queue = []
+    leafs = set()
+    for node in graph.nodes():
+        if len(graph.edges(node)) == 0:
+            leafs.add(node)
+            for parent in graph.predecessors(node):
+                geneCount = len(graph.getGenesByNode(node))
+                if geneCount == 0:
+                    geneCount = 1
+                heappush(queue, (graph.edge[parent][node]['weight']*(geneCount+len(graph.node[node]['data'].getMergedGenes())), (parent, node)))
+
+    while len(queue) > 0:
+        edge = heappop(queue)
+        #Calculates information loss
+        loss = graph.node[edge[1][0]]['data'].getInfoLoss() + graph.edge[edge[1][0]][edge[1][1]]['weight'] + graph.node[edge[1][1]]['data'].getInfoLoss()
+        mergedNodes = graph.node[edge[1][0]]['data'].getMergedCount() + 1 + graph.node[edge[1][1]]['data'].getMergedCount() + 1
+        mergedGenes = len(graph.node[edge[1][0]]['data'].getMergedGenes().union(graph.node[edge[1][1]]['data'].getMergedGenes()).union(graph.node[edge[1][1]]['data'].getPropagatedGenes()))
+
+        #Obtains probability
+        if mergedGenes <= maxMergedGeneCount:
+	    prob = calcProb(loss, mergedGenes, model)
+	else:
+	    prob = 1 + maxProb
+
+	#Merges if probability is less than maxProb
+        if prob < maxProb:
+            predecessors = graph.predecessors(edge[1][1])
+            graph = mergeEdge(graph, (edge[1][0], edge[1][1]))
+            graph.remove_node(edge[1][1])
+            leafs.remove(edge[1][1])
+
+	    queue = []
+	    for node in graph.nodes():
+	        if len(graph.edges(node)) == 0:
+		    leafs.add(node)
+		    for parent in graph.predecessors(node):
+                        geneCount = len(graph.getGenesByNode(node))
+                        if geneCount == 0:
+                            geneCount = 1
+		        heappush(queue, (graph.edge[parent][node]['weight']*(geneCount+len(graph.node[node]['data'].getMergedGenes())), (parent, node)))
+	    
     return graph, leafs
