@@ -31,8 +31,10 @@ def mergeGraph(graph, leafCount):
 # /return graph The updated version of the inputted graph
 def mergeEdge(graph, edge):
     graph.node[edge[0]]['data'].addMergedCount(graph.node[edge[1]]['data'].getMergedCount()+1)
-    graph.node[edge[0]]['data'].addMergedGenes(graph.node[edge[1]]['data'].getPropagatedGenes())
-    graph.node[edge[0]]['data'].addMergedPMIDs(graph.node[edge[1]]['data'].getPropagatedPMIDs())
+    graph.node[edge[0]]['data'].addMergedGenes(graph.node[edge[1]]['data'].getMergedGenes())
+    graph.node[edge[0]]['data'].addMergedGenes(graph.getGenesByNode(edge[1]))
+    graph.node[edge[0]]['data'].addMergedPMIDs(graph.node[edge[1]]['data'].getMergedPMIDs())
+    graph.node[edge[0]]['data'].addMergedPMIDs(graph.getPubMedByNode(edge[1]))
     graph.node[edge[0]]['data'].addInfoLoss(graph.edge[edge[0]][edge[1]]['weight'])
     graph.node[edge[0]]['data'].addInfoLoss(graph.node[edge[1]]['data'].getInfoLoss())
     graph.remove_edge(edge[0], edge[1])
@@ -67,7 +69,7 @@ def mergeGraphCheck(graph, model, maxProb=0.05, maxMergedGeneCount=200):
         #Calculates information loss
         loss = graph.node[edge[1][0]]['data'].getInfoLoss() + edge[0] + graph.node[edge[1][1]]['data'].getInfoLoss()
         mergedNodes = graph.node[edge[1][0]]['data'].getMergedCount() + 1 + graph.node[edge[1][1]]['data'].getMergedCount() + 1
-        mergedGenes = len(graph.node[edge[1][0]]['data'].getMergedGenes().union(graph.node[edge[1][1]]['data'].getMergedGenes()).union(graph.node[edge[1][1]]['data'].getPropagatedGenes()))
+        mergedGenes = len(graph.node[edge[1][0]]['data'].getMergedGenes().union(graph.node[edge[1][1]]['data'].getMergedGenes()).union(graph.getGenesByNode(edge[1][1])))
 
         #Obtains probability
         if mergedGenes <= maxMergedGeneCount:
@@ -81,6 +83,9 @@ def mergeGraphCheck(graph, model, maxProb=0.05, maxMergedGeneCount=200):
             graph = mergeEdge(graph, (edge[1][0], edge[1][1]))
             graph.remove_node(edge[1][1])
             leafs.remove(edge[1][1])
+
+            for pred in predecessors:
+                graph = removeEmptyNode(graph, pred)
 
 	    queue = []
 	    for node in graph.nodes():
@@ -127,7 +132,7 @@ def mergeGraphMultCheck(graph, model, maxProb=0.05, maxMergedGeneCount=200):
         #Calculates information loss
         loss = graph.node[edge[1][0]]['data'].getInfoLoss() + graph.edge[edge[1][0]][edge[1][1]]['weight'] + graph.node[edge[1][1]]['data'].getInfoLoss()
         mergedNodes = graph.node[edge[1][0]]['data'].getMergedCount() + 1 + graph.node[edge[1][1]]['data'].getMergedCount() + 1
-        mergedGenes = len(graph.node[edge[1][0]]['data'].getMergedGenes().union(graph.node[edge[1][1]]['data'].getMergedGenes()).union(graph.node[edge[1][1]]['data'].getPropagatedGenes()))
+        mergedGenes = len(graph.node[edge[1][0]]['data'].getMergedGenes().union(graph.node[edge[1][1]]['data'].getMergedGenes()).union(graph.getGenesByNode(edge[1][1])))
 
         #Obtains probability
         if mergedGenes <= maxMergedGeneCount:
@@ -142,6 +147,9 @@ def mergeGraphMultCheck(graph, model, maxProb=0.05, maxMergedGeneCount=200):
             graph.remove_node(edge[1][1])
             leafs.remove(edge[1][1])
 
+            for pred in predecessors:
+                graph = removeEmptyNode(graph, pred)
+
 	    queue = []
 	    for node in graph.nodes():
 	        if len(graph.edges(node)) == 0:
@@ -153,3 +161,16 @@ def mergeGraphMultCheck(graph, model, maxProb=0.05, maxMergedGeneCount=200):
 		        heappush(queue, (graph.edge[parent][node]['weight']*(geneCount+len(graph.node[node]['data'].getMergedGenes())), (parent, node)))
 	    
     return graph, leafs
+
+## Checks and removes the node if it does not contain any directly associated or merged genes, also checks if any newly created leaf nodes are empty and removes them if they are
+# @param graph A weighted GOGenePubmedGraph that will be merged
+# @param node The node that will be checked
+# /return graph The updated version of the inputted graph
+def removeEmptyNode(graph, node):
+    if len(graph.node[node]['data'].getMergedGenes()) == 0 and len(graph.getGenesByNode(node)) == 0:
+        predecessors = graph.predecessors(node)
+        graph.remove_node(node)
+        for pred in predecessors:
+            if len(graph.edges(pred)) == 0:
+                removeEmptyNode(graph, pred)
+    return graph
