@@ -69,7 +69,7 @@ def mergeGraphCheck(graph, model, maxProb=0.05, maxMergedGeneCount=200, minGeneA
         #Calculates information loss
         loss = graph.node[edge[1][0]]['data'].getInfoLoss() + edge[0] + graph.node[edge[1][1]]['data'].getInfoLoss()
         mergedNodes = graph.node[edge[1][0]]['data'].getMergedCount() + 1 + graph.node[edge[1][1]]['data'].getMergedCount() + 1
-        mergedGenes = len(graph.node[edge[1][0]]['data'].getMergedGenes().union(graph.node[edge[1][1]]['data'].getMergedGenes()).union(graph.getGenesByNode(edge[1][1])))
+        mergedGenes = len(graph.node[edge[1][0]]['data'].getMergedGenes().union(graph.node[edge[1][1]]['data'].getMergedGenes()).union(graph.getGenesByNode(edge[1][1])).union(graph.getGenesByNode(edge[1][0])))
         genes = len(graph.node[edge[1][1]]['data'].getMergedGenes().union(graph.getGenesByNode(edge[1][1])))
 
         #Obtains probability
@@ -134,7 +134,7 @@ def mergeGraphMultCheck(graph, model, maxProb=0.05, maxMergedGeneCount=200, minG
         #Calculates information loss
         loss = graph.node[edge[1][0]]['data'].getInfoLoss() + graph.edge[edge[1][0]][edge[1][1]]['weight'] + graph.node[edge[1][1]]['data'].getInfoLoss()
         mergedNodes = graph.node[edge[1][0]]['data'].getMergedCount() + 1 + graph.node[edge[1][1]]['data'].getMergedCount() + 1
-        mergedGenes = len(graph.node[edge[1][0]]['data'].getMergedGenes().union(graph.node[edge[1][1]]['data'].getMergedGenes()).union(graph.getGenesByNode(edge[1][1])))
+        mergedGenes = len(graph.node[edge[1][0]]['data'].getMergedGenes().union(graph.node[edge[1][1]]['data'].getMergedGenes()).union(graph.getGenesByNode(edge[1][1])).union(graph.getGenesByNode(edge[1][0])))
         genes = len(graph.node[edge[1][1]]['data'].getMergedGenes().union(graph.getGenesByNode(edge[1][1])))
 
         #Obtains probability
@@ -188,20 +188,21 @@ def mergeGraphProb(graph, model, maxProb=0.05, maxMergedGeneCount=200, minGeneAu
             leafs.add(node)
             for parent in graph.predecessors(node):
                 loss = graph.node[parent]['data'].getInfoLoss() + graph.edge[parent][node]['weight'] + graph.node[node]['data'].getInfoLoss()
-                mergedGenes = len(graph.node[parent]['data'].getMergedGenes().union(graph.node[node]['data'].getMergedGenes()).union(graph.getGenesByNode(node)))
-                prob = calcProb(loss, mergedGenes, model)
-                heappush(queue, (prob, (parent, node)))
+                mergedGenes = len(graph.node[parent]['data'].getMergedGenes().union(graph.node[node]['data'].getMergedGenes()).union(graph.getGenesByNode(node)).union(graph.getGenesByNode(parent)))
+                if mergedGenes <= maxMergedGeneCount:
+                    prob = calcProb(loss, mergedGenes, model)
+                    heappush(queue, (prob, (parent, node)))
 
     while len(queue) > 0:
         edge = heappop(queue)
         #Calculates information loss
         loss = graph.node[edge[1][0]]['data'].getInfoLoss() + edge[0] + graph.node[edge[1][1]]['data'].getInfoLoss()
         mergedNodes = graph.node[edge[1][0]]['data'].getMergedCount() + 1 + graph.node[edge[1][1]]['data'].getMergedCount() + 1
-        mergedGenes = len(graph.node[edge[1][0]]['data'].getMergedGenes().union(graph.node[edge[1][1]]['data'].getMergedGenes()).union(graph.getGenesByNode(edge[1][1])))
+        mergedGenes = len(graph.node[edge[1][0]]['data'].getMergedGenes().union(graph.node[edge[1][1]]['data'].getMergedGenes()).union(graph.getGenesByNode(edge[1][1])).union(graph.getGenesByNode(edge[1][0])))
         genes = len(graph.node[edge[1][1]]['data'].getMergedGenes().union(graph.getGenesByNode(edge[1][1])))
 
         #Obtains probability
-        if mergedGenes > maxMergedGeneCount:
+        if mergedGenes <= maxMergedGeneCount:
 	    prob = edge[0]
 	else:
 	    prob = 1 + maxProb
@@ -224,7 +225,8 @@ def mergeGraphProb(graph, model, maxProb=0.05, maxMergedGeneCount=200, minGeneAu
 		    for parent in graph.predecessors(node):
                         loss = graph.node[parent]['data'].getInfoLoss() + graph.edge[parent][node]['weight'] + graph.node[node]['data'].getInfoLoss()
                         mergedGenes = len(graph.node[parent]['data'].getMergedGenes().union(graph.node[node]['data'].getMergedGenes()).union(graph.getGenesByNode(node)))
-                        prob = calcProb(loss, mergedGenes, model)
-		        heappush(queue, (prob, (parent, node)))
+                        if mergedGenes <= maxMergedGeneCount:
+                            prob = calcProb(loss, mergedGenes, model)
+                            heappush(queue, (prob, (parent, node)))
 	    
     return graph, leafs
