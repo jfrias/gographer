@@ -1,10 +1,6 @@
 from xml.sax import handler, make_parser
 import re
 
-#Remove this when making package
-import sys
-sys.path.append('../..')
-
 from gographer.Document import Document
 
 ## This class parses PubmedArticleSet xml files.  When parsing is finished, the docs
