@@ -547,4 +547,10 @@ def keepGenes(graph, geneList):
                 remove.append(gene)
         for gene in remove:
             graph.node[node]['data'].genes.remove(gene)
+
+        allGenes = set(graph.geneToNode.keys())
+        remove = list(allGenes.difference(set(geneList)))
+        for gene in remove:
+            del graph.geneToNode[gene]
+        
     return graph

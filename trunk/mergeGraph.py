@@ -225,8 +225,10 @@ def mergeGraphProb(graph, model, maxProb=0.05, maxMergedGeneCount=200, minGeneAu
 		    for parent in graph.predecessors(node):
                         loss = graph.node[parent]['data'].getInfoLoss() + graph.edge[parent][node]['weight'] + graph.node[node]['data'].getInfoLoss()
                         mergedGenes = len(graph.node[parent]['data'].getMergedGenes().union(graph.node[node]['data'].getMergedGenes()).union(graph.getGenesByNode(node)))
-                        if mergedGenes <= maxMergedGeneCount:
+                        if mergedGenes > maxMergedGeneCount:
+                            prob = 1
+                        else:
                             prob = calcProb(loss, mergedGenes, model)
-                            heappush(queue, (prob, (parent, node)))
+		        heappush(queue, (prob, (parent, node)))
 	    
     return graph, leafs

@@ -51,7 +51,7 @@ def make_steiner_tree(G, voi, generator=None):
         while heapq:
                 w, v1, v2 = heappop(heapq)
                 # if no path exists yet between v1 and v2, add this one
-                if v1 not in mst or v2 not in mst or not shortest_path(mst, v1, v2):
+                if v1 not in mst or v2 not in mst or not has_path(mst, v1, v2):
                         mst.add_edge(v1, v2,weight=w)
 
         # check if the graph is tree and correct
