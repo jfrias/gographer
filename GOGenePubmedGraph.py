@@ -149,6 +149,7 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
                         leafs.add(node)
                         for parent in self.predecessors(node):
                             heappush(queue, (self.edge[parent][node]['weight'], (parent, node)))
+        return self, leafs
 
     def mergeGraphMult(self, model, maxProb=0.05, maxMergedGeneCount=200, minGeneAutoMerge=5):
         queue = []

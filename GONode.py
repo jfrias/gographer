@@ -151,25 +151,47 @@ class GONode():
                             stemmer=PorterStemmer().stem, stopwords=[], pmids=None):
         wordVector = {}
 
-        if not corpus:
-            print "Not corpus is given, so a word vector can not be calculated."
+        if self.getDescription():
+            words = tokenizer(self.getDescription()).split(' ')
+            for word in words:
+                if word in stopwords:
+                    continue
+                word = stemmer(word, 0, len(word)-1)
+                if word in wordVector:
+                    wordVector[word] += 1
+                else:
+                    wordVector[word] = 1
+        if self.getName():
+            words = tokenizer(self.getDescription()).split(' ')
+            for word in words:
+                if word in stopwords:
+                    continue
+                word = stemmer(word, 0, len(word)-1)
+                if word in wordVector:
+                    wordVector[word] += 1
+                else:
+                    wordVector[word] = 1
 
-        else:
-            if not pmids:
-                pmids = self.getPropagatedPMIDs()
+        if len(self.getPropagatedPMIDs()) > 0:
+            if not corpus:
+                print "No corpus is given, so a word vector can not be calculated."
 
-            for pmid, qualifier in pmids:
-                #Checks to make sure the PubMed article is in the corpus
-                #and the qualifier does not contain the word 'NOT'
-                if pmid in corpus.docs and "NOT" not in qualifier:
-                    #Adds each word to the word vector
-                    pmidWordVector = corpus.docs[pmid].getWordVector(tokenizer, stemmer, stopwords)
-                    for word in pmidWordVector:
-                        #if word not in stopwords:
-                        if word in wordVector:
-                            wordVector[word] += pmidWordVector[word]
-                        else:
-                            wordVector[word] = pmidWordVector[word]
+            else:
+                if not pmids:
+                    pmids = self.getPropagatedPMIDs()
+
+                for pmid, qualifier in pmids:
+                    #Checks to make sure the PubMed article is in the corpus
+                    #and the qualifier does not contain the word 'NOT'
+                    if pmid in corpus.docs and "NOT" not in qualifier:
+                        #Adds each word to the word vector
+                        pmidWordVector = corpus.docs[pmid].getWordVector(tokenizer, stemmer, stopwords)
+                        for word in pmidWordVector:
+                            #if word not in stopwords:
+                            if word in wordVector:
+                                wordVector[word] += pmidWordVector[word]
+                            else:
+                                wordVector[word] = pmidWordVector[word]
         self.wordVector = wordVector
     
     ##Returns the word vector for the node calculated using propagated PubMed IDs
@@ -177,8 +199,8 @@ class GONode():
     def getWordVector(self, corpus=None, stopwords=[]):
         #Calculates the word vector if the current word vector is empty
         if len(self.wordVector) == 0:
-            if len(self.getPropagatedPMIDs()) > 0:
-                self.calculateWordVector(corpus, stopwords=stopwords)
+##            if len(self.getPropagatedPMIDs()) > 0:
+            self.calculateWordVector(corpus, stopwords=stopwords)
         return self.wordVector
 
     ##Returns the number of descendants of the current node
