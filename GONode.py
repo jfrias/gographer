@@ -162,7 +162,7 @@ class GONode():
                 else:
                     wordVector[word] = 1
         if self.getName():
-            words = tokenizer(self.getDescription()).split(' ')
+            words = tokenizer(self.getName()).split(' ')
             for word in words:
                 if word in stopwords:
                     continue

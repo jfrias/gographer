@@ -3,7 +3,7 @@
 import urllib, sys, time, commands, os
 import string, re
 
-from mergeGraph import *
+##from mergeGraph import *
 from parsers import PubmedArticleSet
 
 ## Check to make sure all the pmids given can be found in the XML file given.
