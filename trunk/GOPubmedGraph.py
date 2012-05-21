@@ -22,7 +22,7 @@ class GOPubmedGraph(GOGraph):
         self.excludeEvidence = excludeEvidence
 
         if assoc != None:
-            self.parseAssocFile(assoc)
+            self.parseAssocFile(assoc, types)
 
     ## Parses the given association file and adds the pubmed information to the appropriate nodes
     # @param    assoc   The name of the association file to be parsed
