@@ -123,7 +123,7 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
             #Calculates information loss
             loss = self.node[edge[1][0]]['data'].getInfoLoss() + edge[0] + self.node[edge[1][1]]['data'].getInfoLoss()
             mergedNodes = self.node[edge[1][0]]['data'].getMergedCount() + 1 + self.node[edge[1][1]]['data'].getMergedCount() + 1
-            mergedGenes = len(self.node[edge[1][0]]['data'].getMergedGenes().union(self.node[edge[1][1]]['data'].getMergedGenes()).union(self.getGenesByNode(edge[1][1])))
+            mergedGenes = len(self.node[edge[1][0]]['data'].getMergedGenes().union(self.node[edge[1][1]]['data'].getMergedGenes()).union(self.getGenesByNode(edge[1][1])).union(self.getGenesByNode(edge[1][0])))
             genes = len(self.node[edge[1][1]]['data'].getMergedGenes().union(self.getGenesByNode(edge[1][1])))
 
             #Obtains probability
@@ -168,7 +168,7 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
             #Calculates information loss
             loss = self.node[edge[1][0]]['data'].getInfoLoss() + self.edge[edge[1][0]][edge[1][1]]['weight'] + self.node[edge[1][1]]['data'].getInfoLoss()
             mergedNodes = self.node[edge[1][0]]['data'].getMergedCount() + 1 + self.node[edge[1][1]]['data'].getMergedCount() + 1
-            mergedGenes = len(self.node[edge[1][0]]['data'].getMergedGenes().union(self.node[edge[1][1]]['data'].getMergedGenes()).union(self.getGenesByNode(edge[1][1])))
+            mergedGenes = len(self.node[edge[1][0]]['data'].getMergedGenes().union(self.node[edge[1][1]]['data'].getMergedGenes()).union(self.getGenesByNode(edge[1][1])).union(self.getGenesByNode(edge[1][0])))
             genes = len(self.node[edge[1][1]]['data'].getMergedGenes().union(self.getGenesByNode(edge[1][1])))
 
             #Obtains probability
@@ -221,7 +221,7 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
                 leafs.add(node)
                 for parent in self.predecessors(node):
                     loss = self.node[parent]['data'].getInfoLoss() + self.edge[parent][node]['weight'] + self.node[node]['data'].getInfoLoss()
-                    mergedGenes = len(self.node[parent]['data'].getMergedGenes().union(self.node[node]['data'].getMergedGenes()).union(self.getGenesByNode(node)))
+                    mergedGenes = len(self.node[parent]['data'].getMergedGenes().union(self.node[node]['data'].getMergedGenes()).union(self.getGenesByNode(node)).union(self.getGenesByNode(parent)))
                     prob = calcProb(loss, mergedGenes, model)
                     heappush(queue, (prob, (parent, node)))
 
@@ -230,11 +230,11 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
             #Calculates information loss
             loss = self.node[edge[1][0]]['data'].getInfoLoss() + edge[0] + self.node[edge[1][1]]['data'].getInfoLoss()
             mergedNodes = self.node[edge[1][0]]['data'].getMergedCount() + 1 + self.node[edge[1][1]]['data'].getMergedCount() + 1
-            mergedGenes = len(self.node[edge[1][0]]['data'].getMergedGenes().union(self.node[edge[1][1]]['data'].getMergedGenes()).union(self.getGenesByNode(edge[1][1])))
+            mergedGenes = len(self.node[edge[1][0]]['data'].getMergedGenes().union(self.node[edge[1][1]]['data'].getMergedGenes()).union(self.getGenesByNode(edge[1][1])).union(self.getGenesByNode(edge[1][0])))
             genes = len(self.node[edge[1][1]]['data'].getMergedGenes().union(self.getGenesByNode(edge[1][1])))
 
             #Obtains probability
-            if mergedGenes > maxMergedGeneCount:
+            if mergedGenes <= maxMergedGeneCount:
                 prob = edge[0]
             else:
                 prob = 1 + maxProb
@@ -257,7 +257,10 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
                         for parent in self.predecessors(node):
                             loss = self.node[parent]['data'].getInfoLoss() + self.edge[parent][node]['weight'] + self.node[node]['data'].getInfoLoss()
                             mergedGenes = len(self.node[parent]['data'].getMergedGenes().union(self.node[node]['data'].getMergedGenes()).union(self.getGenesByNode(node)))
-                            prob = calcProb(loss, mergedGenes, model)
+                            if mergedGenes > maxMergedGeneCount:
+                                prob = 1
+                            else:
+                                prob = calcProb(loss, mergedGenes, model)
                             heappush(queue, (prob, (parent, node)))
                 
         return self, leafs
