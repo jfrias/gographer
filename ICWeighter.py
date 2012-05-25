@@ -8,10 +8,7 @@ class ICWeighter(WeightingInterface):
         self.totalAnnotation = 0
         self.smoother = smoother
         if graph:
-            self.graphID = id(graph)
-            for node in graph:
-                totalAnnotation += len(graph.getPropagatedPubMedByNode(node).union(graph.getPubMedByNode(node)))
-            self.totalAnnotation = totalAnnotation
+            self.storeTotalAnnotation(graph)
     
     def makeWeighted(self, child, parent, graph):
         if id(graph) != self.graphID:
@@ -20,6 +17,7 @@ class ICWeighter(WeightingInterface):
             
     def storeTotalAnnotation(self, graph):
         self.graphID = id(graph)
+        totalAnnotation = 0
         for node in graph:
             totalAnnotation += len(graph.getPropagatedPubMedByNode(node).union(graph.getPubMedByNode(node)))
         self.totalAnnotation = totalAnnotation
