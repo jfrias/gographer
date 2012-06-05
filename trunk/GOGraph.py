@@ -123,17 +123,16 @@ class GOGraph(DiGraph):
         sortedNodes = topological_sort(self)
         sortedNodes.reverse()
         for node in sortedNodes:
-            if node not in nodes:
-                ids = set()
-            else:
-                ids = nodes[node]
+            ids = set()
+            if node in nodes:
+                ids.update(nodes[node])
 
             self.node[node]['data'].descendantCount = len(ids)
             ids = ids.union([node])
 
             for parent in self.predecessors(node):
                 if parent not in nodes:
-                    nodes[parent] = ids
+                    nodes[parent] = set(ids)
                 else:
                     nodes[parent] = nodes[parent].union(ids)
 
