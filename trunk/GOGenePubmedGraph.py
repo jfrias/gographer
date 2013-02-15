@@ -122,7 +122,7 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
             edge = heappop(queue)
             #Calculates information loss
             loss = self.node[edge[1][0]]['data'].getInfoLoss() + edge[0] + self.node[edge[1][1]]['data'].getInfoLoss()
-            mergedNodes = self.node[edge[1][0]]['data'].getMergedCount() + 1 + self.node[edge[1][1]]['data'].getMergedCount() + 1
+            mergedNodes = self.node[edge[1][0]]['data'].getMergedCount() + self.node[edge[1][1]]['data'].getMergedCount() + 1
             mergedGenes = len(self.node[edge[1][0]]['data'].getMergedGenes().union(self.node[edge[1][1]]['data'].getMergedGenes()).union(self.getGenesByNode(edge[1][1])).union(self.getGenesByNode(edge[1][0])))
             genes = len(self.node[edge[1][1]]['data'].getMergedGenes().union(self.getGenesByNode(edge[1][1])))
 
@@ -141,7 +141,7 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
 
                 for pred in predecessors:
                     if len(self.edges(pred)) == 0:
-                        self = removeEmptyNode(self, pred)
+                        self.removeEmptyNode(pred)
 
                 queue = []
                 for node in self.nodes():
@@ -186,7 +186,7 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
 
                 for pred in predecessors:
                     if len(self.edges(pred)) == 0:
-                        self = removeEmptyNode(self, pred)
+                        self.removeEmptyNode(pred)
 
                 queue = []
                 for node in self.nodes():
@@ -200,6 +200,162 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
                 
         return self, leafs
 
+    def mergeAugmented(self, model, maxProb=0.05, maxMergedGeneCount=200, minGeneAutoMerge=5):
+        #get undirected graph
+        undirected = self.to_undirected()
+
+        #calculate descendant dictionary
+        descendantDict = dict()
+        sortedNodes = topological_sort(self)
+        sortedNodes.reverse()
+        for node in sortedNodes:
+            descendants = descendantDict.get(node, set())
+            descendants.add(node)
+            descendantDict[node] = descendants
+
+            for parent in self.predecessors(node):
+                if parent not in descendantDict:
+                    descendantDict[parent] = set(descendants)
+                else:
+                    descendantDict[parent].update(descendants)
+
+        #calculate 5th percentile weight
+        sort = list()
+        for edge in self.edges(data=True):
+            sort.append(edge[2]['weight'])
+        sort.sort()
+        fifth = sort[int(math.ceil(len(sort))*0.05-1)]
+
+        genes = self.geneToNode.keys()
+
+        geneTuples = set()
+        for gene in genes:
+            geneTuples.add((gene,''))
+            geneTuples.add((gene,"NOT"))
+
+
+        subTerms = set()
+        test = Graph()
+        length = 0
+
+        copyGraph = self.createDiGraphCopy(self, geneTuples)
+
+        queue = []
+        leafs = set()
+        for node in self.nodes():
+            if len(self.edges(node)) == 0:
+                leafs.add(node)
+                for parent in self.predecessors(node):
+                    heappush(queue, (self.edge[parent][node]['weight'], (parent, node)))
+                    
+        while len(queue) > 0:
+            edge = heappop(queue)
+
+            loss = copyGraph.node[edge[1][0]]['infoLoss'] + edge[0] + copyGraph.node[edge[1][1]]['infoLoss']
+            mergedNodes = copyGraph.node[edge[1][0]]['mergeCount'] + 1 + copyGraph.node[edge[1][1]]['mergeCount']
+            mergedGenes = len(copyGraph.node[edge[1][0]]['mergeGene'].union(copyGraph.node[edge[1][1]]['mergeGene']).union(copyGraph.node[edge[1][1]]['gene']).union(copyGraph.node[edge[1][0]]['gene']))
+            genesCount = len(copyGraph.node[edge[1][1]]['mergeGene'].union(copyGraph.node[edge[1][1]]['gene']))
+
+            if mergedGenes <= maxMergedGeneCount and self.getLevel(edge[1][0]) >= minLevel:
+                subNodes = descendantDict[edge[1][0]]
+                subGraph = undirected.subgraph(subNodes.intersection(self.nodes())).copy()
+
+                subRootGeneTuples = copyGraph.node[edge[1][0]]['mergeGene'].union(copyGraph.node[edge[1][1]]['mergeGene']).union(copyGraph.node[edge[1][1]]['gene']).union(copyGraph.node[edge[1][0]]['gene']).intersection(geneTuples)
+                subRootGenes = set()
+                for geneGroup in list(subRootGeneTuples):
+                    subRootGenes.add(geneGroup[0])
+
+                subTerms = set()
+                for gene in list(subRootGenes):
+                    subTerms.update(self.getNodesByGene(gene))
+                subTerms.intersection_update(subGraph.nodes())
+
+                subGraph = self.augmentGraph(self, subGraph, list(subTerms), geneTuples, fifth)
+                test = make_steiner_tree(subGraph, list(subTerms))
+                length = 0
+                for subEdge in test.edges():
+                    length += test.edge[subEdge[0]][subEdge[1]]['weight']
+
+                prob = calcProb(length, mergedGenes, model)
+            else:
+                prob = 1 + maxProb
+
+            if prob < maxProb or genesCount <= minGeneAutoMerge:
+                parent = edge[1][0]
+                predecessors = copyGraph.predecessors(edge[1][1])
+                copyGraph.node[edge[1][0]]['mergeGene'].update(copyGraph.node[edge[1][1]]['mergeGene'])
+                copyGraph.node[edge[1][0]]['mergeGene'].update(copyGraph.node[edge[1][1]]['gene'])
+                copyGraph.node[edge[1][0]]['mergePMID'].update(copyGraph.node[edge[1][1]]['mergeGene'])
+                copyGraph.node[edge[1][0]]['mergePMID'].update(copyGraph.node[edge[1][1]]['pmid'])
+                copyGraph.remove_edge(edge[1][0], edge[1][1])
+                copyGraph.remove_node(edge[1][1])
+                
+                for pred in predecessors:
+                    if len(copyGraph.edges(pred)) == 0:
+                        copyGraph = delEmptyNode(copyGraph, pred)
+
+                copyGraph.node[parent]['infoLoss'] = length
+                copyGraph.node[parent]['mergeCount'] = mergedNodes
+
+                queue = []
+                leafs = set()
+                for node in copyGraph.nodes():
+                    if len(copyGraph.edges(node)) == 0:
+                        leafs.add(node)
+                        for parent in copyGraph.predecessors(node):
+                            heappush(queue, (copyGraph.edge[parent][node]['weight'], (parent, node)))
+
+        nodes = self.nodes()
+
+        for node in nodes:
+            if node not in copyGraph:
+                self.remove_node(node)
+            else:
+                self.node[node]['data'].addMergedGenes(copyGraph.node[node]['mergeGene'])
+                self.node[node]['data'].setInfoLoss(copyGraph.node[node]['infoLoss'])
+                self.node[node]['data'].setMergedCount(copyGraph.node[node]['mergeCount'])
+                self.node[node]['data'].setMergedPMIDs(copyGraph.node[node]['mergePMID'])
+        return self, leafs, copyGraph
+
+    ## Creates a DiGraph copy of the graph containing only the nodes that annotate, or ancestors of nodes that annotate, the genes of interest
+    # @param geneTuples The list of genes of interest
+    # /return copyGraph The created DiGraph copy
+    def createDiGraphCopy(self, geneTuples):
+        copyGraph = DiGraph()
+        for node in self:
+            if len(self.getGenesByNode(node).intersection(geneTuples)) > 0 or len(self.getPropagatedGenesByNode(node).intersection(geneTuples)) > 0:
+                copyGraph.add_node(node, {'gene':set(self.getGenesByNode(node).intersection(geneTuples)), 'propGene':set(self.getPropagatedGenesByNode(node).intersection(geneTuples)), 'pmid': set(self.getPubMedByNode(node)), 'mergeGene': set(), 'mergePMID': set(), 'mergeCount': 0, 'infoLoss': 0})
+
+        for i in copyGraph:
+            for edge in self.edge[i]:
+                if edge in copyGraph:
+                    copyGraph.add_edge(i, edge, self.edge[i][edge])
+
+        return copyGraph
+
+    ## Adds edges between nodes that share common genes, with the edge weight depending on the number of genes shared
+    # @param subGraph The subgraph of the graph that will be augmented
+    # @param termList The list of nodes within the subgraph to check for shared genes
+    # @param geneTuples The genes that re of interest
+    # @param fifth The edge weight that falls within the fifth percentile
+    # /return subGraph The augmented subgraph
+    def augmentGraph(self, subGraph, termList, geneTuples, fifth):
+        newEdges = list()
+        overlap = 0
+        for first in range(0, len(termList)):
+            for second in range(first+1, len(termList)):
+                overlap = len(self.getGenesByNode(termList[first]).intersection(self.getGenesByNode(termList[second])).intersection(geneTuples))
+                if overlap > 0:
+                    newEdges.append([termList[first], termList[second], float(fifth)/overlap])
+
+        for edge in newEdges:
+            if edge[0] not in subGraph.edge[edge[1]]:
+                subGraph.add_edge(edge[0], edge[1], {'weight':edge[2]})
+            else:
+                if subGraph.edge[edge[0]][edge[1]]['weight'] > edge[2]:
+                    subGraph.edge[edge[0]][edge[1]]['weight'] = edge[2]
+        return subGraph
+
     ## Checks and removes the node if it does not contain any directly associated or merged genes, also checks if any newly created leaf nodes are empty and removes them if they are
     # @param node The node that will be checked
     # /return graph The updated version of the inputted graph
@@ -209,8 +365,7 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
             self.remove_node(node)
             for pred in predecessors:
                 if len(self.edges(pred)) == 0:
-                    removeEmptyNode(self, pred)
-        return self
+                    self.removeEmptyNode(pred)
 
 
     def mergeGraphProb(self, model, maxProb=0.05, maxMergedGeneCount=200, minGeneAutoMerge=5):
@@ -248,7 +403,7 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
 
                 for pred in predecessors:
                     if len(self.edges(pred)) == 0:
-                        self = removeEmptyNode(self, pred)
+                        self.removeEmptyNode(pred)
 
                 queue = []
                 for node in self.nodes():

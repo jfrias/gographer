@@ -171,12 +171,13 @@ def mergeGraphMultCheck(graph, model, maxProb=0.05, maxMergedGeneCount=200, minG
 # @param node The node that will be checked
 # /return graph The updated version of the inputted graph
 def removeEmptyNode(graph, node):
-    if len(graph.node[node]['data'].getMergedGenes()) == 0 and len(graph.getGenesByNode(node)) == 0:
-        predecessors = graph.predecessors(node)
-        graph.remove_node(node)
-        for pred in predecessors:
-            if len(graph.edges(pred)) == 0:
-                removeEmptyNode(graph, pred)
+    if node in graph:
+        if len(graph.node[node]['data'].getMergedGenes()) == 0 and len(graph.getGenesByNode(node)) == 0:
+            predecessors = graph.predecessors(node)
+            graph.remove_node(node)
+            for pred in predecessors:
+                if len(graph.edges(pred)) == 0:
+                    removeEmptyNode(graph, pred)
     return graph
 
 
