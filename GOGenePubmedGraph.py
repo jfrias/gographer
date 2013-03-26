@@ -3,6 +3,8 @@
 from GOPubmedGraph import GOPubmedGraph
 from GOGeneGraph import GOGeneGraph
 from networkx import topological_sort
+from networkx import Graph
+from networkx import DiGraph
 from heapq import *
 from utils import keepGenes
 from calcModel import *
@@ -200,7 +202,7 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
                 
         return self, leafs
 
-    def mergeAugmented(self, model, maxProb=0.05, maxMergedGeneCount=200, minGeneAutoMerge=5):
+    def mergeAugmented(self, model, maxProb=0.05, maxMergedGeneCount=200, minGeneAutoMerge=5, minLevel=0):
         #get undirected graph
         undirected = self.to_undirected()
 
@@ -238,7 +240,7 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
         test = Graph()
         length = 0
 
-        copyGraph = self.createDiGraphCopy(self, geneTuples)
+        copyGraph = self.createDiGraphCopy(geneTuples)
 
         queue = []
         leafs = set()
@@ -270,7 +272,7 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
                     subTerms.update(self.getNodesByGene(gene))
                 subTerms.intersection_update(subGraph.nodes())
 
-                subGraph = self.augmentGraph(self, subGraph, list(subTerms), geneTuples, fifth)
+                subGraph = self.augmentGraph(subGraph, list(subTerms), geneTuples, fifth)
                 test = make_steiner_tree(subGraph, list(subTerms))
                 length = 0
                 for subEdge in test.edges():
