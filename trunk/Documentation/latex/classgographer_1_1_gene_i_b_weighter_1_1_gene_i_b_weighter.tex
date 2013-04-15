@@ -1,0 +1,120 @@
+\hypertarget{classgographer_1_1_gene_i_b_weighter_1_1_gene_i_b_weighter}{\section{gographer.\-Gene\-I\-B\-Weighter.\-Gene\-I\-B\-Weighter Class Reference}
+\label{classgographer_1_1_gene_i_b_weighter_1_1_gene_i_b_weighter}\index{gographer.\-Gene\-I\-B\-Weighter.\-Gene\-I\-B\-Weighter@{gographer.\-Gene\-I\-B\-Weighter.\-Gene\-I\-B\-Weighter}}
+}
+Inheritance diagram for gographer.\-Gene\-I\-B\-Weighter.\-Gene\-I\-B\-Weighter\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classgographer_1_1_gene_i_b_weighter_1_1_gene_i_b_weighter}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classgographer_1_1_gene_i_b_weighter_1_1_gene_i_b_weighter_a5a626b7ef6de417a4f96ceef062ba361}{make\-Weighted}
+\begin{DoxyCompactList}\small\item\em Add weights to the connections from parents to self to children. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_gene_i_b_weighter_1_1_gene_i_b_weighter_a26f9742bc8912785ad39d6dec08a3136}{loss\-I\-B}
+\begin{DoxyCompactList}\small\item\em I\-B loss calculation. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_gene_i_b_weighter_1_1_gene_i_b_weighter_a2e245fc6a4d88fb42c6e0259e574fa18}{calc\-Weight\-K\-L}
+\begin{DoxyCompactList}\small\item\em Calculate the K\-L Weight. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_gene_i_b_weighter_1_1_gene_i_b_weighter_a3c760ca6d2d8a2e30e04fa9ae3ea8ca0}{loss\-Protein}
+\begin{DoxyCompactList}\small\item\em Protein loss calculation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classgographer_1_1_gene_i_b_weighter_1_1_gene_i_b_weighter_a2e245fc6a4d88fb42c6e0259e574fa18}{\index{gographer\-::\-Gene\-I\-B\-Weighter\-::\-Gene\-I\-B\-Weighter@{gographer\-::\-Gene\-I\-B\-Weighter\-::\-Gene\-I\-B\-Weighter}!calc\-Weight\-K\-L@{calc\-Weight\-K\-L}}
+\index{calc\-Weight\-K\-L@{calc\-Weight\-K\-L}!gographer::GeneIBWeighter::GeneIBWeighter@{gographer\-::\-Gene\-I\-B\-Weighter\-::\-Gene\-I\-B\-Weighter}}
+\subsubsection[{calc\-Weight\-K\-L}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-Gene\-I\-B\-Weighter.\-Gene\-I\-B\-Weighter.\-calc\-Weight\-K\-L (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{n1, }
+\item[{}]{n2, }
+\item[{}]{smoother = {\ttfamily 0.001}}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_gene_i_b_weighter_1_1_gene_i_b_weighter_a2e245fc6a4d88fb42c6e0259e574fa18}
+
+
+Calculate the K\-L Weight. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n1} & \\
+\hline
+{\em n2} & \\
+\hline
+{\em smoother} & Always set to 0.\-001 automatically \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_gene_i_b_weighter_1_1_gene_i_b_weighter_a26f9742bc8912785ad39d6dec08a3136}{\index{gographer\-::\-Gene\-I\-B\-Weighter\-::\-Gene\-I\-B\-Weighter@{gographer\-::\-Gene\-I\-B\-Weighter\-::\-Gene\-I\-B\-Weighter}!loss\-I\-B@{loss\-I\-B}}
+\index{loss\-I\-B@{loss\-I\-B}!gographer::GeneIBWeighter::GeneIBWeighter@{gographer\-::\-Gene\-I\-B\-Weighter\-::\-Gene\-I\-B\-Weighter}}
+\subsubsection[{loss\-I\-B}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-Gene\-I\-B\-Weighter.\-Gene\-I\-B\-Weighter.\-loss\-I\-B (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{child, }
+\item[{}]{parent, }
+\item[{}]{graph}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_gene_i_b_weighter_1_1_gene_i_b_weighter_a26f9742bc8912785ad39d6dec08a3136}
+
+
+I\-B loss calculation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & The child node \\
+\hline
+{\em parent} & The parent node \\
+\hline
+{\em graph} & The entire graph on which these nodes exist \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_gene_i_b_weighter_1_1_gene_i_b_weighter_a3c760ca6d2d8a2e30e04fa9ae3ea8ca0}{\index{gographer\-::\-Gene\-I\-B\-Weighter\-::\-Gene\-I\-B\-Weighter@{gographer\-::\-Gene\-I\-B\-Weighter\-::\-Gene\-I\-B\-Weighter}!loss\-Protein@{loss\-Protein}}
+\index{loss\-Protein@{loss\-Protein}!gographer::GeneIBWeighter::GeneIBWeighter@{gographer\-::\-Gene\-I\-B\-Weighter\-::\-Gene\-I\-B\-Weighter}}
+\subsubsection[{loss\-Protein}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-Gene\-I\-B\-Weighter.\-Gene\-I\-B\-Weighter.\-loss\-Protein (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{child, }
+\item[{}]{parent, }
+\item[{}]{graph}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_gene_i_b_weighter_1_1_gene_i_b_weighter_a3c760ca6d2d8a2e30e04fa9ae3ea8ca0}
+
+
+Protein loss calculation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & The child node \\
+\hline
+{\em parent} & The parent node \\
+\hline
+{\em graph} & The entire graph on which these nodes exist \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_gene_i_b_weighter_1_1_gene_i_b_weighter_a5a626b7ef6de417a4f96ceef062ba361}{\index{gographer\-::\-Gene\-I\-B\-Weighter\-::\-Gene\-I\-B\-Weighter@{gographer\-::\-Gene\-I\-B\-Weighter\-::\-Gene\-I\-B\-Weighter}!make\-Weighted@{make\-Weighted}}
+\index{make\-Weighted@{make\-Weighted}!gographer::GeneIBWeighter::GeneIBWeighter@{gographer\-::\-Gene\-I\-B\-Weighter\-::\-Gene\-I\-B\-Weighter}}
+\subsubsection[{make\-Weighted}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-Gene\-I\-B\-Weighter.\-Gene\-I\-B\-Weighter.\-make\-Weighted (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{child, }
+\item[{}]{parent, }
+\item[{}]{graph}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_gene_i_b_weighter_1_1_gene_i_b_weighter_a5a626b7ef6de417a4f96ceef062ba361}
+
+
+Add weights to the connections from parents to self to children. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & The child node \\
+\hline
+{\em parent} & The parent node \\
+\hline
+{\em graph} & The entire graph on which these nodes exist \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Zack/\-Desktop/\-Comp\-Sci/cs1680/gographer/Gene\-I\-B\-Weighter.\-py\end{DoxyCompactItemize}

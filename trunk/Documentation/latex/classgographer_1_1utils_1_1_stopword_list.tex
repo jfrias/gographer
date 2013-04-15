@@ -1,0 +1,211 @@
+\hypertarget{classgographer_1_1utils_1_1_stopword_list}{\section{gographer.\-utils.\-Stopword\-List Class Reference}
+\label{classgographer_1_1utils_1_1_stopword_list}\index{gographer.\-utils.\-Stopword\-List@{gographer.\-utils.\-Stopword\-List}}
+}
+
+
+A class to handle reading a list of stopwords and providing quick lookup.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classgographer_1_1utils_1_1_stopword_list_ae7cd461f1c760908acfeecbbc017e4ac}{\-\_\-\-\_\-init\-\_\-\-\_\-}
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1utils_1_1_stopword_list_a1cde3cc8efda8e3d6ae8f5eab2a2cd54}{read\-File}
+\begin{DoxyCompactList}\small\item\em Read a file that contains stopwords. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1utils_1_1_stopword_list_aa15120f725f88492286d83258fab397a}{\-\_\-\-\_\-contains\-\_\-\-\_\-}
+\begin{DoxyCompactList}\small\item\em Handle queries like \char`\"{}word in stopwords\char`\"{}. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1utils_1_1_stopword_list_a77aeee7ac52e65b8c65b3ecb1d98a6b8}{has\-Word}
+\begin{DoxyCompactList}\small\item\em Same as {\bfseries contains} \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1utils_1_1_stopword_list_a999bd225ef5c7e2635a3d48c39397ab1}{add\-Words}
+\begin{DoxyCompactList}\small\item\em Add a list of words to the stopwords. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1utils_1_1_stopword_list_abcdb9d1269e342e5010debe0bac6d2ea}{get\-List}
+\begin{DoxyCompactList}\small\item\em Get the Python list that this class operates on. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1utils_1_1_stopword_list_a3b1cec3a25c8c749e01df37e83af0e3b}{\-\_\-\-\_\-add\-\_\-\-\_\-}
+\begin{DoxyCompactList}\small\item\em Return a new \hyperlink{classgographer_1_1utils_1_1_stopword_list}{Stopword\-List} composed of the words in this one and another. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1utils_1_1_stopword_list_a92eb17a08e00c4ccbcb78feb47edc569}{\-\_\-\-\_\-eq\-\_\-\-\_\-}
+\begin{DoxyCompactList}\small\item\em Determine if another stopwordlist is the same as this one. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1utils_1_1_stopword_list_a75f275910952b6c749a8ae01a4c62e56}{\-\_\-\-\_\-neq\-\_\-\-\_\-}
+\begin{DoxyCompactList}\small\item\em Determine if another stopwordlist is the same as this one. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1utils_1_1_stopword_list_a2880ccda68705f69321ef8f849ea186b}{join}
+\begin{DoxyCompactList}\small\item\em Add a list of stopwordlists together to form one superlist. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classgographer_1_1utils_1_1_stopword_list_ae674a552205f5e148df9bd093e439cfe}{{\bfseries words}}\label{classgographer_1_1utils_1_1_stopword_list_ae674a552205f5e148df9bd093e439cfe}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class to handle reading a list of stopwords and providing quick lookup. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classgographer_1_1utils_1_1_stopword_list_ae7cd461f1c760908acfeecbbc017e4ac}{\index{gographer\-::utils\-::\-Stopword\-List@{gographer\-::utils\-::\-Stopword\-List}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!gographer::utils::StopwordList@{gographer\-::utils\-::\-Stopword\-List}}
+\subsubsection[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-utils.\-Stopword\-List.\-\_\-\-\_\-init\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{fname = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1utils_1_1_stopword_list_ae7cd461f1c760908acfeecbbc017e4ac}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fname} & The filename of the stopwords to read. File should contain one word per line and already be lowercase \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classgographer_1_1utils_1_1_stopword_list_a3b1cec3a25c8c749e01df37e83af0e3b}{\index{gographer\-::utils\-::\-Stopword\-List@{gographer\-::utils\-::\-Stopword\-List}!\-\_\-\-\_\-add\-\_\-\-\_\-@{\-\_\-\-\_\-add\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-add\-\_\-\-\_\-@{\-\_\-\-\_\-add\-\_\-\-\_\-}!gographer::utils::StopwordList@{gographer\-::utils\-::\-Stopword\-List}}
+\subsubsection[{\-\_\-\-\_\-add\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-utils.\-Stopword\-List.\-\_\-\-\_\-add\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{other}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1utils_1_1_stopword_list_a3b1cec3a25c8c749e01df37e83af0e3b}
+
+
+Return a new \hyperlink{classgographer_1_1utils_1_1_stopword_list}{Stopword\-List} composed of the words in this one and another. 
+
+\begin{DoxyReturn}{Returns}
+A new \hyperlink{classgographer_1_1utils_1_1_stopword_list}{Stopword\-List} 
+\end{DoxyReturn}
+\hypertarget{classgographer_1_1utils_1_1_stopword_list_aa15120f725f88492286d83258fab397a}{\index{gographer\-::utils\-::\-Stopword\-List@{gographer\-::utils\-::\-Stopword\-List}!\-\_\-\-\_\-contains\-\_\-\-\_\-@{\-\_\-\-\_\-contains\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-contains\-\_\-\-\_\-@{\-\_\-\-\_\-contains\-\_\-\-\_\-}!gographer::utils::StopwordList@{gographer\-::utils\-::\-Stopword\-List}}
+\subsubsection[{\-\_\-\-\_\-contains\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-utils.\-Stopword\-List.\-\_\-\-\_\-contains\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{word}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1utils_1_1_stopword_list_aa15120f725f88492286d83258fab397a}
+
+
+Handle queries like \char`\"{}word in stopwords\char`\"{}. 
+
+\begin{DoxyReturn}{Returns}
+True only if word is in this list 
+\end{DoxyReturn}
+\hypertarget{classgographer_1_1utils_1_1_stopword_list_a92eb17a08e00c4ccbcb78feb47edc569}{\index{gographer\-::utils\-::\-Stopword\-List@{gographer\-::utils\-::\-Stopword\-List}!\-\_\-\-\_\-eq\-\_\-\-\_\-@{\-\_\-\-\_\-eq\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-eq\-\_\-\-\_\-@{\-\_\-\-\_\-eq\-\_\-\-\_\-}!gographer::utils::StopwordList@{gographer\-::utils\-::\-Stopword\-List}}
+\subsubsection[{\-\_\-\-\_\-eq\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-utils.\-Stopword\-List.\-\_\-\-\_\-eq\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{other}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1utils_1_1_stopword_list_a92eb17a08e00c4ccbcb78feb47edc569}
+
+
+Determine if another stopwordlist is the same as this one. 
+
+\begin{DoxyReturn}{Returns}
+True if same, False otherwise 
+\end{DoxyReturn}
+\hypertarget{classgographer_1_1utils_1_1_stopword_list_a75f275910952b6c749a8ae01a4c62e56}{\index{gographer\-::utils\-::\-Stopword\-List@{gographer\-::utils\-::\-Stopword\-List}!\-\_\-\-\_\-neq\-\_\-\-\_\-@{\-\_\-\-\_\-neq\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-neq\-\_\-\-\_\-@{\-\_\-\-\_\-neq\-\_\-\-\_\-}!gographer::utils::StopwordList@{gographer\-::utils\-::\-Stopword\-List}}
+\subsubsection[{\-\_\-\-\_\-neq\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-utils.\-Stopword\-List.\-\_\-\-\_\-neq\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{other}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1utils_1_1_stopword_list_a75f275910952b6c749a8ae01a4c62e56}
+
+
+Determine if another stopwordlist is the same as this one. 
+
+\begin{DoxyReturn}{Returns}
+False if same, True otherwise 
+\end{DoxyReturn}
+\hypertarget{classgographer_1_1utils_1_1_stopword_list_a999bd225ef5c7e2635a3d48c39397ab1}{\index{gographer\-::utils\-::\-Stopword\-List@{gographer\-::utils\-::\-Stopword\-List}!add\-Words@{add\-Words}}
+\index{add\-Words@{add\-Words}!gographer::utils::StopwordList@{gographer\-::utils\-::\-Stopword\-List}}
+\subsubsection[{add\-Words}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-utils.\-Stopword\-List.\-add\-Words (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{words}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1utils_1_1_stopword_list_a999bd225ef5c7e2635a3d48c39397ab1}
+
+
+Add a list of words to the stopwords. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em words} & A set or list of words \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1utils_1_1_stopword_list_abcdb9d1269e342e5010debe0bac6d2ea}{\index{gographer\-::utils\-::\-Stopword\-List@{gographer\-::utils\-::\-Stopword\-List}!get\-List@{get\-List}}
+\index{get\-List@{get\-List}!gographer::utils::StopwordList@{gographer\-::utils\-::\-Stopword\-List}}
+\subsubsection[{get\-List}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-utils.\-Stopword\-List.\-get\-List (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1utils_1_1_stopword_list_abcdb9d1269e342e5010debe0bac6d2ea}
+
+
+Get the Python list that this class operates on. 
+
+\begin{DoxyReturn}{Returns}
+a Python list of the words contained in this list 
+\end{DoxyReturn}
+\hypertarget{classgographer_1_1utils_1_1_stopword_list_a77aeee7ac52e65b8c65b3ecb1d98a6b8}{\index{gographer\-::utils\-::\-Stopword\-List@{gographer\-::utils\-::\-Stopword\-List}!has\-Word@{has\-Word}}
+\index{has\-Word@{has\-Word}!gographer::utils::StopwordList@{gographer\-::utils\-::\-Stopword\-List}}
+\subsubsection[{has\-Word}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-utils.\-Stopword\-List.\-has\-Word (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{word}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1utils_1_1_stopword_list_a77aeee7ac52e65b8c65b3ecb1d98a6b8}
+
+
+Same as {\bfseries contains} 
+
+\begin{DoxyReturn}{Returns}
+True only if word is in this list 
+\end{DoxyReturn}
+\hypertarget{classgographer_1_1utils_1_1_stopword_list_a2880ccda68705f69321ef8f849ea186b}{\index{gographer\-::utils\-::\-Stopword\-List@{gographer\-::utils\-::\-Stopword\-List}!join@{join}}
+\index{join@{join}!gographer::utils::StopwordList@{gographer\-::utils\-::\-Stopword\-List}}
+\subsubsection[{join}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-utils.\-Stopword\-List.\-join (
+\begin{DoxyParamCaption}
+\item[{}]{klass, }
+\item[{}]{stopword\-Lists}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1utils_1_1_stopword_list_a2880ccda68705f69321ef8f849ea186b}
+
+
+Add a list of stopwordlists together to form one superlist. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stopword\-Lists} & A list of \hyperlink{classgographer_1_1utils_1_1_stopword_list}{Stopword\-List} objects \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{classgographer_1_1utils_1_1_stopword_list}{Stopword\-List} that is the set that contains the union of the ones given 
+\end{DoxyReturn}
+\hypertarget{classgographer_1_1utils_1_1_stopword_list_a1cde3cc8efda8e3d6ae8f5eab2a2cd54}{\index{gographer\-::utils\-::\-Stopword\-List@{gographer\-::utils\-::\-Stopword\-List}!read\-File@{read\-File}}
+\index{read\-File@{read\-File}!gographer::utils::StopwordList@{gographer\-::utils\-::\-Stopword\-List}}
+\subsubsection[{read\-File}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-utils.\-Stopword\-List.\-read\-File (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{fname}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1utils_1_1_stopword_list_a1cde3cc8efda8e3d6ae8f5eab2a2cd54}
+
+
+Read a file that contains stopwords. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fname} & The filename of the stopwords to read. File should contain one word per line and already be lowercase \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Zack/\-Desktop/\-Comp\-Sci/cs1680/gographer/utils.\-py\end{DoxyCompactItemize}

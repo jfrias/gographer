@@ -1,0 +1,153 @@
+\hypertarget{classgographer_1_1_corpus_1_1_corpus}{\section{gographer.\-Corpus.\-Corpus Class Reference}
+\label{classgographer_1_1_corpus_1_1_corpus}\index{gographer.\-Corpus.\-Corpus@{gographer.\-Corpus.\-Corpus}}
+}
+
+
+A collection of Document objects.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classgographer_1_1_corpus_1_1_corpus_a195485571caf401a72a44557d7949557}{\-\_\-\-\_\-init\-\_\-\-\_\-}
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_corpus_1_1_corpus_add468b80eee651c1a8ec6b14dac4c8b8}{from\-Pubmed\-Article\-Set\-File}
+\begin{DoxyCompactList}\small\item\em Initialize corpus from a Pubmed\-Article\-Set xml file. \end{DoxyCompactList}\item 
+\hypertarget{classgographer_1_1_corpus_1_1_corpus_a245552b239ed36204503b91b1a4e1e04}{def {\bfseries from\-G\-O\-A\-Document\-Set\-File}}\label{classgographer_1_1_corpus_1_1_corpus_a245552b239ed36204503b91b1a4e1e04}
+
+\item 
+def \hyperlink{classgographer_1_1_corpus_1_1_corpus_aceea77b0cf4d1a447e2f572580ce13b6}{pmids}
+\begin{DoxyCompactList}\small\item\em Get all pmids in the corpus. \end{DoxyCompactList}\item 
+\hypertarget{classgographer_1_1_corpus_1_1_corpus_a3dd29c2a0faec3512387659b1def59ac}{def \hyperlink{classgographer_1_1_corpus_1_1_corpus_a3dd29c2a0faec3512387659b1def59ac}{\-\_\-\-\_\-iter\-\_\-\-\_\-}}\label{classgographer_1_1_corpus_1_1_corpus_a3dd29c2a0faec3512387659b1def59ac}
+
+\begin{DoxyCompactList}\small\item\em Iterator for this corpus -\/ iterates through Document objects. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_corpus_1_1_corpus_aac2af9f40109ac25a36ca4cc27ea2029}{append}
+\begin{DoxyCompactList}\small\item\em Append a Document to this corpus. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_corpus_1_1_corpus_a11903a72586876c941db6ad4908f1ab5}{\-\_\-\-\_\-getitem\-\_\-\-\_\-}
+\begin{DoxyCompactList}\small\item\em Get a Document with a given P\-M\-I\-D. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_corpus_1_1_corpus_a442131a1f4da706243217430b67602b6}{\-\_\-\-\_\-len\-\_\-\-\_\-}
+\begin{DoxyCompactList}\small\item\em Get number of Documents in this \hyperlink{classgographer_1_1_corpus_1_1_corpus}{Corpus}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classgographer_1_1_corpus_1_1_corpus_a24619795784a6267426112c64bcfb068}{{\bfseries docs}}\label{classgographer_1_1_corpus_1_1_corpus_a24619795784a6267426112c64bcfb068}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A collection of Document objects. 
+
+Provide functionalities for storing and retrieval of Documents. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classgographer_1_1_corpus_1_1_corpus_a195485571caf401a72a44557d7949557}{\index{gographer\-::\-Corpus\-::\-Corpus@{gographer\-::\-Corpus\-::\-Corpus}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!gographer::Corpus::Corpus@{gographer\-::\-Corpus\-::\-Corpus}}
+\subsubsection[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-Corpus.\-Corpus.\-\_\-\-\_\-init\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{docs = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_corpus_1_1_corpus_a195485571caf401a72a44557d7949557}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em docs} & An initial dictionary of the form \mbox{[}$<$pmid$>$\mbox{]} = $<$\-Document$>$ \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classgographer_1_1_corpus_1_1_corpus_a11903a72586876c941db6ad4908f1ab5}{\index{gographer\-::\-Corpus\-::\-Corpus@{gographer\-::\-Corpus\-::\-Corpus}!\-\_\-\-\_\-getitem\-\_\-\-\_\-@{\-\_\-\-\_\-getitem\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-getitem\-\_\-\-\_\-@{\-\_\-\-\_\-getitem\-\_\-\-\_\-}!gographer::Corpus::Corpus@{gographer\-::\-Corpus\-::\-Corpus}}
+\subsubsection[{\-\_\-\-\_\-getitem\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-Corpus.\-Corpus.\-\_\-\-\_\-getitem\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{pmid}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_corpus_1_1_corpus_a11903a72586876c941db6ad4908f1ab5}
+
+
+Get a Document with a given P\-M\-I\-D. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pmid} & The P\-M\-I\-D of the Document to get \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Document with given P\-M\-I\-D 
+\end{DoxyReturn}
+\hypertarget{classgographer_1_1_corpus_1_1_corpus_a442131a1f4da706243217430b67602b6}{\index{gographer\-::\-Corpus\-::\-Corpus@{gographer\-::\-Corpus\-::\-Corpus}!\-\_\-\-\_\-len\-\_\-\-\_\-@{\-\_\-\-\_\-len\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-len\-\_\-\-\_\-@{\-\_\-\-\_\-len\-\_\-\-\_\-}!gographer::Corpus::Corpus@{gographer\-::\-Corpus\-::\-Corpus}}
+\subsubsection[{\-\_\-\-\_\-len\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-Corpus.\-Corpus.\-\_\-\-\_\-len\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_corpus_1_1_corpus_a442131a1f4da706243217430b67602b6}
+
+
+Get number of Documents in this \hyperlink{classgographer_1_1_corpus_1_1_corpus}{Corpus}. 
+
+\begin{DoxyReturn}{Returns}
+Number of Documents in this \hyperlink{classgographer_1_1_corpus_1_1_corpus}{Corpus} 
+\end{DoxyReturn}
+\hypertarget{classgographer_1_1_corpus_1_1_corpus_aac2af9f40109ac25a36ca4cc27ea2029}{\index{gographer\-::\-Corpus\-::\-Corpus@{gographer\-::\-Corpus\-::\-Corpus}!append@{append}}
+\index{append@{append}!gographer::Corpus::Corpus@{gographer\-::\-Corpus\-::\-Corpus}}
+\subsubsection[{append}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-Corpus.\-Corpus.\-append (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{doc}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_corpus_1_1_corpus_aac2af9f40109ac25a36ca4cc27ea2029}
+
+
+Append a Document to this corpus. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em doc} & A Document to append \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_corpus_1_1_corpus_add468b80eee651c1a8ec6b14dac4c8b8}{\index{gographer\-::\-Corpus\-::\-Corpus@{gographer\-::\-Corpus\-::\-Corpus}!from\-Pubmed\-Article\-Set\-File@{from\-Pubmed\-Article\-Set\-File}}
+\index{from\-Pubmed\-Article\-Set\-File@{from\-Pubmed\-Article\-Set\-File}!gographer::Corpus::Corpus@{gographer\-::\-Corpus\-::\-Corpus}}
+\subsubsection[{from\-Pubmed\-Article\-Set\-File}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-Corpus.\-Corpus.\-from\-Pubmed\-Article\-Set\-File (
+\begin{DoxyParamCaption}
+\item[{}]{klass, }
+\item[{}]{filename}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_corpus_1_1_corpus_add468b80eee651c1a8ec6b14dac4c8b8}
+
+
+Initialize corpus from a Pubmed\-Article\-Set xml file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The location of the xml file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{classgographer_1_1_corpus_1_1_corpus}{Corpus} instance 
+\end{DoxyReturn}
+\hypertarget{classgographer_1_1_corpus_1_1_corpus_aceea77b0cf4d1a447e2f572580ce13b6}{\index{gographer\-::\-Corpus\-::\-Corpus@{gographer\-::\-Corpus\-::\-Corpus}!pmids@{pmids}}
+\index{pmids@{pmids}!gographer::Corpus::Corpus@{gographer\-::\-Corpus\-::\-Corpus}}
+\subsubsection[{pmids}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-Corpus.\-Corpus.\-pmids (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_corpus_1_1_corpus_aceea77b0cf4d1a447e2f572580ce13b6}
+
+
+Get all pmids in the corpus. 
+
+\begin{DoxyReturn}{Returns}
+A list of pmids in this corpus 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Zack/\-Desktop/\-Comp\-Sci/cs1680/gographer/Corpus.\-py\end{DoxyCompactItemize}
