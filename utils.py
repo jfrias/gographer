@@ -75,6 +75,7 @@ def efetchByBlock(ids, directory, blocksize=None, failIfProblem=False):
 
 class Tokenizer:
     
+	## Constructor
     def __init__(self):
         self.pattern_punctuation = re.compile('(\!|\.|\+|\?|\;|\,|\:|\&|\_|\~|\:|\-|\;|\$|\@|\#|\%|\*|\^|\`|\|)')
         self.pattern_numbers = re.compile('[0-9]')
@@ -95,7 +96,9 @@ class Tokenizer:
             #self.leftchar[str(i)]=0
         #print len(self.leftchar)
 
-            
+    ## Stores the number of characters
+	# @param	words
+	# /return	newWords
     def keepNumChr(self, words):
         newWords = ''
         for c in words:
@@ -103,7 +106,9 @@ class Tokenizer:
                 newWords +=c
         return newWords
     
-                                
+    ## Tokenizes given word
+    # @param	words
+	# /return	words
     def tokenize_word(self,words):
         before = words
         words = words.lower()
@@ -115,13 +120,15 @@ class Tokenizer:
         #words = string.strip(words)    
         return words
 
-        
+    ## Test
+	# @param	words
     def test(self,words):
         for c in words:    
             if not self.leftchar.has_key(c):
                 self.leftchar[c] = 1
 
-                
+	## Return the unexpected characters
+	# /return	reV
     def returnUnexpChar(self):
         reV = []
         for k in self.leftchar.keys():
@@ -132,6 +139,7 @@ class Tokenizer:
 
 class PorterStemmer:
 
+	## Constructor
     def __init__(self):
         """The main part of the stemming algorithm starts here.
         b is a buffer holding a word to be stemmed. The letters are in b[k0],
@@ -148,6 +156,9 @@ class PorterStemmer:
         self.k0 = 0
         self.j = 0   # j is a general offset into the string
 
+	## Catch consonants and keep track of 
+	# @param	i An integer
+	# \returns true if the identified letter is a consonant, false if it's a vowel
     def cons(self, i):
         """cons(i) is TRUE <=> b[i] is a consonant."""
         if self.b[i] == 'a' or self.b[i] == 'e' or self.b[i] == 'i' or self.b[i] == 'o' or self.b[i] == 'u':
@@ -159,6 +170,7 @@ class PorterStemmer:
                 return (not self.cons(i - 1))
         return 1
 
+	## Measures the number of consonant sequences between k0 and j
     def m(self):
         """m() measures the number of consonant sequences between k0 and j.
         if c is a consonant sequence and v a vowel sequence, and <..>
@@ -196,6 +208,8 @@ class PorterStemmer:
                 i = i + 1
             i = i + 1
 
+	## Checks for vowels in the stem
+	# \returns true if the sequence contains a vowel, false otherwise.
     def vowelinstem(self):
         """vowelinstem() is TRUE <=> k0,...j contains a vowel"""
         for i in range(self.k0, self.j + 1):
@@ -203,6 +217,9 @@ class PorterStemmer:
                 return 1
         return 0
 
+	## Checks for double consonant strings
+	# @param	j An integer
+	# \returns false if there are no double consonant strings between j and j-1 or j and j+1, calls and returns cons(j) otherwise
     def doublec(self, j):
         """doublec(j) is TRUE <=> j,(j-1) contain a double consonant."""
         if j < (self.k0 + 1):
@@ -211,6 +228,9 @@ class PorterStemmer:
             return 0
         return self.cons(j)
 
+	## Checks for strings of the form consonant - vowel - consonant
+	# @param	i An integer
+	# \returns false if the string doesn't fit the desired format of cvc or if one of the it contains w, x, or y, returns true otherwise
     def cvc(self, i):
         """cvc(i) is TRUE <=> i-2,i-1,i has the form consonant - vowel - consonant
         and also if the second c is not w,x or y. this is used when trying to
@@ -225,7 +245,10 @@ class PorterStemmer:
         if ch == 'w' or ch == 'x' or ch == 'y':
             return 0
         return 1
-
+	
+	## Checks to see if a string ends with the substring s
+	# @param	s A string
+	# \returns true if the string ends with the substring s, otherwise return false
     def ends(self, s):
         """ends(s) is TRUE <=> k0,...k ends with the string s."""
         length = len(s)
@@ -238,17 +261,22 @@ class PorterStemmer:
         self.j = self.k - length
         return 1
 
+	## Sets the letters of this string to s starting
+	# @param	s A string
     def setto(self, s):
         """setto(s) sets (j+1),...k to the characters in the string s, readjusting k."""
         length = len(s)
         self.b = self.b[:self.j+1] + s + self.b[self.j+length+1:]
         self.k = self.j + length
 
+	## r
+	# @param	s A string
     def r(self, s):
         """r(s) is used further down."""
         if self.m() > 0:
             self.setto(s)
 
+	## step1ab
     def step1ab(self):
         """step1ab() gets rid of plurals and -ed or -ing. e.g.
 
@@ -293,11 +321,13 @@ class PorterStemmer:
             elif (self.m() == 1 and self.cvc(self.k)):
                 self.setto("e")
 
+	## step1c
     def step1c(self):
         """step1c() turns terminal y to i when there is another vowel in the stem."""
         if (self.ends("y") and self.vowelinstem()):
             self.b = self.b[:self.k] + 'i' + self.b[self.k+1:]
 
+	## step2
     def step2(self):
         """step2() maps double suffices to single ones.
         so -ization ( = -ize plus -ation) maps to -ize etc. note that the
@@ -336,6 +366,7 @@ class PorterStemmer:
             if self.ends("logi"):      self.r("log")
         # To match the published algorithm, delete this phrase
 
+	## step3
     def step3(self):
         """step3() dels with -ic-, -full, -ness etc. similar strategy to step2."""
         if self.b[self.k] == 'e':
@@ -350,6 +381,7 @@ class PorterStemmer:
         elif self.b[self.k] == 's':
             if self.ends("ness"):      self.r("")
 
+	## step4
     def step4(self):
         """step4() takes off -ant, -ence etc., in context <c>vcvc<v>."""
         if self.b[self.k - 1] == 'a':
@@ -401,6 +433,7 @@ class PorterStemmer:
         if self.m() > 1:
             self.k = self.j
 
+	## step5
     def step5(self):
         """step5() removes a final -e if m() > 1, and changes -ll to -l if
         m() > 1.
@@ -412,7 +445,12 @@ class PorterStemmer:
                 self.k = self.k - 1
         if self.b[self.k] == 'l' and self.doublec(self.k) and self.m() > 1:
             self.k = self.k -1
-
+		
+	## Cuts down a string length from starting point i to ending point j
+	# @param	p A pointer to a character string
+	# @param	i An integer
+	# @param	j An integer
+	# \returns the newly stemmed string
     def stem(self, p, i, j):
         """In stem(p,i,j), p is a char pointer, and the string to be stemmed
         is from p[i] to p[j] inclusive. Typically i is zero and j is the

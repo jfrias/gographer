@@ -153,6 +153,11 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
                             heappush(queue, (self.edge[parent][node]['weight'], (parent, node)))
         return self, leafs
 
+	## Multi-Graph Merge
+	# @param	model
+	# @param	maxProb Always set to 0.05
+	# @param	maxMergedGeneCount Always set to 200
+	# @param	minGeneAutoMerge Always set to 5
     def mergeGraphMult(self, model, maxProb=0.05, maxMergedGeneCount=200, minGeneAutoMerge=5):
         queue = []
         leafs = set()
@@ -201,7 +206,13 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
                             heappush(queue, (self.edge[parent][node]['weight']*(geneCount+len(self.node[node]['data'].getMergedGenes())), (parent, node)))
                 
         return self, leafs
-
+	
+	## Augmented Graph Merge
+	# @param	model
+	# @param	maxProb Always set to 0.05
+	# @param	maxMergedGeneCount Always set to 200
+	# @param	minGeneAutoMerge Always set to 5
+	# @param	minLevel Always set to 0
     def mergeAugmented(self, model, maxProb=0.05, maxMergedGeneCount=200, minGeneAutoMerge=5, minLevel=0):
         #get undirected graph
         undirected = self.to_undirected()

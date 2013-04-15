@@ -40,6 +40,11 @@ def mergeEdge(graph, edge):
     graph.remove_edge(edge[0], edge[1])
     return graph
 
+## Checks the probability of merging nodes
+# @param	loss Input for calcProb function
+# @param	nodeCount Input for calcProb function
+# @param	model Input for calcProb function
+# @param	maxProb Always set to 0.05
 def checkMerge(loss, nodeCount, model, maxProb=0.05):
     merge = False
     prob = calcProb(loss, nodeCount, model)
@@ -117,6 +122,14 @@ def mergeGraphCheck(graph, model, maxProb=0.05, maxMergedGeneCount=200, minGeneA
 ##	    discarded.append(edge)	    
     return graph, leafs
 
+## Multiple graph merge, and checks before each merge to ensure the probability of associated information loss is less than the set max probability
+# @param graph A weighted GOGenePubmedGraph that will be merged
+# @param model The model from which to calculate the probability
+# @param maxProb The max allowed probaiblity for a merging to occur, the default value is 0.05
+# @param maxMergedGeneCount The max allowed number of merged genes for any given node, merging stops at that node if the max is reached. The default value is 200
+# @param minGeneAutoMerge Always set to 5, the value at which nodes will merge automatically
+# /return graph The updated version of the inputted graph
+# /return leafs The updated leaves
 def mergeGraphMultCheck(graph, model, maxProb=0.05, maxMergedGeneCount=200, minGeneAutoMerge=5):
     queue = []
     leafs = set()
@@ -180,7 +193,12 @@ def removeEmptyNode(graph, node):
                     removeEmptyNode(graph, pred)
     return graph
 
-
+##Merges graph if the probability is less than the maxProb value
+# @param	graph A weighted GOGenePubmedGraph that will be merged
+# @param	model The model from which to calculate the probability
+# @param	maxProb Always set to 0.05
+# @param	madxMergedGeneCount Always set to 200
+# @param	minGeneAutoMerge Always set to 5
 def mergeGraphProb(graph, model, maxProb=0.05, maxMergedGeneCount=200, minGeneAutoMerge=5):
     queue = []
     leafs = set()
