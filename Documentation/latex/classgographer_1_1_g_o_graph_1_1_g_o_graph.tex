@@ -1,0 +1,190 @@
+\hypertarget{classgographer_1_1_g_o_graph_1_1_g_o_graph}{\section{gographer.\-G\-O\-Graph.\-G\-O\-Graph Class Reference}
+\label{classgographer_1_1_g_o_graph_1_1_g_o_graph}\index{gographer.\-G\-O\-Graph.\-G\-O\-Graph@{gographer.\-G\-O\-Graph.\-G\-O\-Graph}}
+}
+Inheritance diagram for gographer.\-G\-O\-Graph.\-G\-O\-Graph\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classgographer_1_1_g_o_graph_1_1_g_o_graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classgographer_1_1_g_o_graph_1_1_g_o_graph_a24d8db0ef400bef39324bc804fa34eb4}{\-\_\-\-\_\-init\-\_\-\-\_\-}
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_g_o_graph_1_1_g_o_graph_acb1ecdd7498c7fcfbfe916fcf73e675a}{parse\-Obo\-Xml}
+\begin{DoxyCompactList}\small\item\em Parses the given O\-B\-O X\-M\-L file and creates a \hyperlink{classgographer_1_1_g_o_graph_1_1_g_o_graph}{G\-O\-Graph}. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_g_o_graph_1_1_g_o_graph_af470097f7034f398a1d77576f1900358}{get\-Level}
+\begin{DoxyCompactList}\small\item\em Returns the minimum depth of the node. \end{DoxyCompactList}\item 
+\hypertarget{classgographer_1_1_g_o_graph_1_1_g_o_graph_a28ed46813dc6e35385084853cd48ce13}{def \hyperlink{classgographer_1_1_g_o_graph_1_1_g_o_graph_a28ed46813dc6e35385084853cd48ce13}{get\-Name\-Space}}\label{classgographer_1_1_g_o_graph_1_1_g_o_graph_a28ed46813dc6e35385084853cd48ce13}
+
+\begin{DoxyCompactList}\small\item\em Returns the namespace of the graph. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_g_o_graph_1_1_g_o_graph_a1f0fa0879611bf23be5977bdff1e29d7}{save\-Pickle}
+\begin{DoxyCompactList}\small\item\em Save self using pickle protocol. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_g_o_graph_1_1_g_o_graph_accda51360f6e55aeb466ab84c11877fc}{load\-Pickle}
+\begin{DoxyCompactList}\small\item\em Load a pickle from the filesystem. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_g_o_graph_1_1_g_o_graph_a3770da07e30351e6cee836badfd81a6d}{get\-Node\-Description}
+\begin{DoxyCompactList}\small\item\em Get the description of a node. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_g_o_graph_1_1_g_o_graph_adcde4047692fb0006926fd45692404ba}{get\-Node\-Namespace}
+\begin{DoxyCompactList}\small\item\em Get the description of a node. \end{DoxyCompactList}\item 
+\hypertarget{classgographer_1_1_g_o_graph_1_1_g_o_graph_a7c7b036c555bf226c7d0877cd15e2dee}{def \hyperlink{classgographer_1_1_g_o_graph_1_1_g_o_graph_a7c7b036c555bf226c7d0877cd15e2dee}{calc\-Descendant\-Count}}\label{classgographer_1_1_g_o_graph_1_1_g_o_graph_a7c7b036c555bf226c7d0877cd15e2dee}
+
+\begin{DoxyCompactList}\small\item\em Calculates and stores the number of descendants each node in the graph has. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_g_o_graph_1_1_g_o_graph_a12134f0c734684a4947b833e933c927e}{get\-Descendant\-Count}
+\begin{DoxyCompactList}\small\item\em Return the number of descendants of the given node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classgographer_1_1_g_o_graph_1_1_g_o_graph_a296e0699b66961479b4d715ffccdc1c0}{{\bfseries namespace}}\label{classgographer_1_1_g_o_graph_1_1_g_o_graph_a296e0699b66961479b4d715ffccdc1c0}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classgographer_1_1_g_o_graph_1_1_g_o_graph_a24d8db0ef400bef39324bc804fa34eb4}{\index{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph@{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!gographer::GOGraph::GOGraph@{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph}}
+\subsubsection[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-G\-O\-Graph.\-G\-O\-Graph.\-\_\-\-\_\-init\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{namespace = {\ttfamily None}, }
+\item[{}]{G\-O\-Obo\-Xml\-File\-Name = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_g_o_graph_1_1_g_o_graph_a24d8db0ef400bef39324bc804fa34eb4}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em namespace} & The branch of the G\-O ontology stored by this graph \\
+\hline
+{\em X\-M\-L\-File\-Name} & The file contains the G\-O definition in the format of the O\-B\-O in X\-M\-L \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classgographer_1_1_g_o_graph_1_1_g_o_graph_a12134f0c734684a4947b833e933c927e}{\index{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph@{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph}!get\-Descendant\-Count@{get\-Descendant\-Count}}
+\index{get\-Descendant\-Count@{get\-Descendant\-Count}!gographer::GOGraph::GOGraph@{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph}}
+\subsubsection[{get\-Descendant\-Count}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-G\-O\-Graph.\-G\-O\-Graph.\-get\-Descendant\-Count (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{goid}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_g_o_graph_1_1_g_o_graph_a12134f0c734684a4947b833e933c927e}
+
+
+Return the number of descendants of the given node. 
+
+Calculates the count if it had not already been done so 
+\begin{DoxyParams}{Parameters}
+{\em goid} & The G\-O I\-D of the node to return the descendant count of \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_g_o_graph_1_1_g_o_graph_af470097f7034f398a1d77576f1900358}{\index{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph@{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph}!get\-Level@{get\-Level}}
+\index{get\-Level@{get\-Level}!gographer::GOGraph::GOGraph@{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph}}
+\subsubsection[{get\-Level}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-G\-O\-Graph.\-G\-O\-Graph.\-get\-Level (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{goid}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_g_o_graph_1_1_g_o_graph_af470097f7034f398a1d77576f1900358}
+
+
+Returns the minimum depth of the node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em goid} & The G\-O I\-D of the node whose depth will be found and returned \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_g_o_graph_1_1_g_o_graph_a3770da07e30351e6cee836badfd81a6d}{\index{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph@{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph}!get\-Node\-Description@{get\-Node\-Description}}
+\index{get\-Node\-Description@{get\-Node\-Description}!gographer::GOGraph::GOGraph@{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph}}
+\subsubsection[{get\-Node\-Description}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-G\-O\-Graph.\-G\-O\-Graph.\-get\-Node\-Description (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{goid}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_g_o_graph_1_1_g_o_graph_a3770da07e30351e6cee836badfd81a6d}
+
+
+Get the description of a node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em goid} & The G\-O I\-D of the node to get the description of \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_g_o_graph_1_1_g_o_graph_adcde4047692fb0006926fd45692404ba}{\index{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph@{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph}!get\-Node\-Namespace@{get\-Node\-Namespace}}
+\index{get\-Node\-Namespace@{get\-Node\-Namespace}!gographer::GOGraph::GOGraph@{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph}}
+\subsubsection[{get\-Node\-Namespace}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-G\-O\-Graph.\-G\-O\-Graph.\-get\-Node\-Namespace (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{goid}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_g_o_graph_1_1_g_o_graph_adcde4047692fb0006926fd45692404ba}
+
+
+Get the description of a node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em goid} & The G\-O I\-D of the node to get the description of \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_g_o_graph_1_1_g_o_graph_accda51360f6e55aeb466ab84c11877fc}{\index{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph@{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph}!load\-Pickle@{load\-Pickle}}
+\index{load\-Pickle@{load\-Pickle}!gographer::GOGraph::GOGraph@{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph}}
+\subsubsection[{load\-Pickle}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-G\-O\-Graph.\-G\-O\-Graph.\-load\-Pickle (
+\begin{DoxyParamCaption}
+\item[{}]{klass, }
+\item[{}]{filename = {\ttfamily \char`\"{}gograph.pickle\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_g_o_graph_1_1_g_o_graph_accda51360f6e55aeb466ab84c11877fc}
+
+
+Load a pickle from the filesystem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The location of the pickle file to load \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_g_o_graph_1_1_g_o_graph_acb1ecdd7498c7fcfbfe916fcf73e675a}{\index{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph@{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph}!parse\-Obo\-Xml@{parse\-Obo\-Xml}}
+\index{parse\-Obo\-Xml@{parse\-Obo\-Xml}!gographer::GOGraph::GOGraph@{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph}}
+\subsubsection[{parse\-Obo\-Xml}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-G\-O\-Graph.\-G\-O\-Graph.\-parse\-Obo\-Xml (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{G\-O\-Obo\-Xml\-File\-Name}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_g_o_graph_1_1_g_o_graph_acb1ecdd7498c7fcfbfe916fcf73e675a}
+
+
+Parses the given O\-B\-O X\-M\-L file and creates a \hyperlink{classgographer_1_1_g_o_graph_1_1_g_o_graph}{G\-O\-Graph}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em G\-O\-Obo\-X\-M\-L\-File\-Name} & The name of the O\-B\-O X\-M\-L file to be parsed \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_g_o_graph_1_1_g_o_graph_a1f0fa0879611bf23be5977bdff1e29d7}{\index{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph@{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph}!save\-Pickle@{save\-Pickle}}
+\index{save\-Pickle@{save\-Pickle}!gographer::GOGraph::GOGraph@{gographer\-::\-G\-O\-Graph\-::\-G\-O\-Graph}}
+\subsubsection[{save\-Pickle}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-G\-O\-Graph.\-G\-O\-Graph.\-save\-Pickle (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{filename = {\ttfamily \char`\"{}gograph.pickle\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_g_o_graph_1_1_g_o_graph_a1f0fa0879611bf23be5977bdff1e29d7}
+
+
+Save self using pickle protocol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The filename of the pickle to use \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Zack/\-Desktop/\-Comp\-Sci/cs1680/gographer/G\-O\-Graph.\-py\end{DoxyCompactItemize}

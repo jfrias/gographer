@@ -1,0 +1,286 @@
+\hypertarget{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph}{\section{gographer.\-G\-O\-Gene\-Pubmed\-Graph.\-G\-O\-Gene\-Pubmed\-Graph Class Reference}
+\label{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph}\index{gographer.\-G\-O\-Gene\-Pubmed\-Graph.\-G\-O\-Gene\-Pubmed\-Graph@{gographer.\-G\-O\-Gene\-Pubmed\-Graph.\-G\-O\-Gene\-Pubmed\-Graph}}
+}
+Inheritance diagram for gographer.\-G\-O\-Gene\-Pubmed\-Graph.\-G\-O\-Gene\-Pubmed\-Graph\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.623188cm]{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_abfbc7f7350246a08877847e8caaf4a7e}{\-\_\-\-\_\-init\-\_\-\-\_\-}
+\begin{DoxyCompactList}\small\item\em Create a gene pubmed graph from a G\-O\-Pubmed\-Graph and G\-O\-Gene\-Graph. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a86edce00d51c5ed23e6f2dbff3edecf6}{parse\-Assoc\-File}
+\begin{DoxyCompactList}\small\item\em Parses the given association file and adds the gene and pubmed information to the appropriate nodes. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_adb93d9944cbe668abd89f0cbb2eccc8a}{weight\-Nodes}
+\begin{DoxyCompactList}\small\item\em Weights the gene pubmed graph based off of the weight factor. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a7b3fe16973f4a2c382098883571c4ec2}{make\-Merged}
+\begin{DoxyCompactList}\small\item\em Merges the graph using the selected method. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a0411946b8708273b12b97690c52ce35f}{merge\-Graph\-I\-B}
+\begin{DoxyCompactList}\small\item\em Merges the graph, and checks before each merge to ensure the probability of associated information loss is less than the set max probability. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a1c7adf21bb9b5e03699b44da64dd3f75}{merge\-Graph\-Mult}
+\begin{DoxyCompactList}\small\item\em Multi-\/\-Graph Merge. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_af6522527bb436dfd862d4c60d93c3fa1}{merge\-Augmented}
+\begin{DoxyCompactList}\small\item\em Augmented Graph Merge. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a421ce63e7d47fd4c4bd1df3e55b8f180}{create\-Di\-Graph\-Copy}
+\begin{DoxyCompactList}\small\item\em Creates a Di\-Graph copy of the graph containing only the nodes that annotate, or ancestors of nodes that annotate, the genes of interest. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a3a4964654724f0a716aa5bd98c45c218}{augment\-Graph}
+\begin{DoxyCompactList}\small\item\em Adds edges between nodes that share common genes, with the edge weight depending on the number of genes shared. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a8a4f36c28c64041a147f2847e313f94f}{remove\-Empty\-Node}
+\begin{DoxyCompactList}\small\item\em Checks and removes the node if it does not contain any directly associated or merged genes, also checks if any newly created leaf nodes are empty and removes them if they are. \end{DoxyCompactList}\item 
+\hypertarget{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a4b48cabd6d6d54ac8c6a2471019e8b6c}{def {\bfseries merge\-Graph\-Prob}}\label{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a4b48cabd6d6d54ac8c6a2471019e8b6c}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_ab4d15a054d7a19659b8fbff72754ca03}{{\bfseries pubmed\-To\-Node}}\label{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_ab4d15a054d7a19659b8fbff72754ca03}
+
+\item 
+\hypertarget{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a164b57f5fa534257163cd14092797955}{{\bfseries gene\-To\-Node}}\label{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a164b57f5fa534257163cd14092797955}
+
+\item 
+\hypertarget{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_ae6f6423d35011c3e564b33a916822809}{{\bfseries exclude\-Evidence}}\label{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_ae6f6423d35011c3e564b33a916822809}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_abfbc7f7350246a08877847e8caaf4a7e}{\index{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!gographer::GOGenePubmedGraph::GOGenePubmedGraph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}}
+\subsubsection[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-G\-O\-Gene\-Pubmed\-Graph.\-G\-O\-Gene\-Pubmed\-Graph.\-\_\-\-\_\-init\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{gopubmedgraph, }
+\item[{}]{gogenegraph}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_abfbc7f7350246a08877847e8caaf4a7e}
+
+
+Create a gene pubmed graph from a G\-O\-Pubmed\-Graph and G\-O\-Gene\-Graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gopubmedgraph} & The G\-O\-Pubmed\-Graph that should be merged to form the gene pubmed graph \\
+\hline
+{\em gogenegraph} & The G\-O\-Gene\-Graph that should be merged to form the gene pubmed graph \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a3a4964654724f0a716aa5bd98c45c218}{\index{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}!augment\-Graph@{augment\-Graph}}
+\index{augment\-Graph@{augment\-Graph}!gographer::GOGenePubmedGraph::GOGenePubmedGraph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}}
+\subsubsection[{augment\-Graph}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-G\-O\-Gene\-Pubmed\-Graph.\-G\-O\-Gene\-Pubmed\-Graph.\-augment\-Graph (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{sub\-Graph, }
+\item[{}]{term\-List, }
+\item[{}]{gene\-Tuples, }
+\item[{}]{fifth}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a3a4964654724f0a716aa5bd98c45c218}
+
+
+Adds edges between nodes that share common genes, with the edge weight depending on the number of genes shared. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sub\-Graph} & The subgraph of the graph that will be augmented \\
+\hline
+{\em term\-List} & The list of nodes within the subgraph to check for shared genes \\
+\hline
+{\em gene\-Tuples} & The genes that re of interest \\
+\hline
+{\em fifth} & The edge weight that falls within the fifth percentile /return sub\-Graph The augmented subgraph \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a421ce63e7d47fd4c4bd1df3e55b8f180}{\index{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}!create\-Di\-Graph\-Copy@{create\-Di\-Graph\-Copy}}
+\index{create\-Di\-Graph\-Copy@{create\-Di\-Graph\-Copy}!gographer::GOGenePubmedGraph::GOGenePubmedGraph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}}
+\subsubsection[{create\-Di\-Graph\-Copy}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-G\-O\-Gene\-Pubmed\-Graph.\-G\-O\-Gene\-Pubmed\-Graph.\-create\-Di\-Graph\-Copy (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{gene\-Tuples}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a421ce63e7d47fd4c4bd1df3e55b8f180}
+
+
+Creates a Di\-Graph copy of the graph containing only the nodes that annotate, or ancestors of nodes that annotate, the genes of interest. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gene\-Tuples} & The list of genes of interest /return copy\-Graph The created Di\-Graph copy \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a7b3fe16973f4a2c382098883571c4ec2}{\index{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}!make\-Merged@{make\-Merged}}
+\index{make\-Merged@{make\-Merged}!gographer::GOGenePubmedGraph::GOGenePubmedGraph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}}
+\subsubsection[{make\-Merged}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-G\-O\-Gene\-Pubmed\-Graph.\-G\-O\-Gene\-Pubmed\-Graph.\-make\-Merged (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{genes, }
+\item[{}]{model, }
+\item[{}]{mode = {\ttfamily 'IB'}, }
+\item[{}]{max\-Prob = {\ttfamily 0.05}, }
+\item[{}]{max\-Merged\-Gene\-Count = {\ttfamily 200}, }
+\item[{}]{min\-Gene\-Auto\-Merge = {\ttfamily 5}}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a7b3fe16973f4a2c382098883571c4ec2}
+
+
+Merges the graph using the selected method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em genes} & List of genes that should be kept in the graph \\
+\hline
+{\em mode} & Merging method to be used, default is 'I\-B' \\
+\hline
+{\em model} & Model used for calculating probability \\
+\hline
+{\em max\-Prob} & The maximum allowed probability for a merging to occur, the default is 0.\-05 \\
+\hline
+{\em max\-Merged\-Gene\-Count} & The maximum allowed number of merged genes for any given node, merging stops at that node if the max is reached. The default value is 200 \\
+\hline
+{\em max\-Gene\-Auto\-Merge} & The maximum number of genes associated with a node for it to be automatically merged \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_af6522527bb436dfd862d4c60d93c3fa1}{\index{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}!merge\-Augmented@{merge\-Augmented}}
+\index{merge\-Augmented@{merge\-Augmented}!gographer::GOGenePubmedGraph::GOGenePubmedGraph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}}
+\subsubsection[{merge\-Augmented}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-G\-O\-Gene\-Pubmed\-Graph.\-G\-O\-Gene\-Pubmed\-Graph.\-merge\-Augmented (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{model, }
+\item[{}]{max\-Prob = {\ttfamily 0.05}, }
+\item[{}]{max\-Merged\-Gene\-Count = {\ttfamily 200}, }
+\item[{}]{min\-Gene\-Auto\-Merge = {\ttfamily 5}, }
+\item[{}]{min\-Level = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_af6522527bb436dfd862d4c60d93c3fa1}
+
+
+Augmented Graph Merge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & \\
+\hline
+{\em max\-Prob} & Always set to 0.\-05 \\
+\hline
+{\em max\-Merged\-Gene\-Count} & Always set to 200 \\
+\hline
+{\em min\-Gene\-Auto\-Merge} & Always set to 5 \\
+\hline
+{\em min\-Level} & Always set to 0 \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a0411946b8708273b12b97690c52ce35f}{\index{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}!merge\-Graph\-I\-B@{merge\-Graph\-I\-B}}
+\index{merge\-Graph\-I\-B@{merge\-Graph\-I\-B}!gographer::GOGenePubmedGraph::GOGenePubmedGraph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}}
+\subsubsection[{merge\-Graph\-I\-B}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-G\-O\-Gene\-Pubmed\-Graph.\-G\-O\-Gene\-Pubmed\-Graph.\-merge\-Graph\-I\-B (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{model, }
+\item[{}]{max\-Prob = {\ttfamily 0.05}, }
+\item[{}]{max\-Merged\-Gene\-Count = {\ttfamily 200}, }
+\item[{}]{min\-Gene\-Auto\-Merge = {\ttfamily 5}}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a0411946b8708273b12b97690c52ce35f}
+
+
+Merges the graph, and checks before each merge to ensure the probability of associated information loss is less than the set max probability. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A weighted \hyperlink{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph}{G\-O\-Gene\-Pubmed\-Graph} that will be merged \\
+\hline
+{\em model} & The model from which to calculate the probability \\
+\hline
+{\em max\-Prob} & The max allowed probaiblity for a merging to occur, the default value is 0.\-05 \\
+\hline
+{\em max\-Merged\-Gene\-Count} & The max allowed number of merged genes for any given node, merging stops at that node if the max is reached. The default value is 200 \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a1c7adf21bb9b5e03699b44da64dd3f75}{\index{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}!merge\-Graph\-Mult@{merge\-Graph\-Mult}}
+\index{merge\-Graph\-Mult@{merge\-Graph\-Mult}!gographer::GOGenePubmedGraph::GOGenePubmedGraph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}}
+\subsubsection[{merge\-Graph\-Mult}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-G\-O\-Gene\-Pubmed\-Graph.\-G\-O\-Gene\-Pubmed\-Graph.\-merge\-Graph\-Mult (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{model, }
+\item[{}]{max\-Prob = {\ttfamily 0.05}, }
+\item[{}]{max\-Merged\-Gene\-Count = {\ttfamily 200}, }
+\item[{}]{min\-Gene\-Auto\-Merge = {\ttfamily 5}}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a1c7adf21bb9b5e03699b44da64dd3f75}
+
+
+Multi-\/\-Graph Merge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & \\
+\hline
+{\em max\-Prob} & Always set to 0.\-05 \\
+\hline
+{\em max\-Merged\-Gene\-Count} & Always set to 200 \\
+\hline
+{\em min\-Gene\-Auto\-Merge} & Always set to 5 \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a86edce00d51c5ed23e6f2dbff3edecf6}{\index{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}!parse\-Assoc\-File@{parse\-Assoc\-File}}
+\index{parse\-Assoc\-File@{parse\-Assoc\-File}!gographer::GOGenePubmedGraph::GOGenePubmedGraph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}}
+\subsubsection[{parse\-Assoc\-File}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-G\-O\-Gene\-Pubmed\-Graph.\-G\-O\-Gene\-Pubmed\-Graph.\-parse\-Assoc\-File (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{assoc, }
+\item[{}]{types = {\ttfamily \mbox{[}\char`\"{}protein\char`\"{}\mbox{]}}}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a86edce00d51c5ed23e6f2dbff3edecf6}
+
+
+Parses the given association file and adds the gene and pubmed information to the appropriate nodes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em assoc} & The name of the association file to be parsed \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a8a4f36c28c64041a147f2847e313f94f}{\index{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}!remove\-Empty\-Node@{remove\-Empty\-Node}}
+\index{remove\-Empty\-Node@{remove\-Empty\-Node}!gographer::GOGenePubmedGraph::GOGenePubmedGraph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}}
+\subsubsection[{remove\-Empty\-Node}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-G\-O\-Gene\-Pubmed\-Graph.\-G\-O\-Gene\-Pubmed\-Graph.\-remove\-Empty\-Node (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{node}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_a8a4f36c28c64041a147f2847e313f94f}
+
+
+Checks and removes the node if it does not contain any directly associated or merged genes, also checks if any newly created leaf nodes are empty and removes them if they are. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & The node that will be checked /return graph The updated version of the inputted graph \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_adb93d9944cbe668abd89f0cbb2eccc8a}{\index{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}!weight\-Nodes@{weight\-Nodes}}
+\index{weight\-Nodes@{weight\-Nodes}!gographer::GOGenePubmedGraph::GOGenePubmedGraph@{gographer\-::\-G\-O\-Gene\-Pubmed\-Graph\-::\-G\-O\-Gene\-Pubmed\-Graph}}
+\subsubsection[{weight\-Nodes}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-G\-O\-Gene\-Pubmed\-Graph.\-G\-O\-Gene\-Pubmed\-Graph.\-weight\-Nodes (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{weighter}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph_adb93d9944cbe668abd89f0cbb2eccc8a}
+
+
+Weights the gene pubmed graph based off of the weight factor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em weighter} & The weighing method by which the proteins and semantic distances should be weighted \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Zack/\-Desktop/\-Comp\-Sci/cs1680/gographer/G\-O\-Gene\-Pubmed\-Graph.\-py\end{DoxyCompactItemize}

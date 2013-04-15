@@ -1,0 +1,73 @@
+\hypertarget{classgographer_1_1_i_b_weighter_1_1_i_b_weighter}{\section{gographer.\-I\-B\-Weighter.\-I\-B\-Weighter Class Reference}
+\label{classgographer_1_1_i_b_weighter_1_1_i_b_weighter}\index{gographer.\-I\-B\-Weighter.\-I\-B\-Weighter@{gographer.\-I\-B\-Weighter.\-I\-B\-Weighter}}
+}
+Inheritance diagram for gographer.\-I\-B\-Weighter.\-I\-B\-Weighter\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classgographer_1_1_i_b_weighter_1_1_i_b_weighter}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classgographer_1_1_i_b_weighter_1_1_i_b_weighter_a9dced08b78914bcafebe0eacc4b37a37}{def {\bfseries make\-Weighted}}\label{classgographer_1_1_i_b_weighter_1_1_i_b_weighter_a9dced08b78914bcafebe0eacc4b37a37}
+
+\item 
+def \hyperlink{classgographer_1_1_i_b_weighter_1_1_i_b_weighter_a655b60453d2c3d5061c263aeba9d4c81}{loss\-I\-B}
+\begin{DoxyCompactList}\small\item\em Calculates the semantic distance between a child and a parent node using the information bottleneck method. \end{DoxyCompactList}\item 
+def \hyperlink{classgographer_1_1_i_b_weighter_1_1_i_b_weighter_abcaf1384a508c3f86a7942b1367f6ce2}{calc\-Weight\-K\-L}
+\begin{DoxyCompactList}\small\item\em Calculates the Kullback-\/\-Leibler weight for the two given nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classgographer_1_1_i_b_weighter_1_1_i_b_weighter_abcaf1384a508c3f86a7942b1367f6ce2}{\index{gographer\-::\-I\-B\-Weighter\-::\-I\-B\-Weighter@{gographer\-::\-I\-B\-Weighter\-::\-I\-B\-Weighter}!calc\-Weight\-K\-L@{calc\-Weight\-K\-L}}
+\index{calc\-Weight\-K\-L@{calc\-Weight\-K\-L}!gographer::IBWeighter::IBWeighter@{gographer\-::\-I\-B\-Weighter\-::\-I\-B\-Weighter}}
+\subsubsection[{calc\-Weight\-K\-L}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-I\-B\-Weighter.\-I\-B\-Weighter.\-calc\-Weight\-K\-L (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{n1, }
+\item[{}]{n2, }
+\item[{}]{smoother = {\ttfamily 0.001}}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_i_b_weighter_1_1_i_b_weighter_abcaf1384a508c3f86a7942b1367f6ce2}
+
+
+Calculates the Kullback-\/\-Leibler weight for the two given nodes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n1} & The first node to be used in the calculation \\
+\hline
+{\em n2} & The second node to be used in the calculation \\
+\hline
+{\em smoother} & The smoothing value to be used if any words are missing in either word vector \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgographer_1_1_i_b_weighter_1_1_i_b_weighter_a655b60453d2c3d5061c263aeba9d4c81}{\index{gographer\-::\-I\-B\-Weighter\-::\-I\-B\-Weighter@{gographer\-::\-I\-B\-Weighter\-::\-I\-B\-Weighter}!loss\-I\-B@{loss\-I\-B}}
+\index{loss\-I\-B@{loss\-I\-B}!gographer::IBWeighter::IBWeighter@{gographer\-::\-I\-B\-Weighter\-::\-I\-B\-Weighter}}
+\subsubsection[{loss\-I\-B}]{\setlength{\rightskip}{0pt plus 5cm}def gographer.\-I\-B\-Weighter.\-I\-B\-Weighter.\-loss\-I\-B (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{child, }
+\item[{}]{parent, }
+\item[{}]{graph}
+\end{DoxyParamCaption}
+)}}\label{classgographer_1_1_i_b_weighter_1_1_i_b_weighter_a655b60453d2c3d5061c263aeba9d4c81}
+
+
+Calculates the semantic distance between a child and a parent node using the information bottleneck method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & The G\-O I\-D of the child node \\
+\hline
+{\em parent} & The G\-O I\-D of the parent node \\
+\hline
+{\em graph} & The graph that contains the nodes \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Zack/\-Desktop/\-Comp\-Sci/cs1680/gographer/I\-B\-Weighter.\-py\end{DoxyCompactItemize}
