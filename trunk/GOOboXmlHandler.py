@@ -19,7 +19,9 @@ class GOOboXmlHandler (ContentHandler):
         self.goNode = GONode()
         self.obsolete = False
 
-        
+    ## Create a new element
+    # @param	name Set to either "term" if a new node is to be created or "typedef" if declaring a typedef is desired
+	# @param	attributes
     def startElement(self, name, attributes):
         self.cdata = ""
         
@@ -34,7 +36,9 @@ class GOOboXmlHandler (ContentHandler):
             
         elif name == "typedef":
             self.inTypedef = True
-                
+    ## Modify an element based on input
+    # @param	name A string set to "id", "namespace", "is_a", "is_obsolete", "typedef", "term", "name", or "defstr"
+	#				 depending on the desired changes
     def endElement(self, name):
         if name == "id":
             self.goid = self.cdata.strip()
@@ -78,6 +82,7 @@ class GOOboXmlHandler (ContentHandler):
         elif name == "defstr" and  not self.obsolete and not self.goid == None: # and not self.name.has_key(self.goid):
             self.goNode.setDescription(self.cdata.strip())
 
-            
+    ## Append additional data
+	# @param	data Additional data to be appended
     def characters(self, data):
         self.cdata += data

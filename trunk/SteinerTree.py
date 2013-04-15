@@ -82,7 +82,10 @@ def make_steiner_tree(G, voi, generator=None):
         return _trimTree(subgraph, voi)
 
 
-# remove intermediate nodes in paths that are not in list of voi in given graph
+## remove intermediate nodes in paths that are not in list of voi in given graph
+# @param	graph A weighted GOGenePubmedGraph
+# @param	voi
+#/return	graph An updated version of the GOGenePubmedGraph
 def _trimTree(graph, voi):
         trimKeepTrack = []
         firstNode = voi[0]
@@ -115,6 +118,10 @@ Prim's algorithm: constructs the minimum spanning tree (MST) from an instance of
 @param generator A method to make a new Graph instance (in the case that you've extended Graph)
 \returns A MST verstion of G
 """
+## generate the prim's algorithm mst
+# @param	G A weighted GOGenePubmedGraph
+# @param	generator Always set to None
+# /return	mst Returns the created MST
 def make_prim_mst(G, generator=None):
 	if generator is None:
 		mst = Graph()
