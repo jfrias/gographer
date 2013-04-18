@@ -273,7 +273,8 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
                 subNodes = descendantDict[edge[1][0]]
                 subGraph = undirected.subgraph(subNodes.intersection(self.nodes())).copy()
 
-                subRootGeneTuples = copyGraph.node[edge[1][0]]['mergeGene'].union(copyGraph.node[edge[1][1]]['mergeGene']).union(copyGraph.node[edge[1][1]]['gene']).union(copyGraph.node[edge[1][0]]['gene']).intersection(geneTuples)
+                subRootGeneTuples = copyGraph.node[edge[1][0]]['mergeGene'].union(copyGraph.node[edge[1][1]]['mergeGene'])
+							.union(copyGraph.node[edge[1][1]]['gene']).union(copyGraph.node[edge[1][0]]['gene']).intersection(geneTuples)
                 subRootGenes = set()
                 for geneGroup in list(subRootGeneTuples):
                     subRootGenes.add(geneGroup[0])
@@ -329,6 +330,48 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
                 self.node[node]['data'].setMergedCount(copyGraph.node[node]['mergeCount'])
                 self.node[node]['data'].setMergedPMIDs(copyGraph.node[node]['mergePMID'])
         return self, leafs, copyGraph
+
+	## Gets steiner graph and p-value
+	# @param	model p-value calculation model
+	# @param	geneList List of input genes
+	def getGraphInfo(self, model, geneList):
+		#get undirected graph
+        undirected = self.to_undirected()
+
+		#calculate 5th percentile weight
+        sort = list()
+        for edge in self.edges(data=True):
+            sort.append(edge[2]['weight'])
+        sort.sort()
+        fifth = sort[int(math.ceil(len(sort))*0.05-1)]
+
+        genes = self.geneToNode.keys()
+
+        geneTuples = set()
+        for gene in genes:
+            geneTuples.add((gene,''))
+            geneTuples.add((gene,"NOT"))
+
+
+        subTerms = set()
+        test = Graph()
+        length = 0
+
+        copyGraph = self.createDiGraphCopy(geneTuples)
+
+		subTerms = set()
+        for gene in list(geneList):
+            subTerms.update(self.getNodesByGene(gene))
+
+        undirected = self.augmentGraph(undirected, list(subTerms), geneTuples, fifth)
+        test = make_steiner_tree(undirected, list(subTerms))
+        length = 0
+        for subEdge in test.edges():
+            length += test.edge[subEdge[0]][subEdge[1]]['weight']
+
+        prob = calcProb(length, len(geneList), model)
+
+		return prob, test
 
     ## Creates a DiGraph copy of the graph containing only the nodes that annotate, or ancestors of nodes that annotate, the genes of interest
     # @param geneTuples The list of genes of interest
