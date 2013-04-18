@@ -433,6 +433,18 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>getGraphInfo</Name>
+      <APILanguage>python</APILanguage>
+      <Type>instm</Type>
+      <Scope>gographer.GOGenePubmedGraph.GOGenePubmedGraph</Scope>
+    </TokenIdentifier>
+    <Path>classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph.html</Path>
+    <Anchor>a6841cc14cc8e345aec74590fd8302bb9</Anchor>
+    <Abstract>Gets steiner graph and p-value.</Abstract>
+    <DeclaredIn>GOGenePubmedGraph.py</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>createDiGraphCopy</Name>
       <APILanguage>python</APILanguage>
       <Type>instm</Type>

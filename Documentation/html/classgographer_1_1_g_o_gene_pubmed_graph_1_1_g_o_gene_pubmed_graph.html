@@ -124,6 +124,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af6522527bb436dfd862d4c60d93c3fa1"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph.html#af6522527bb436dfd862d4c60d93c3fa1">mergeAugmented</a></td></tr>
 <tr class="memdesc:af6522527bb436dfd862d4c60d93c3fa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Augmented Graph Merge.  <a href="#af6522527bb436dfd862d4c60d93c3fa1">More...</a><br/></td></tr>
 <tr class="separator:af6522527bb436dfd862d4c60d93c3fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6841cc14cc8e345aec74590fd8302bb9"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph.html#a6841cc14cc8e345aec74590fd8302bb9">getGraphInfo</a></td></tr>
+<tr class="memdesc:a6841cc14cc8e345aec74590fd8302bb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets steiner graph and p-value.  <a href="#a6841cc14cc8e345aec74590fd8302bb9">More...</a><br/></td></tr>
+<tr class="separator:a6841cc14cc8e345aec74590fd8302bb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a421ce63e7d47fd4c4bd1df3e55b8f180"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph.html#a421ce63e7d47fd4c4bd1df3e55b8f180">createDiGraphCopy</a></td></tr>
 <tr class="memdesc:a421ce63e7d47fd4c4bd1df3e55b8f180"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a DiGraph copy of the graph containing only the nodes that annotate, or ancestors of nodes that annotate, the genes of interest.  <a href="#a421ce63e7d47fd4c4bd1df3e55b8f180">More...</a><br/></td></tr>
 <tr class="separator:a421ce63e7d47fd4c4bd1df3e55b8f180"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -275,6 +278,47 @@ Public Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">geneTuples</td><td>The list of genes of interest /return copyGraph The created DiGraph copy </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6841cc14cc8e345aec74590fd8302bb9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def gographer.GOGenePubmedGraph.GOGenePubmedGraph.getGraphInfo </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>geneList</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets steiner graph and p-value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">model</td><td>p-value calculation model </td></tr>
+    <tr><td class="paramname">geneList</td><td>List of input genes </td></tr>
   </table>
   </dd>
 </dl>
@@ -636,7 +680,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 14 2013 21:53:15 for GeneOntology by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 18 2013 15:55:10 for GeneOntology by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

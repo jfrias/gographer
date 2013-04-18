@@ -6,6 +6,7 @@ var searchData=
   ['getgenes',['getGenes',['../classgographer_1_1_g_o_node_1_1_g_o_node.html#a1d056c7237ce4d4919d0ad5f5ed4e385',1,'gographer::GONode::GONode']]],
   ['getgenesbynode',['getGenesByNode',['../classgographer_1_1_g_o_gene_graph_1_1_g_o_gene_graph.html#a36ebebaac8f9a6fc69dec930bcd57afa',1,'gographer::GOGeneGraph::GOGeneGraph']]],
   ['getgoid',['getGOID',['../classgographer_1_1_g_o_node_1_1_g_o_node.html#a26b818661d7d836fff2e813a846f4f4e',1,'gographer::GONode::GONode']]],
+  ['getgraphinfo',['getGraphInfo',['../classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph.html#a6841cc14cc8e345aec74590fd8302bb9',1,'gographer::GOGenePubmedGraph::GOGenePubmedGraph']]],
   ['getlevel',['getLevel',['../classgographer_1_1_g_o_graph_1_1_g_o_graph.html#af470097f7034f398a1d77576f1900358',1,'gographer::GOGraph::GOGraph']]],
   ['getlist',['getList',['../classgographer_1_1utils_1_1_stopword_list.html#abcdb9d1269e342e5010debe0bac6d2ea',1,'gographer::utils::StopwordList']]],
   ['getname',['getName',['../classgographer_1_1_g_o_node_1_1_g_o_node.html#ab2c001a8212e96502b53863d910f2c49',1,'gographer::GONode::GONode']]],
