@@ -274,6 +274,11 @@
                   <Anchor>a421ce63e7d47fd4c4bd1df3e55b8f180</Anchor>
                  </Node>
                  <Node>
+                  <Name>getGraphInfo</Name>
+                  <Path>classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph.html</Path>
+                  <Anchor>a6841cc14cc8e345aec74590fd8302bb9</Anchor>
+                 </Node>
+                 <Node>
                   <Name>makeMerged</Name>
                   <Path>classgographer_1_1_g_o_gene_pubmed_graph_1_1_g_o_gene_pubmed_graph.html</Path>
                   <Anchor>a7b3fe16973f4a2c382098883571c4ec2</Anchor>
