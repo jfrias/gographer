@@ -153,11 +153,11 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
                             heappush(queue, (self.edge[parent][node]['weight'], (parent, node)))
         return self, leafs
 
-	## Multi-Graph Merge
-	# @param	model
-	# @param	maxProb Always set to 0.05
-	# @param	maxMergedGeneCount Always set to 200
-	# @param	minGeneAutoMerge Always set to 5
+    ## Multi-Graph Merge
+    # @param	model
+    # @param	maxProb Always set to 0.05
+    # @param	maxMergedGeneCount Always set to 200
+    # @param	minGeneAutoMerge Always set to 5
     def mergeGraphMult(self, model, maxProb=0.05, maxMergedGeneCount=200, minGeneAutoMerge=5):
         queue = []
         leafs = set()
@@ -207,12 +207,12 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
                 
         return self, leafs
 	
-	## Augmented Graph Merge
-	# @param	model
-	# @param	maxProb Always set to 0.05
-	# @param	maxMergedGeneCount Always set to 200
-	# @param	minGeneAutoMerge Always set to 5
-	# @param	minLevel Always set to 0
+    ## Augmented Graph Merge
+    # @param	model
+    # @param	maxProb Always set to 0.05
+    # @param	maxMergedGeneCount Always set to 200
+    # @param	minGeneAutoMerge Always set to 5
+    # @param	minLevel Always set to 0
     def mergeAugmented(self, model, maxProb=0.05, maxMergedGeneCount=200, minGeneAutoMerge=5, minLevel=0):
         #get undirected graph
         undirected = self.to_undirected()
@@ -306,7 +306,7 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
                 
                 for pred in predecessors:
                     if len(copyGraph.edges(pred)) == 0:
-                        copyGraph = delEmptyNode(copyGraph, pred)
+                        copyGraph = self.delCopyGraphEmptyNode(copyGraph, pred)
 
                 copyGraph.node[parent]['infoLoss'] = length
                 copyGraph.node[parent]['mergeCount'] = mergedNodes
@@ -331,14 +331,14 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
                 self.node[node]['data'].setMergedPMIDs(copyGraph.node[node]['mergePMID'])
         return self, leafs, copyGraph
 
-	## Gets steiner graph and p-value
-	# @param	model p-value calculation model
-	# @param	geneList List of input genes
-	def getGraphInfo(self, model, geneList):
-		#get undirected graph
+    ## Gets steiner graph and p-value
+    # @param	model p-value calculation model
+    # @param	geneList List of input genes
+    def getGraphInfo(self, model, geneList):
+        #get undirected graph
         undirected = self.to_undirected()
 
-		#calculate 5th percentile weight
+        #calculate 5th percentile weight
         sort = list()
         for edge in self.edges(data=True):
             sort.append(edge[2]['weight'])
@@ -359,7 +359,7 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
 
         copyGraph = self.createDiGraphCopy(geneTuples)
 
-		subTerms = set()
+        subTerms = set()
         for gene in list(geneList):
             subTerms.update(self.getNodesByGene(gene))
 
@@ -371,7 +371,18 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
 
         prob = calcProb(length, len(geneList), model)
 
-		return prob, test
+        return prob, test
+
+    def delCopyGraphEmptyNode(self, graph, node):
+        if node in graph:
+            if len(graph.node[node]['mergeGene']) == 0 and len(graph.node[node]['gene']) == 0:
+    ##            print node
+                predecessors = graph.predecessors(node)
+                graph.remove_node(node)
+                for pred in predecessors:
+                   if len(graph.edges(pred)) == 0:
+                       self.delCopyGraphEmptyNode(graph, pred)
+        return graph
 
     ## Creates a DiGraph copy of the graph containing only the nodes that annotate, or ancestors of nodes that annotate, the genes of interest
     # @param geneTuples The list of genes of interest

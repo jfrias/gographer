@@ -14,7 +14,7 @@ class PubmedArticleSet(handler.ContentHandler):
         
         
     def startElement(self, name, attr):
-        if name == 'PubmedArticle':
+        if name == 'PubmedArticle' or name == 'PubmedBookArticle':
             self.doc = Document()            
         self.chars = ""
 
@@ -27,7 +27,10 @@ class PubmedArticleSet(handler.ContentHandler):
         if name == 'ArticleTitle':
             self.doc.title = self.text()
         if name == 'AbstractText':
-            self.doc.abstract = self.text()
+            if self.doc.abstract == None:
+                self.doc.abstract = self.text()
+            else:
+                self.doc.abstract += self.text()
         if name == 'DescriptorName':
             self.doc.addMeSH(self.text())
             
