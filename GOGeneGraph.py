@@ -50,7 +50,7 @@ class GOGeneGraph(GOGraph):
                     if fields[1] not in self.geneToNode:
                         self.geneToNode[fields[1]] = set([fields[4]])
                     else:
-                        self.geneToNode[fields[1]] = self.geneToNode[fields[1]].union([fields[4]])
+                        self.geneToNode[fields[1]].update([fields[4]])
             f.close
             self.propagateGenes()
         except:

@@ -90,7 +90,7 @@ class GONode():
     ##Adds list containing one or more PubMed ID tuples to the existing set of PubMed IDs
     # @param    pmid    A list where each entry is a PubMed ID tuple, where it's the PubMed ID number followed by the qualifier
     def addPMIDs(self, pmid):
-        self.pmids = self.pmids.union(pmid)
+        self.pmids.update(pmid)
 
     ##Set the propagated PubMed IDs associated with the node or its descendants
     # @param    propPmids   The set containing the propagated PubMed IDs that are associated with the node or its descendants.
@@ -105,7 +105,7 @@ class GONode():
     ##Adds list containing PubMed ID tuples to the existing set of propagated PubMed IDs
     # @param    pmids    A list where each entry is a PubMed ID tuple, where it's the PubMed ID number followed by the qualifier
     def addPropagatedPMIDs(self, pmids):
-        self.propPmids = self.propPmids.union(pmids)
+        self.propPmids.update(pmids)
 
     ##Set the genes associated with the node
     # @param    genes   The set containing the genes that are associated with the node.
@@ -120,7 +120,7 @@ class GONode():
     ##Adds list containing one or more gene tuples to the existing set of genes
     # @param    genes    A list where each entry is a gene tuple, where it's the gene ID followed by the qualifier
     def addGenes(self, genes):
-        self.genes = self.genes.union(genes)
+        self.genes.update(genes)
 
     ##Set the propagated genes associated with the node or its descendants
     # @param    propGenes   The set containing the propagated PubMed IDs that are associated with the node or its descendants.
@@ -135,7 +135,7 @@ class GONode():
     ##Adds list containing PubMed ID tuples to the existing set of propagated PubMed IDs
     # @param    pmids    A list where each entry is a PubMed ID tuple, where it's the PubMed ID number followed by the qualifier
     def addPropagatedGenes(self, genes):
-        self.propGenes = self.propGenes.union(genes)
+        self.propGenes.update(genes)
 
     ##Calculates the word vector and stores this information
     # @param    corpus  The corpus that contains the information on the PubMed article
@@ -221,7 +221,7 @@ class GONode():
     ##Adds list containing one or more gene tuples to the existing set of merged genes
     # @param    mergedGenes    A list where each entry is a gene tuple, where it's the gene ID followed by the qualifier
     def addMergedGenes(self, mergedGenes):
-        self.mergedGenes = self.mergedGenes.union(mergedGenes)
+        self.mergedGenes.update(mergedGenes)
 
 
     ##Set the PubMed IDs associated with the nodes that have been merged into the current node
@@ -237,7 +237,7 @@ class GONode():
     ##Adds list containing one or more PMID tuples to the existing set of merged PMIDs
     # @param    mergedPmids    A list where each entry is a PubMed ID tuple, where it's the PubMed ID followed by the qualifier
     def addMergedPMIDs(self, mergedPmids):
-        self.mergedPmids = self.mergedPmids.union(mergedPmids)
+        self.mergedPmids.update(mergedPmids)
 
     ##Set the count of the number of nodes that have been merged into the current node
     # @param    mergedCount   The integer count of the number of nodes that have been merged into the current node
