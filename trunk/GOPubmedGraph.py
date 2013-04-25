@@ -58,7 +58,7 @@ class GOPubmedGraph(GOGraph):
                             if ref[5:] not in self.pubmedToNode:
                                 self.pubmedToNode[ref[5:]] = set([fields[4]])
                             else:
-                                self.pubmedToNode[ref[5:]] = self.pubmedToNode[ref[5:]].union([fields[4]])
+                                self.pubmedToNode[ref[5:]].update([fields[4]])
             f.close
             self.propagatePMIDs()
         except:
