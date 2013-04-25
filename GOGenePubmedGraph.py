@@ -273,8 +273,7 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
                 subNodes = descendantDict[edge[1][0]]
                 subGraph = undirected.subgraph(subNodes.intersection(self.nodes())).copy()
 
-                subRootGeneTuples = copyGraph.node[edge[1][0]]['mergeGene'].union(copyGraph.node[edge[1][1]]['mergeGene'])
-							.union(copyGraph.node[edge[1][1]]['gene']).union(copyGraph.node[edge[1][0]]['gene']).intersection(geneTuples)
+                subRootGeneTuples = copyGraph.node[edge[1][0]]['mergeGene'].union(copyGraph.node[edge[1][1]]['mergeGene']).union(copyGraph.node[edge[1][1]]['gene']).union(copyGraph.node[edge[1][0]]['gene']).intersection(geneTuples)
                 subRootGenes = set()
                 for geneGroup in list(subRootGeneTuples):
                     subRootGenes.add(geneGroup[0])
