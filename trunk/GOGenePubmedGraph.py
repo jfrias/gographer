@@ -74,19 +74,21 @@ class GOGenePubmedGraph(GOPubmedGraph, GOGeneGraph):
                                 self.pubmedToNode[ref[5:]] = self.pubmedToNode[ref[5:]].union([fields[4]])
             f.close
             self.propagateGenes()
+            self.propagatePMIDs()
         except:
             print "Could not parse association file %s" % (assoc)
 
     ## Weights the gene pubmed graph based off of the weight factor
     # @param    weighter    The weighing method by which the proteins and semantic distances should be weighted
-    def weightNodes(self, weighter):
+    # @param    label   The label that would be assigned to the calculated weight when associated with an edge. Default value is 'weight'
+    def weightNodes(self, weighter, label='weight'):
         sortedNodes = topological_sort(self)
         sortedNodes.reverse()
 
         for node in sortedNodes:
             for parent in self.predecessors(node):
                 weight = weighter.makeWeighted(node, parent, self)
-                self.edge[parent][node]['weight'] = weight
+                self.edge[parent][node][label] = weight
 
     ## Merges the graph using the selected method
     # @param    genes   List of genes that should be kept in the graph

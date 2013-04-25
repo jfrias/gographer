@@ -6,7 +6,7 @@ class ICWeighter(WeightingInterface):
     ## Constructor
 	# @param	graph Always set to None
 	# @param	smoother Always set to 0.001
-	def __init__(self, graph=None, smoother=0.001):
+    def __init__(self, graph=None, smoother=0.001):
         self.graphID = None
         self.totalAnnotation = 0
         self.smoother = smoother

@@ -2,23 +2,44 @@ from utils import *
 
 class GONode():
     def __init__ (self, goid=None, namespace=None, parents=None, obsolete=False,
-                  name=None, description=None, genes=set(), propGenes=set(),
-                  pmids=set(), propPmids=set(), wordVector=dict(), descendantCount=None,
-                  mergedGenes=set(), mergedPmids=set(), mergedCount=0, infoLoss=0):
+                  name=None, description=None, genes=None, propGenes=None,
+                  pmids=None, propPmids=None, wordVector=None, descendantCount=0,
+                  mergedGenes=None, mergedPmids=None, mergedCount=0, infoLoss=0):
         self.goid = goid
         self.namespace = namespace
         self.parents = parents
         self.obsolete = obsolete
         self.name = name
         self.description = description
-        self.genes = genes
-        self.propGenes = propGenes
-        self.pmids = pmids
-        self.propPmids = propPmids
-        self.wordVector = wordVector
+        if genes == None:
+            self.genes = set()
+        else:
+            self.genes = genes
+        if propGenes == None:
+            self.propGenes = set()
+        else:
+            self.propGenes = propGenes
+        if pmids == None:
+            self.pmids = set()
+        else:
+            self.pmids = pmids
+        if propPmids == None:
+            self.propPmids = set()
+        else:
+            self.propPmids = propPmids
+        if wordVector == None:
+            self.wordVector = dict()
+        else:
+            self.wordVector = wordVector
         self.descendantCount = descendantCount
-        self.mergedGenes = mergedGenes
-        self.mergedPmids = mergedPmids
+        if mergedGenes == None:
+            self.mergedGenes = set()
+        else:
+            self.mergedGenes = mergedGenes
+        if mergedPmids == None:
+            self.mergedPmids = set()
+        else:
+            self.mergedPmids = mergedPmids
         self.mergedCount = mergedCount
         self.infoLoss = infoLoss
 
